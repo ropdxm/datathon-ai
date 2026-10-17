@@ -203,8 +203,74 @@ run_command([sys.executable, '-u', 'tools/run_custom_colab.py',
     '--archive-sha256', CUSTOM_ARCHIVE_SHA256, '--output-dir', 'runs/custom_v1',
     '--annotation-timeout', '2700'])
 '''
+    adaptation = '''# Train with all custom recordings WITHOUT needing their class labels.
+# A fresh guarded subprocess fits scaler/PCA on training windows only; original
+# labels alone supervise heads and threshold selection on the frozen folds.
+GUARDED_ADAPTATION = """
+import runpy, sys
+from pathlib import Path
+workspace = Path(sys.argv[1])
+sys.path.insert(0, str(workspace))
+from tools.benchmark_semantic_vlm import configure_offline_environment, blocked_network
+configure_offline_environment()
+sys.argv = ['unlabeled_experiment.py', 'compare',
+    '--original-manifest', str(workspace / 'runs/clip_b32/manifest.json'),
+    '--unlabeled-manifest', str(workspace / 'runs/custom_v1/custom_unlabeled_manifest.json'),
+    '--original-features', str(workspace / 'runs/clip_b32/features'),
+    '--unlabeled-features', str(workspace / 'runs/custom_v1/clip_features'),
+    '--folds-from', str(workspace / 'reference/clip_baseline_cv.json'),
+    '--output-dir', str(workspace / 'runs/custom_v1/unlabeled_adaptation'), '--fit-final']
+with blocked_network() as network:
+    runpy.run_module('unlabeled_experiment', run_name='__main__')
+assert network['attempts'] == 0
+print('UNLABELED_NETWORK_ATTEMPTS', network['attempts'], flush=True)
+"""
+run_command([sys.executable, '-u', '-c', GUARDED_ADAPTATION, WORKSPACE])
+'''
+    optional_notes = '''# Optional branch: private, UNVERIFIED original-source notes.
+# First create the private notes ZIP locally with the repository tools, then
+# upload/extract it into this private runtime. Set NOTES_DIR to the directory
+# containing index.json/by_source/<SHA>.json (or by_source itself).
+# Do not send notes to a hosted AI service.
+RUN_PRIVILEGED_NOTES = False
+NOTES_DIR = BASE / 'private_original_notes'
+PRIVILEGED_REPORT = WORKSPACE / 'runs/custom_v1/privileged_notes/privileged_cv_report.json'
+PRIVILEGED_RUNTIME = PRIVILEGED_REPORT.parent / 'optional_runtime.json'
+if RUN_PRIVILEGED_NOTES:
+    assert NOTES_DIR.is_dir(), 'Set NOTES_DIR to privately extracted owner-SHA JSON files.'
+    import time
+    started = time.perf_counter()
+    PRIVILEGED_REPORT.unlink(missing_ok=True)  # Do not reuse a stale completed report after failure.
+    optional_status = {'status': 'failed', 'completed': False, 'notes_verified': False}
+    try:
+        run_command([sys.executable, '-u', 'privileged_experiment.py', 'compare',
+            '--original-manifest', WORKSPACE / 'runs/clip_b32/manifest.json',
+            '--features', WORKSPACE / 'runs/clip_b32/features', '--notes-dir', NOTES_DIR,
+            '--note-cache', WORKSPACE / 'runs/custom_v1/privileged_note_cache',
+            '--folds-from', WORKSPACE / 'reference/clip_baseline_cv.json',
+            '--output-dir', PRIVILEGED_REPORT.parent, '--device', 'cuda', '--fit-final'])
+        optional_status.update(status='completed', completed=True, returncode=0)
+    except subprocess.CalledProcessError as error:
+        optional_status.update(error_type=type(error).__name__, returncode=error.returncode)
+    finally:
+        optional_status['elapsed_seconds'] = time.perf_counter() - started
+        PRIVILEGED_RUNTIME.parent.mkdir(parents=True, exist_ok=True)
+        PRIVILEGED_RUNTIME.write_text(json.dumps(optional_status, indent=2))
+    print('PRIVILEGED_OPTIONAL_STATUS', json.dumps(optional_status))
+'''
+    aggregate = '''# Aggregate only completed numeric reports, never raw notes or observations.
+arguments = [sys.executable, '-u', 'tools/summarize_custom.py',
+    '--results-root', WORKSPACE / 'runs/custom_v1',
+    '--baseline', WORKSPACE / 'reference/clip_baseline_cv.json',
+    '--output-dir', WORKSPACE / 'artifacts']
+if globals().get('RUN_PRIVILEGED_NOTES', False) and PRIVILEGED_REPORT.is_file():
+    arguments += ['--privileged-report', PRIVILEGED_REPORT]
+if globals().get('RUN_PRIVILEGED_NOTES', False) and PRIVILEGED_RUNTIME.is_file():
+    arguments += ['--privileged-runtime', PRIVILEGED_RUNTIME]
+run_command(arguments)
+'''
     results = '''BUNDLED = WORKSPACE / 'reference/measured_custom_summary.json'
-CURRENT = WORKSPACE / 'runs/custom_v1/summary.json'
+CURRENT = WORKSPACE / 'artifacts/custom_experiment_summary.json'
 for label, path in [('Bundled completed measurements', BUNDLED), ('Current workspace measurements', CURRENT)]:
     if path.is_file():
         summary = json.loads(path.read_text())
@@ -222,6 +288,43 @@ assert RESULTS_ZIP.is_file(), 'Finish the driver before exporting results.'
 print('Results archive:', RESULTS_ZIP, 'bytes:', RESULTS_ZIP.stat().st_size)
 print('Contains trusted small heads, source, numeric reports and compact unverified label proposals; excludes videos and feature caches.')
 print('Simple proposed labels and timestamps:', WORKSPACE / 'runs/custom_v1/annotation/proposals.json')
+# Only exact known numeric reports and fitted heads are candidates for export.
+UNLABELED_RESULTS = WORKSPACE / 'runs/custom_v1/unlabeled_adaptation'
+candidates = [UNLABELED_RESULTS / name for name in [
+    'unlabeled_cv_report.json', 'original_unsupervised_projection_progress.json',
+    'original_plus_unlabeled_custom_projection_progress.json',
+    'model/model.joblib', 'model/final_selection.json']]
+candidates += [WORKSPACE / 'artifacts' / name for name in [
+    'custom_experiment_summary.json', 'custom_model_comparison.csv', 'custom_model_comparison.png']]
+if globals().get('RUN_PRIVILEGED_NOTES', False):
+    candidates += [PRIVILEGED_REPORT, PRIVILEGED_RUNTIME,
+                   PRIVILEGED_REPORT.parent / 'privileged_progress.json']
+    optional_status = json.loads(PRIVILEGED_RUNTIME.read_text()) if PRIVILEGED_RUNTIME.is_file() else {}
+    if optional_status.get('status') == 'completed':
+        candidates += [PRIVILEGED_REPORT.parent / name for name in [
+            'model/model_privileged.joblib', 'model/final_selection.json']]
+from pathlib import PurePosixPath
+PRIVATE_PARTS = {'by_source', 'translations', 'privileged_note_cache',
+                 'private_original_notes', 'original_privileged_notes',
+                 'data', 'features', 'clip_features', 'semantic_features', 'observations'}
+PRIVATE_SUFFIXES = {'.npz', '.npy', '.mov', '.mp4', '.mp3', '.wav', '.m4a', '.flac',
+                    '.aac', '.safetensors', '.pt', '.pth', '.zip'}
+def safe_result_member(name):
+    path = PurePosixPath(name)
+    return (not path.is_absolute() and '..' not in path.parts and '\\\\' not in name
+            and not (set(path.parts) & PRIVATE_PARTS) and path.suffix.lower() not in PRIVATE_SUFFIXES)
+with zipfile.ZipFile(RESULTS_ZIP, 'a', zipfile.ZIP_DEFLATED) as archive:
+    existing = set(archive.namelist())
+    assert all(safe_result_member(name) for name in existing), 'Existing ZIP contains a private input/cache path; regenerate the driver export.'
+    for path in candidates:
+        if not path.is_file():
+            continue
+        name = path.relative_to(WORKSPACE).as_posix()
+        assert safe_result_member(name), 'Private input/cache paths cannot be exported.'
+        if name not in existing:
+            archive.write(path, name)
+            existing.add(name)
+print('Final archive includes completed adaptation reports and heads; private notes are excluded.')
 # Optional private download to your computer:
 # from google.colab import files
 # files.download(str(RESULTS_ZIP))
@@ -229,6 +332,7 @@ print('Simple proposed labels and timestamps:', WORKSPACE / 'runs/custom_v1/anno
     return [
         make_cell("markdown", "# Silent custom-video augmentation\n\n" + status + "\n\n"
             "**All 39 custom recordings are currently unlabeled by a verified human.** The supplied custom workbook repeats the original labels and does not match these new filenames. This notebook creates **unverified local model proposals**, then runs an explicit train-only weak-label sensitivity comparison. It cannot certify their correctness.\n\n"
+            "A separate label-free experiment uses all custom recordings to train an unsupervised scaler/PCA representation while keeping classifier supervision entirely on original labels. Its matched projection baseline is reported separately.\n\n"
             "The iPhone and Samsung videos are simultaneous views of the same scenes, with unresolved pairing. They remain one conservative training session. Only the original **40 unique recordings**, on their exact historical held-out folds, supply evaluation targets. No independent custom-camera test or 87% accuracy guarantee is established.\n\n"
             f"The embedded source includes {test_count} regression tests. Audio is ignored throughout; the custom archive contains physically silent compressed derivatives. No hosted LLM API, speech recognition, captions or web interface is used.\n"),
         make_cell("markdown", "## 1. Restore the exact source snapshot\nThis embedded ZIP contains code, tests, documentation and the original numeric fold reference. It contains no recordings, extracted frames or model weights. Existing original caches in `datathon_ml_workspace` can be reused.\n"),
@@ -246,7 +350,12 @@ print('Simple proposed labels and timestamps:', WORKSPACE / 'runs/custom_v1/anno
             "The driver compares original-only training against original plus custom proposals at weight **0.25**, separately for the fixed semantic linear policy and the small point-supervised linear/RBF policy. Custom footage stays in training during every outer and inner split. Calibration and thresholds use only held-out original inner-fold labels. Accuracy, balanced accuracy, recall, specificity, F1/F2, ranking metrics and point-localization diagnostics are reported.\n\n"
             "This can take many minutes. Local annotation has a hard **2,700-second** budget; partial completion is marked explicitly. Aggregate progress prints about every 30 seconds. Annotation time is not a claim about deployment latency.\n"),
         make_cell("code", run),
-        make_cell("markdown", "## 7. Read actual measurements and export\nBundled measurements appear only when the builder received a completed measured summary. Current results are read from the driver output. All comparisons remain development measurements on the previously inspected original corpus. Review the simple proposed labels and timestamps before using them as verified supervision.\n"),
+        make_cell("markdown", "## 7. Train using custom footage without inventing labels\nBoth arms fit a scaler/PCA32 on up to 24 uniformly selected windows per training source. One uses original training sources only; the other also uses the 39 unlabeled custom views. Candidate classifiers and thresholds use original inner-fold labels exclusively. No held-out original features enter projection fitting, and no custom labels enter any loss. The four candidate heads share each fitted projection. This adds actual unlabeled-data training even when every annotation proposal is unresolved. It can reduce accuracy; read the measured comparison before choosing a model.\n"),
+        make_cell("code", adaptation),
+        make_cell("markdown", "## 8. Optional private train-owned notes\nThis disabled branch requires a notes ZIP derived locally from the original supplied notes, uploaded privately and extracted to `NOTES_DIR`. Notes remain unverified privileged training supervision. Owner checks prevent reading held-out-source notes during a fit; inference uses video features alone. Raw notes are excluded from result exports and never sent to a hosted AI service.\n"),
+        make_cell("code", optional_notes),
+        make_cell("markdown", "## 9. Read actual measurements and export\nBundled measurements appear only when the builder received a completed measured summary. Aggregate reports revalidate every original SHA, label, fold and point annotation. All comparisons remain development measurements on the previously inspected original corpus. Review proposed labels and timestamps before treating them as verified supervision.\n"),
+        make_cell("code", aggregate),
         make_cell("code", results),
         make_cell("code", export),
     ]

@@ -1,0 +1,883 @@
+{
+  "status": "completed_custom_data_experiments",
+  "created_at": "2026-10-17T22:00:02.343733+00:00",
+  "tool_sha256": "a8980388bd05cb58847103c44d2b6851d4ffc6ff1b385978a6f68a3049f98804",
+  "results_root": "/content/datathon_ml_workspace/runs/custom_v1",
+  "n": 40,
+  "baseline_report_sha256": "8e716080485cfc78a593bca7cb87454e764d7b843c7a7d45dccbf0533794d085",
+  "all_report_predictions_original_SHA_labels_folds_and_points_verified": true,
+  "model_comparisons": [
+    {
+      "model": "historical_clip",
+      "label": "Previous CLIP embeddings",
+      "role": "historical_baseline",
+      "perception_family": "clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.575,
+        "balanced_accuracy": 0.587719298245614,
+        "recall": 0.3333333333333333,
+        "specificity": 0.8421052631578947,
+        "precision": 0.7,
+        "f1": 0.45161290322580644,
+        "confusion_matrix": [
+          [
+            16,
+            3
+          ],
+          [
+            14,
+            7
+          ]
+        ],
+        "f2": 0.3723404255319149,
+        "average_precision": 0.6506270654765468,
+        "roc_auc": 0.5714285714285714,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 23,
+      "accuracy_wilson95": {
+        "low": 0.42195068541991065,
+        "high": 0.7149060744004962,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 0,
+        "model_correct_baseline_wrong": 0,
+        "discordant_pairs": 0,
+        "exact_two_sided_p": 1.0,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "/content/datathon_ml_workspace/reference/clip_baseline_cv.json",
+      "source_report_sha256": "8e716080485cfc78a593bca7cb87454e764d7b843c7a7d45dccbf0533794d085",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": null,
+      "artifact_sha256": null,
+      "artifact_available": false,
+      "artifact_kind": "report_only_no_exported_head_for_this_arm"
+    },
+    {
+      "model": "semantic/original_only",
+      "label": "Semantic temporal (previous best)",
+      "role": "current_original_policy",
+      "perception_family": "clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.625,
+        "balanced_accuracy": 0.6303258145363408,
+        "recall": 0.5238095238095238,
+        "specificity": 0.7368421052631579,
+        "precision": 0.6875,
+        "f1": 0.5945945945945946,
+        "confusion_matrix": [
+          [
+            14,
+            5
+          ],
+          [
+            10,
+            11
+          ]
+        ],
+        "f2": 0.55,
+        "average_precision": 0.6255285793954899,
+        "roc_auc": 0.5664160401002507,
+        "brier_score": 0.26752305976773894,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 25,
+      "accuracy_wilson95": {
+        "low": 0.47032439137301096,
+        "high": 0.7577702083276673,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 5,
+        "model_correct_baseline_wrong": 7,
+        "discordant_pairs": 12,
+        "exact_two_sided_p": 0.7744140625,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/custom_v1/comparison_semantic/custom_cv_report.json",
+      "source_report_sha256": "d706651668aef1342ab3548d4f661489660f5126d71445f2636a367deaea0b50",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "/content/datathon_ml_workspace/runs/custom_v1/comparison_semantic/model/model_temporal.joblib",
+      "artifact_sha256": "77ab8445156a09b24571833ef3cafaa186e4ab4fb03a9598c57226de7bafc666",
+      "artifact_available": true,
+      "expected_artifact_path": "/content/datathon_ml_workspace/runs/custom_v1/comparison_semantic/model/model_temporal.joblib"
+    },
+    {
+      "model": "point/original_only",
+      "label": "Point policy (original only)",
+      "role": "current_original_policy",
+      "perception_family": "clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5012531328320802,
+        "recall": 0.47619047619047616,
+        "specificity": 0.5263157894736842,
+        "precision": 0.5263157894736842,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            10,
+            9
+          ],
+          [
+            11,
+            10
+          ]
+        ],
+        "f2": 0.4854368932038835,
+        "average_precision": 0.4207416177418314,
+        "roc_auc": 0.31578947368421056,
+        "brier_score": 0.430071646771278,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.09090909090909091,
+            "2s": 0.13636363636363635,
+            "5s": 0.2727272727272727
+          },
+          "median_error_sec_conditional": 3.5,
+          "p90_error_sec_conditional": 10.5
+        }
+      },
+      "correct": 20,
+      "accuracy_wilson95": {
+        "low": 0.35199526933465386,
+        "high": 0.6480047306653461,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 12,
+        "model_correct_baseline_wrong": 9,
+        "discordant_pairs": 21,
+        "exact_two_sided_p": 0.6636238098144531,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/custom_v1/comparison_point/custom_cv_report.json",
+      "source_report_sha256": "174c9c748a0c5f40107d111ae3ad6df715dba9fffe8bfb62b896c19d761d8db0",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "/content/datathon_ml_workspace/runs/custom_v1/comparison_point/model/model.joblib",
+      "artifact_sha256": "9f98dc4982b085c59abc335bcc20f1824a2f31de25d63e22e5be8f6d25747d23",
+      "artifact_available": true,
+      "expected_artifact_path": "/content/datathon_ml_workspace/runs/custom_v1/comparison_point/model/model.joblib"
+    },
+    {
+      "model": "unlabeled/original_unsupervised_projection",
+      "label": "Uniform PCA; original only",
+      "role": "matched_projection_baseline",
+      "perception_family": "clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.575,
+        "balanced_accuracy": 0.5802005012531328,
+        "recall": 0.47619047619047616,
+        "specificity": 0.6842105263157895,
+        "precision": 0.625,
+        "f1": 0.5405405405405406,
+        "confusion_matrix": [
+          [
+            13,
+            6
+          ],
+          [
+            11,
+            10
+          ]
+        ],
+        "f2": 0.5,
+        "average_precision": 0.3908326080551575,
+        "roc_auc": 0.23057644110275693,
+        "brier_score": 0.43184452920883254,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.09090909090909091,
+            "2s": 0.18181818181818182,
+            "5s": 0.3181818181818182
+          },
+          "median_error_sec_conditional": 2.5,
+          "p90_error_sec_conditional": 10.1
+        }
+      },
+      "correct": 23,
+      "accuracy_wilson95": {
+        "low": 0.42195068541991065,
+        "high": 0.7149060744004962,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 7,
+        "model_correct_baseline_wrong": 7,
+        "discordant_pairs": 14,
+        "exact_two_sided_p": 1.0,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/custom_v1/unlabeled_adaptation/unlabeled_cv_report.json",
+      "source_report_sha256": "a3d5abd46121892d7936a8f1437fb3cad6dbae1560e6cfb5587e2b681d0566e5",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": null,
+      "artifact_sha256": null,
+      "artifact_available": false,
+      "artifact_kind": "report_only_no_exported_head_for_this_arm"
+    },
+    {
+      "model": "unlabeled/original_plus_unlabeled_custom_projection",
+      "label": "Uniform PCA +39 unlabeled custom",
+      "role": "unlabeled_adaptation",
+      "perception_family": "clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.425,
+        "balanced_accuracy": 0.4122807017543859,
+        "recall": 0.6666666666666666,
+        "specificity": 0.15789473684210525,
+        "precision": 0.4666666666666667,
+        "f1": 0.5490196078431373,
+        "confusion_matrix": [
+          [
+            3,
+            16
+          ],
+          [
+            7,
+            14
+          ]
+        ],
+        "f2": 0.6140350877192983,
+        "average_precision": 0.4074034638231734,
+        "roc_auc": 0.27568922305764415,
+        "brier_score": 0.5518479228247568,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.13636363636363635,
+            "2s": 0.2727272727272727,
+            "5s": 0.45454545454545453
+          },
+          "median_error_sec_conditional": 2.5666675567626953,
+          "p90_error_sec_conditional": 8.6
+        }
+      },
+      "correct": 17,
+      "accuracy_wilson95": {
+        "low": 0.28509392559950375,
+        "high": 0.5780493145800892,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 14,
+        "model_correct_baseline_wrong": 8,
+        "discordant_pairs": 22,
+        "exact_two_sided_p": 0.28627872467041016,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/custom_v1/unlabeled_adaptation/unlabeled_cv_report.json",
+      "source_report_sha256": "a3d5abd46121892d7936a8f1437fb3cad6dbae1560e6cfb5587e2b681d0566e5",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "/content/datathon_ml_workspace/runs/custom_v1/unlabeled_adaptation/model/model.joblib",
+      "artifact_sha256": "6ee022db408110990afc15312954afef487e85e90a63429262904401840629b1",
+      "artifact_available": true,
+      "expected_artifact_path": "/content/datathon_ml_workspace/runs/custom_v1/unlabeled_adaptation/model/model.joblib"
+    }
+  ],
+  "models": {
+    "historical_clip": {
+      "status": "completed_development",
+      "policies": {
+        "measured": {
+          "n": 40,
+          "accuracy": 0.575,
+          "balanced_accuracy": 0.587719298245614,
+          "recall": 0.3333333333333333,
+          "specificity": 0.8421052631578947,
+          "precision": 0.7,
+          "f1": 0.45161290322580644,
+          "confusion_matrix": [
+            [
+              16,
+              3
+            ],
+            [
+              14,
+              7
+            ]
+          ],
+          "f2": 0.3723404255319149,
+          "average_precision": 0.6506270654765468,
+          "roc_auc": 0.5714285714285714,
+          "localization": {
+            "annotated_points": 22,
+            "point_recall_at_tolerance": {
+              "1s": 0.0,
+              "2s": 0.0,
+              "5s": 0.0
+            },
+            "median_error_sec_conditional": null,
+            "p90_error_sec_conditional": null
+          }
+        }
+      }
+    },
+    "semantic/original_only": {
+      "status": "completed_development",
+      "policies": {
+        "measured": {
+          "n": 40,
+          "accuracy": 0.625,
+          "balanced_accuracy": 0.6303258145363408,
+          "recall": 0.5238095238095238,
+          "specificity": 0.7368421052631579,
+          "precision": 0.6875,
+          "f1": 0.5945945945945946,
+          "confusion_matrix": [
+            [
+              14,
+              5
+            ],
+            [
+              10,
+              11
+            ]
+          ],
+          "f2": 0.55,
+          "average_precision": 0.6255285793954899,
+          "roc_auc": 0.5664160401002507,
+          "brier_score": 0.26752305976773894,
+          "localization": {
+            "annotated_points": 22,
+            "point_recall_at_tolerance": {
+              "1s": 0.0,
+              "2s": 0.0,
+              "5s": 0.0
+            },
+            "median_error_sec_conditional": null,
+            "p90_error_sec_conditional": null
+          }
+        }
+      }
+    },
+    "point/original_only": {
+      "status": "completed_development",
+      "policies": {
+        "measured": {
+          "n": 40,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5012531328320802,
+          "recall": 0.47619047619047616,
+          "specificity": 0.5263157894736842,
+          "precision": 0.5263157894736842,
+          "f1": 0.5,
+          "confusion_matrix": [
+            [
+              10,
+              9
+            ],
+            [
+              11,
+              10
+            ]
+          ],
+          "f2": 0.4854368932038835,
+          "average_precision": 0.4207416177418314,
+          "roc_auc": 0.31578947368421056,
+          "brier_score": 0.430071646771278,
+          "localization": {
+            "annotated_points": 22,
+            "point_recall_at_tolerance": {
+              "1s": 0.09090909090909091,
+              "2s": 0.13636363636363635,
+              "5s": 0.2727272727272727
+            },
+            "median_error_sec_conditional": 3.5,
+            "p90_error_sec_conditional": 10.5
+          }
+        }
+      }
+    },
+    "unlabeled/original_unsupervised_projection": {
+      "status": "completed_development",
+      "policies": {
+        "measured": {
+          "n": 40,
+          "accuracy": 0.575,
+          "balanced_accuracy": 0.5802005012531328,
+          "recall": 0.47619047619047616,
+          "specificity": 0.6842105263157895,
+          "precision": 0.625,
+          "f1": 0.5405405405405406,
+          "confusion_matrix": [
+            [
+              13,
+              6
+            ],
+            [
+              11,
+              10
+            ]
+          ],
+          "f2": 0.5,
+          "average_precision": 0.3908326080551575,
+          "roc_auc": 0.23057644110275693,
+          "brier_score": 0.43184452920883254,
+          "localization": {
+            "annotated_points": 22,
+            "point_recall_at_tolerance": {
+              "1s": 0.09090909090909091,
+              "2s": 0.18181818181818182,
+              "5s": 0.3181818181818182
+            },
+            "median_error_sec_conditional": 2.5,
+            "p90_error_sec_conditional": 10.1
+          }
+        }
+      }
+    },
+    "unlabeled/original_plus_unlabeled_custom_projection": {
+      "status": "completed_development",
+      "policies": {
+        "measured": {
+          "n": 40,
+          "accuracy": 0.425,
+          "balanced_accuracy": 0.4122807017543859,
+          "recall": 0.6666666666666666,
+          "specificity": 0.15789473684210525,
+          "precision": 0.4666666666666667,
+          "f1": 0.5490196078431373,
+          "confusion_matrix": [
+            [
+              3,
+              16
+            ],
+            [
+              7,
+              14
+            ]
+          ],
+          "f2": 0.6140350877192983,
+          "average_precision": 0.4074034638231734,
+          "roc_auc": 0.27568922305764415,
+          "brier_score": 0.5518479228247568,
+          "localization": {
+            "annotated_points": 22,
+            "point_recall_at_tolerance": {
+              "1s": 0.13636363636363635,
+              "2s": 0.2727272727272727,
+              "5s": 0.45454545454545453
+            },
+            "median_error_sec_conditional": 2.5666675567626953,
+            "p90_error_sec_conditional": 8.6
+          }
+        }
+      }
+    }
+  },
+  "posthoc_best_development_model": {
+    "model": "semantic/original_only",
+    "label": "Semantic temporal (previous best)",
+    "role": "current_original_policy",
+    "perception_family": "clip",
+    "metrics": {
+      "n": 40,
+      "accuracy": 0.625,
+      "balanced_accuracy": 0.6303258145363408,
+      "recall": 0.5238095238095238,
+      "specificity": 0.7368421052631579,
+      "precision": 0.6875,
+      "f1": 0.5945945945945946,
+      "confusion_matrix": [
+        [
+          14,
+          5
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "f2": 0.55,
+      "average_precision": 0.6255285793954899,
+      "roc_auc": 0.5664160401002507,
+      "brier_score": 0.26752305976773894,
+      "localization": {
+        "annotated_points": 22,
+        "point_recall_at_tolerance": {
+          "1s": 0.0,
+          "2s": 0.0,
+          "5s": 0.0
+        },
+        "median_error_sec_conditional": null,
+        "p90_error_sec_conditional": null
+      }
+    },
+    "correct": 25,
+    "accuracy_wilson95": {
+      "low": 0.47032439137301096,
+      "high": 0.7577702083276673,
+      "method": "Wilson 95%; illustrative independent-binomial approximation"
+    },
+    "paired_vs_original_clip": {
+      "baseline_correct_model_wrong": 5,
+      "model_correct_baseline_wrong": 7,
+      "discordant_pairs": 12,
+      "exact_two_sided_p": 0.7744140625,
+      "multiple_comparison_adjusted": false,
+      "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+    },
+    "source_report_path": "/content/datathon_ml_workspace/runs/custom_v1/comparison_semantic/custom_cv_report.json",
+    "source_report_sha256": "d706651668aef1342ab3548d4f661489660f5126d71445f2636a367deaea0b50",
+    "original_SHA_and_labels_verified": true,
+    "original_outer_folds_verified": true,
+    "evaluation": "repeated_development_comparison_not_independent_test",
+    "selection_is_independent_test": false,
+    "target_accuracy": 0.87,
+    "target_achieved_on_development": false,
+    "case_ready": false,
+    "artifact_path": "/content/datathon_ml_workspace/runs/custom_v1/comparison_semantic/model/model_temporal.joblib",
+    "artifact_sha256": "77ab8445156a09b24571833ef3cafaa186e4ab4fb03a9598c57226de7bafc666",
+    "artifact_available": true,
+    "expected_artifact_path": "/content/datathon_ml_workspace/runs/custom_v1/comparison_semantic/model/model_temporal.joblib"
+  },
+  "previous_best_development_aggregate": {
+    "model": "semantic_clip/linear_temporal",
+    "metrics": {
+      "n": 40,
+      "accuracy": 0.625,
+      "balanced_accuracy": 0.6303258145363408,
+      "recall": 0.5238095238095238,
+      "specificity": 0.7368421052631579,
+      "precision": 0.6875,
+      "f1": 0.5945945945945946,
+      "confusion_matrix": [
+        [
+          14,
+          5
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "f2": 0.55,
+      "average_precision": 0.6255285793954899,
+      "roc_auc": 0.5664160401002507,
+      "brier_score": 0.26752305976773894,
+      "localization": {
+        "annotated_points": 22,
+        "point_recall_at_tolerance": {
+          "1s": 0.0,
+          "2s": 0.0,
+          "5s": 0.0
+        },
+        "median_error_sec_conditional": null,
+        "p90_error_sec_conditional": null
+      }
+    },
+    "source_summary_sha256": "eb8ab9c6dda42648a0dd2c9e383a44d64736f785789725e2975dcaa6f0297123",
+    "evaluation": "previous_repeated_development_aggregate"
+  },
+  "custom_policy_context": {
+    "semantic": {
+      "status": "no_eligible_custom_labels",
+      "eligible_custom_labels": 0,
+      "auxiliary_validation_targets": 0,
+      "source_report_sha256": "d706651668aef1342ab3548d4f661489660f5126d71445f2636a367deaea0b50"
+    },
+    "point": {
+      "status": "no_eligible_custom_labels",
+      "eligible_custom_labels": 0,
+      "auxiliary_validation_targets": 0,
+      "source_report_sha256": "174c9c748a0c5f40107d111ae3ad6df715dba9fffe8bfb62b896c19d761d8db0"
+    }
+  },
+  "annotation": {
+    "completed": 39,
+    "total": 39,
+    "positive_proposals": 0,
+    "negative_proposals": 0,
+    "unresolved": 39,
+    "human_verified_labels": 0,
+    "audio_used": false,
+    "hosted_ai_api_used": false
+  },
+  "custom_unresolved": 39,
+  "custom_human_verified_labels": 0,
+  "optional_experiments": {
+    "privileged_notes": {
+      "status": "failed",
+      "metrics_included": false,
+      "notes_verified": false,
+      "source_runtime_sha256": "fedd9454f2cf0d196f7214d24622be871c1896ead570b1f3051f2f0a7a94c833",
+      "error_type": "ValueError",
+      "returncode": 1,
+      "elapsed_seconds": 236.79544735700074,
+      "completed": false,
+      "network_attempts": 0
+    }
+  },
+  "detail_diagnostic": {
+    "budget_seconds": 300.0,
+    "selected_recordings": 6,
+    "recordings_per_camera": 3,
+    "resolutions": {
+      "448": {
+        "resolution": 448,
+        "status": "completed",
+        "completed_windows": 6,
+        "valid_windows": 6,
+        "invalid_windows": 0,
+        "valid_code_counts": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 1,
+          "9": 5
+        },
+        "inference_seconds": 12.996260553998582,
+        "accuracy_evaluation": false,
+        "verified_labels_created": 0,
+        "audio_used": false,
+        "hosted_ai_api_used": false,
+        "protocol_sha256": "eeb728f1f818ce67195066ca1501791203521fa0edc0183f39966c4db52ee138",
+        "checkpoint_sha256": "eceeaf9d24eb2e0595b6138dce041e16deca07b580c494d52477bf56031802b3",
+        "annotation_config": {
+          "window_seconds": 8.0,
+          "stride_seconds": 4.0,
+          "frames_per_window": 8,
+          "decode_fps": 2.0,
+          "image_size": 448,
+          "minimum_duration": 3.0,
+          "max_new_tokens": 32
+        },
+        "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+        "model_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+        "model_load_seconds": 51.84434999199948,
+        "process_seconds": 113.35348556099962,
+        "network_guard": {
+          "attempts": 0,
+          "by_method": {}
+        },
+        "latency_seconds": {
+          "count": 6,
+          "mean": 2.1660434256664303,
+          "median": 1.6549821495000288,
+          "min": 1.6384932299988577,
+          "max": 4.654268518999743
+        },
+        "cuda_peak_allocated_mb": 9304.177734375,
+        "cuda_peak_reserved_mb": 9376.0
+      },
+      "896": {
+        "resolution": 896,
+        "status": "hard_timeout",
+        "network_guard": {
+          "attempts": null
+        }
+      }
+    },
+    "accuracy_evaluation": false,
+    "verified_labels_created": 0,
+    "audio_used": false,
+    "hosted_ai_api_used": false,
+    "interpretation": "Resolution sensitivity of unverified numeric review-pattern observations; no correctness or absence of violations established.",
+    "elapsed_seconds": 263.82673661599983,
+    "all_completed_workers_zero_network_attempts": false
+  },
+  "dataset_audit": {
+    "video_count": 39,
+    "source_extensions": {
+      ".mp4": 18,
+      ".mov": 21
+    },
+    "source_total_bytes": 637446991,
+    "prepared_total_bytes": 108959468,
+    "all_prepared_audio_streams_zero": true,
+    "audio_used_for_pairing_annotation_or_training": false,
+    "human_verified_label_count": 0,
+    "independent_session_count": 1,
+    "simultaneous_two_camera_shared_scenes_user_confirmed": true,
+    "cross_camera_correspondence_verified": false
+  },
+  "compression_quality": {
+    "psnr_bgr_db": {
+      "count": 117,
+      "mean": 37.64965325053867,
+      "median": 37.98541121802205,
+      "min": 27.176722373146088,
+      "p10": 32.24115406635291,
+      "p90": 41.911890840904526,
+      "max": 42.92517869495923
+    },
+    "ssim_gray_gaussian": {
+      "count": 117,
+      "mean": 0.9774535751122561,
+      "median": 0.9799987701925754,
+      "min": 0.892614536644121,
+      "p10": 0.9660495602338147,
+      "p90": 0.9877949211054003,
+      "max": 0.9893802393742823
+    },
+    "mean_gradient_ratio": {
+      "count": 117,
+      "mean": 0.9920187776555958,
+      "median": 0.9988282878662654,
+      "min": 0.932692389056128,
+      "p10": 0.9460379310524489,
+      "p90": 1.0363914218610235,
+      "max": 1.0478605329789352
+    },
+    "videos": 39,
+    "samples": 117,
+    "max_abs_timestamp_difference_seconds": 0.02286666666666548,
+    "worst_videos_by_mean_ssim": [
+      {
+        "source_filename": "IMG_1958.MOV",
+        "mean_ssim": 0.9298195997734235,
+        "mean_psnr_db": 30.85324577308965
+      },
+      {
+        "source_filename": "document_5375191716003359204.mp4",
+        "mean_ssim": 0.9677153654863009,
+        "mean_psnr_db": 35.483481123928215
+      },
+      {
+        "source_filename": "IMG_1956.MOV",
+        "mean_ssim": 0.9703136112146558,
+        "mean_psnr_db": 35.273680439159094
+      },
+      {
+        "source_filename": "document_5375191716003359205.mp4",
+        "mean_ssim": 0.9710603575196509,
+        "mean_psnr_db": 36.10228329774619
+      },
+      {
+        "source_filename": "document_5375191716003359198.mp4",
+        "mean_ssim": 0.9721233486792142,
+        "mean_psnr_db": 34.03853588955486
+      }
+    ],
+    "worst_videos_by_mean_psnr": [
+      {
+        "source_filename": "IMG_1958.MOV",
+        "mean_ssim": 0.9298195997734235,
+        "mean_psnr_db": 30.85324577308965
+      },
+      {
+        "source_filename": "document_5375191716003359198.mp4",
+        "mean_ssim": 0.9721233486792142,
+        "mean_psnr_db": 34.03853588955486
+      },
+      {
+        "source_filename": "document_5375191716003359268.mp4",
+        "mean_ssim": 0.9730286722535899,
+        "mean_psnr_db": 34.17870185116964
+      },
+      {
+        "source_filename": "IMG_1956.MOV",
+        "mean_ssim": 0.9703136112146558,
+        "mean_psnr_db": 35.273680439159094
+      },
+      {
+        "source_filename": "document_5375191716003359204.mp4",
+        "mean_ssim": 0.9677153654863009,
+        "mean_psnr_db": 35.483481123928215
+      }
+    ],
+    "source_groups": {
+      "720p_MP4": {
+        "videos": 18,
+        "samples": 54,
+        "mean_psnr_bgr_db": 36.86889677524209,
+        "mean_ssim_gray_gaussian": 0.9755293976546459,
+        "mean_gradient_ratio": 0.9556167253078652
+      },
+      "downscaled_MOV": {
+        "videos": 21,
+        "samples": 63,
+        "mean_psnr_bgr_db": 38.31887308650716,
+        "mean_ssim_gray_gaussian": 0.9791028700759219,
+        "mean_gradient_ratio": 1.0232205368107934
+      }
+    }
+  },
+  "unlabeled_adaptation": {
+    "custom_labels_used": 0,
+    "auxiliary_evaluation_targets": 0,
+    "custom_recordings": 39,
+    "custom_groups": 1,
+    "paired_change": {
+      "accuracy_difference": -0.14999999999999997,
+      "baseline_correct_adapted_wrong": 17,
+      "baseline_wrong_adapted_correct": 11
+    }
+  },
+  "target_accuracy": 0.87,
+  "target_achieved_on_development": false,
+  "independent_87_percent_accuracy_established": false,
+  "case_ready": false,
+  "limitations": [
+    "All original folds were repeatedly inspected; these are development comparisons, not an independent test.",
+    "Custom two-camera views are paired observations of fewer scenes and share one unresolved session.",
+    "Machine annotation outputs and optional train-owned notes are unverified, never custom evaluation ground truth.",
+    "The new uniform-projection baseline differs from earlier supervised-sample PCA; the paired adaptation delta uses its matched baseline.",
+    "Point recall is not exhaustive event precision, interval mAP or legal correctness."
+  ]
+}
