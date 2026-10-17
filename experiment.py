@@ -41,6 +41,7 @@ def parser():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("command", choices=("audit", "extract", "cv", "fit", "pipeline", "predict"))
     p.add_argument("--data-root", type=Path, default=Path("."))
+    p.add_argument("--labels-path", type=Path, help="Explicit labels workbook, absolute or relative to --data-root; default auto-detects one workbook.")
     p.add_argument("--output-dir", type=Path, default=Path("artifacts/run"))
     p.add_argument("--feature-dir", type=Path)
     p.add_argument("--backbone", choices=("dinov2_vits14", "dinov2_vitb14", "dinov2_vits14_reg", "dinov2_vitb14_reg", "clip_vit_b32_openai", "x3d_s", "x3d_xs", "qwen3_vl_embedding_2b"))
@@ -172,7 +173,7 @@ def main(argv=None):
 
     from datathon_ml.data import build_manifest
     aliases = json.loads(args.verified_aliases.read_text(encoding="utf-8")) if args.verified_aliases else None
-    records = build_manifest(args.data_root, output_dir=output, verified_aliases=aliases)
+    records = build_manifest(args.data_root, output_dir=output, labels_path=args.labels_path, verified_aliases=aliases)
     records = apply_groups(records, args.groups_csv)
     write_json(output / "manifest.json", records)
     write_json(output / "environment.json", environment())

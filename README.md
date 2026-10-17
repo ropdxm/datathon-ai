@@ -2,6 +2,16 @@
 
 Model experiments for detecting possible cashier procedure violations in video. All inference runs in Python with downloaded pretrained weights; no hosted LLM API is used. Work currently focuses on models and evaluation.
 
+## Custom recordings: 18 October 2026
+
+Prepared all **39 new camera views** as silent H.264 derivatives at a maximum 1280-pixel long edge and 15 fps. Originals remain untouched. Storage fell from 637.45 MB to 108.96 MB (**82.91% smaller**); maximum duration drift is 0.033 seconds. Numeric quality checks on 117 aligned samples average SSIM 0.977 at the prepared resolution; this does not certify every small detail lost by downsampling.
+
+The supplied custom workbook is a copy of the original 42 labels and matches **none** of the new filenames. All 39 new views therefore start unlabeled. The iPhone and Samsung views show the same simultaneously filmed scenes with unresolved pairings, so they stay in one conservative filming group.
+
+The new [custom-data Colab notebook](datathon_custom.ipynb) runs local visual-only label proposals and a deliberately marked weak-label experiment. All 39 views remained unresolved in the first pass, so no generated labels entered supervised training. The temporal model reproduced 62.5% accuracy; the limited point policy scored 50% and matched 6/22 supplied event points within five seconds. These use the exact original 40 held-out SHA folds. Custom labels never become validation, calibration or test targets. A separate label-free representation adaptation comparison is in progress. The initial **117-test snapshot passed** locally and in Colab; additional isolated checks cover the follow-up policies.
+
+See [dataset audit](artifacts/custom_dataset_audit.json) and [compression measurements](artifacts/custom_compression_quality.json). Local preparation and inference commands are in [the detailed notes](README_ML.md).
+
 ## Measured progress
 
 The best development accuracy is **62.5% (25/40)**, improved from **57.5% (23/40)**. The **87% target remains unmet**. These repeated comparisons use the same 40 unique recordings and are not an independent test.

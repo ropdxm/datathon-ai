@@ -1,5 +1,26 @@
 # Datathon model experiments
 
+## Custom footage: 18 October 2026
+
+The new `open/customVideos` batch contains 39 views (21 iPhone MOV and 18 Samsung MP4), recorded simultaneously from two positions. These are paired views of fewer underlying scenes, not 39 independent sessions. Exact pair correspondences are unknown; all custom views share one conservative filming group. Their workbook's first three columns exactly reproduce the original 42 X-* labels and reference none of the custom filenames. No original labels are attached to new footage, and the provided workbook is preserved.
+
+`tools/prepare_custom_videos.py` preserves source files and creates video-only H.264/yuv420p MP4s in `open/customVideos_prepared`: 1280-pixel maximum long edge, no upscaling, at most 15 fps, CRF 23, fast preset. All audio, subtitle, data and metadata streams are removed from derivatives. Each output has verified source/prepared SHA lineage and unchanged elapsed timestamp mapping. Total storage is 637,446,991 to 108,959,468 bytes (82.91% reduction); maximum duration change is 0.033334 seconds. At three aligned points per recording, mean PSNR is 37.65 dB and mean grayscale SSIM is 0.97745 against originals resized to the prepared geometry. These measurements do not validate small details discarded by downsampling.
+
+```bash
+python tools/prepare_custom_videos.py prepare --source-dir open/customVideos --output-dir open/customVideos_prepared
+python tools/build_custom_manifest.py --compression-manifest open/customVideos_prepared/preparation_manifest.json --output-dir artifacts/custom_dataset --custom-labels open/customVideos/open_labels.xlsx --original-labels open/open_labels.xlsx --original-video-root open/videos
+```
+
+`datathon_ml/custom_annotation.py` executes the pinned local Qwen4B checkpoint over ordered silent frames. It retains fixed numeric review candidates and exports simple binary label/timestamp proposals, without using narration, identities, filenames, supplied labels or an original fitted teacher. Phone interaction alone stays unresolved. Missing sampling coverage and unknown visibility cannot become normal labels. Clips shorter than three seconds stay unresolved. **These are machine proposals, not corrected or human-verified ground truth.** Negatives cannot certify that an event never occurred between sampled frames.
+
+`custom_experiment.py` implements paired original-only and augmented comparisons for semantic temporal features and a small point-supervised linear/RBF policy. All original outer folds remain fixed; candidate selection, calibration and thresholds use original inner held-out recordings only. Auxiliary custom proposals enter training only after explicit opt-in, at weight 0.25, and never enter evaluation targets. Source/derivative overlap and related held-out groups are blocked. Accepted labels, event points, source lineage and proposal-protocol hashes are saved in a canonical supervision manifest. Balanced accuracy is primary; accuracy, recall, specificity, precision, F1/F2, AP/AUC, confusion matrices and point recall are also reported. No custom-view accuracy against its own generated labels is reported.
+
+The new clean `datathon_custom.ipynb` reproduces this workflow with a private silent archive. Its source is embedded with checksums; weights download only during setup and all analysis runs natively in the runtime. Original caches can be reused. Both local and Colab regression runs passed the initial 117-test snapshot. The visual annotation pass completed all 39 recordings and parsed all 237 windows correctly: 231 were uncertain and six were phone-distraction candidates. Every recording stayed unresolved, so no custom pseudo labels entered supervised training. The temporal model reproduced 62.5%; the limited point policy scored 50% and matched 6/22 original event points within five seconds. A camera-balanced six-window detail diagnostic at 448 pixels also abstained; its 896-pixel worker exceeded its 145-second deadline, with no completed accuracy claim. The 87% goal remains unestablished.
+
+The additional `unlabeled_experiment.py` comparison fits uniformly sampled scaler/PCA representations using original training recordings with or without the 39 unlabeled custom views. The class head and threshold use original labels only. Both arms share the same fixed point-model grid and original test folds. This is a changed representation-fitting policy, so its original-only arm is reported separately from the earlier point and temporal baselines. Custom binary labels and event points are never read by this adaptation. Its measured run is in progress.
+
+The original dataset now contains more than one labels workbook below `open/`. Select the intended one explicitly, for example `python experiment.py audit --data-root open --labels-path open_labels.xlsx --verified-aliases duplicate_aliases.json`. Automatic discovery intentionally rejects ambiguity.
+
 This repository contains model training and offline inference code, without a web interface or any hosted inference API. Experiments compare frozen image, motion and multimodal encoders with small temporal classifiers. All model forward passes run in the selected Python runtime.
 
 ## Temporal follow-up: 18 October 2026

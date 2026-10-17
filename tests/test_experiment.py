@@ -11,6 +11,31 @@ import experiment
 
 
 class ExperimentProtocolTests(unittest.TestCase):
+    def test_audit_explicit_workbook_disambiguates_two_actual_workbooks(self):
+        from openpyxl import Workbook
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "videos").mkdir()
+            (root / "customVideos").mkdir()
+            (root / "videos" / "X-1.mov").write_bytes(b"synthetic-not-footage")
+            for path, label, timestamp in ((root / "open_labels.xlsx", "no violation", None),
+                                           (root / "customVideos" / "open_labels.xlsx", "violation", 3)):
+                workbook = Workbook()
+                workbook.active.append(["video_id", "label", "timestamp"])
+                workbook.active.append(["X-1", label, timestamp])
+                workbook.save(path)
+                workbook.close()
+            argv = ["audit", "--data-root", str(root), "--output-dir", str(root / "out")]
+            metadata = {"duration_sec": 10., "fps": 30., "width": 320, "height": 240}
+            with patch("datathon_ml.data._probe_video", return_value=metadata), \
+                 patch("experiment.environment", return_value={}), redirect_stdout(io.StringIO()):
+                with self.assertRaisesRegex(ValueError, "found 2"):
+                    experiment.main(argv)
+                selected = experiment.main(argv + ["--labels-path", "open_labels.xlsx"])
+                self.assertEqual((selected[0]["label"], selected[0]["event_times"]), (0, []))
+                other = experiment.main(argv + ["--labels-path", str(root / "customVideos" / "open_labels.xlsx")])
+                self.assertEqual((other[0]["label"], other[0]["event_times"]), (1, [3.]))
+
     def test_qwen_predict_restores_protocol_then_applies_explicit_overrides(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

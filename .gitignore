@@ -17,6 +17,11 @@
 !/artifacts/temporal_model_comparison.png
 !/artifacts/annotation_audit_v2.json
 !/artifacts/annotation_review_v2.csv
+!/artifacts/custom_dataset_audit.json
+!/artifacts/custom_compression_quality.json
+!/artifacts/custom_experiment_summary.json
+!/artifacts/custom_model_comparison.csv
+!/artifacts/custom_model_comparison.png
 
 # Recordings, checkpoints, trained heads, feature caches and export bundles.
 *.mov

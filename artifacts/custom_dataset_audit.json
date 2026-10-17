@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "video_count": 39,
+  "source_extensions": {
+    ".mp4": 18,
+    ".mov": 21
+  },
+  "source_total_bytes": 637446991,
+  "prepared_total_bytes": 108959468,
+  "all_prepared_audio_streams_zero": true,
+  "audio_used_for_pairing_annotation_or_training": false,
+  "label_status_counts": {
+    "unlabeled": 39
+  },
+  "human_verified_label_count": 0,
+  "source_recordings_below_two_seconds": [
+    "IMG_1954.MOV",
+    "IMG_1958.MOV"
+  ],
+  "annotation_workbook": {
+    "automatic_label_attachment": false,
+    "provided_rows": 42,
+    "matching_custom_ids": 0,
+    "custom_files_without_matching_label": 39,
+    "referenced_ids_missing_from_custom": 42,
+    "first_three_columns_equal_original_workbook": true
+  },
+  "original_unique_source_count_for_exact_overlap_check": 40,
+  "exact_source_overlap_with_original": [],
+  "known_recording_groups": [
+    "all_custom_simultaneous_session_20261017"
+  ],
+  "independent_session_count": 1,
+  "simultaneous_two_camera_shared_scenes_user_confirmed": true,
+  "cross_camera_correspondence_verified": false,
+  "metadata_only_matching_is_not_proof_of_pairing": true,
+  "evaluation_policy": "Keep all custom views in one recording group; machine proposals are training-only and never evaluation ground truth. Compare custom-assisted and original-only models on identical original held-out SHA folds."
+}
