@@ -1,0 +1,623 @@
+{
+  "created_at": "2026-10-17T11:34:18.710188+00:00",
+  "unique_videos": 40,
+  "positive_videos": 21,
+  "normal_videos": 19,
+  "annotated_points": 22,
+  "evaluation": "development grouped nested out-of-fold; multiple model comparisons, no independent new-angle test",
+  "best_primary_policy": {
+    "model": "clip_b32",
+    "metrics": {
+      "n": 40,
+      "accuracy": 0.575,
+      "balanced_accuracy": 0.587719298245614,
+      "precision": 0.7,
+      "recall": 0.3333333333333333,
+      "specificity": 0.8421052631578947,
+      "f1": 0.45161290322580644,
+      "f2": 0.3723404255319149,
+      "average_precision": 0.6506270654765468,
+      "roc_auc": 0.5714285714285714,
+      "confusion_matrix": [
+        [
+          16,
+          3
+        ],
+        [
+          14,
+          7
+        ]
+      ],
+      "confusion_order": [
+        [
+          "TN",
+          "FP"
+        ],
+        [
+          "FN",
+          "TP"
+        ]
+      ],
+      "localization": {
+        "annotated_points": 22,
+        "points_with_any_prediction": 0,
+        "median_error_sec_conditional": null,
+        "p90_error_sec_conditional": null,
+        "point_recall_at_tolerance": {
+          "1s": 0.0,
+          "2s": 0.0,
+          "5s": 0.0
+        },
+        "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+      }
+    },
+    "model_sha256": "71034ec3efee70924cee93e631bf14f9b68a99ef1e804440213fa2217ca0d7e6",
+    "selection_is_independent_test": false,
+    "target_accuracy": 0.87,
+    "target_achieved_on_development": false,
+    "case_ready": false,
+    "regression_tests_passed": 53,
+    "limitations": [
+      "Only40uniquevideos; multipledevelopmentcomparisons",
+      "Noeventtypeorintervalannotations",
+      "Noindependentnewcameraevaluation"
+    ],
+    "offline_gpu_smoke": {
+      "model": "clip_b32",
+      "video_duration_sec": 142.533021,
+      "elapsed_sec": 27.796820442999888,
+      "within_300_seconds": true,
+      "offline": true,
+      "accuracy_test": false
+    }
+  },
+  "regression_tests_passed_in_colab": 53,
+  "runs": [
+    {
+      "run": "dinov2_small_pca",
+      "label": "DINOv2-S, PCA only",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.45,
+        "balanced_accuracy": 0.45864661654135336,
+        "precision": 0.46153846153846156,
+        "recall": 0.2857142857142857,
+        "specificity": 0.631578947368421,
+        "f1": 0.35294117647058826,
+        "f2": 0.30927835051546393,
+        "average_precision": 0.5326789899696655,
+        "roc_auc": 0.44862155388471175,
+        "confusion_matrix": [
+          [
+            12,
+            7
+          ],
+          [
+            15,
+            6
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 0,
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/initial_colab_metrics.json"
+    },
+    {
+      "run": "small_v2",
+      "label": "DINOv2-S, PCA/raw",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5012531328320802,
+        "precision": 0.5263157894736842,
+        "recall": 0.47619047619047616,
+        "specificity": 0.5263157894736842,
+        "f1": 0.5,
+        "f2": 0.4854368932038835,
+        "average_precision": 0.516137659427929,
+        "roc_auc": 0.45614035087719296,
+        "confusion_matrix": [
+          [
+            10,
+            9
+          ],
+          [
+            11,
+            10
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 0,
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/prior_colab_metrics.json"
+    },
+    {
+      "run": "base_reg_v2",
+      "label": "DINOv2-B-reg, PCA/raw",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.4987468671679198,
+        "precision": 0.5238095238095238,
+        "recall": 0.5238095238095238,
+        "specificity": 0.47368421052631576,
+        "f1": 0.5238095238095238,
+        "f2": 0.5238095238095238,
+        "average_precision": 0.5274173462632804,
+        "roc_auc": 0.43107769423558895,
+        "confusion_matrix": [
+          [
+            9,
+            10
+          ],
+          [
+            10,
+            11
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 0,
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/prior_colab_metrics.json"
+    },
+    {
+      "run": "clip_b32",
+      "label": "CLIP ViT-B/32",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.575,
+        "balanced_accuracy": 0.587719298245614,
+        "precision": 0.7,
+        "recall": 0.3333333333333333,
+        "specificity": 0.8421052631578947,
+        "f1": 0.45161290322580644,
+        "f2": 0.3723404255319149,
+        "average_precision": 0.6506270654765468,
+        "roc_auc": 0.5714285714285714,
+        "confusion_matrix": [
+          [
+            16,
+            3
+          ],
+          [
+            14,
+            7
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 0,
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/colab_results/runs/clip_b32/evaluation/cv_report.json"
+    },
+    {
+      "run": "x3d_s",
+      "label": "X3D-S",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.425,
+        "balanced_accuracy": 0.4197994987468672,
+        "precision": 0.4583333333333333,
+        "recall": 0.5238095238095238,
+        "specificity": 0.3157894736842105,
+        "f1": 0.4888888888888889,
+        "f2": 0.5092592592592593,
+        "average_precision": 0.48460611549609406,
+        "roc_auc": 0.3182957393483709,
+        "confusion_matrix": [
+          [
+            6,
+            13
+          ],
+          [
+            10,
+            11
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 9,
+          "median_error_sec_conditional": 2.0,
+          "p90_error_sec_conditional": 5.200000000000001,
+          "point_recall_at_tolerance": {
+            "1s": 0.18181818181818182,
+            "2s": 0.2727272727272727,
+            "5s": 0.36363636363636365
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/colab_results/runs/x3d_s/evaluation/cv_report.json"
+    },
+    {
+      "run": "qwen_embedding",
+      "label": "Qwen embedding, 4 frames",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.55,
+        "balanced_accuracy": 0.5463659147869674,
+        "precision": 0.5652173913043478,
+        "recall": 0.6190476190476191,
+        "specificity": 0.47368421052631576,
+        "f1": 0.5909090909090909,
+        "f2": 0.6074766355140186,
+        "average_precision": 0.5508936752598963,
+        "roc_auc": 0.5538847117794486,
+        "confusion_matrix": [
+          [
+            9,
+            10
+          ],
+          [
+            8,
+            13
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 12,
+          "median_error_sec_conditional": 3.0,
+          "p90_error_sec_conditional": 8.8,
+          "point_recall_at_tolerance": {
+            "1s": 0.09090909090909091,
+            "2s": 0.22727272727272727,
+            "5s": 0.4090909090909091
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/colab_results/runs/qwen_embedding/evaluation/cv_report.json"
+    },
+    {
+      "run": "qwen_dense",
+      "label": "Qwen embedding, 8 frames",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.45,
+        "balanced_accuracy": 0.44862155388471175,
+        "precision": 0.47619047619047616,
+        "recall": 0.47619047619047616,
+        "specificity": 0.42105263157894735,
+        "f1": 0.47619047619047616,
+        "f2": 0.47619047619047616,
+        "average_precision": 0.4795338176292816,
+        "roc_auc": 0.418546365914787,
+        "confusion_matrix": [
+          [
+            8,
+            11
+          ],
+          [
+            11,
+            10
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 10,
+          "median_error_sec_conditional": 3.0,
+          "p90_error_sec_conditional": 10.299999999999999,
+          "point_recall_at_tolerance": {
+            "1s": 0.13636363636363635,
+            "2s": 0.18181818181818182,
+            "5s": 0.2727272727272727
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/colab_results/runs/qwen_dense/evaluation/cv_report.json"
+    },
+    {
+      "run": "clip_b32_mil",
+      "label": "CLIP + MIL",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.4887218045112782,
+        "precision": 0.5172413793103449,
+        "recall": 0.7142857142857143,
+        "specificity": 0.2631578947368421,
+        "f1": 0.6,
+        "f2": 0.6637168141592921,
+        "average_precision": 0.37943320916140133,
+        "roc_auc": 0.19047619047619052,
+        "confusion_matrix": [
+          [
+            5,
+            14
+          ],
+          [
+            6,
+            15
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 16,
+          "median_error_sec_conditional": 3.0333337783813477,
+          "p90_error_sec_conditional": 11.25,
+          "point_recall_at_tolerance": {
+            "1s": 0.18181818181818182,
+            "2s": 0.2727272727272727,
+            "5s": 0.5454545454545454
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/colab_results/runs/clip_b32_mil/evaluation/mil_cv_report.json"
+    },
+    {
+      "run": "x3d_s_mil",
+      "label": "X3D-S + MIL",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.4,
+        "balanced_accuracy": 0.38596491228070173,
+        "precision": 0.45161290322580644,
+        "recall": 0.6666666666666666,
+        "specificity": 0.10526315789473684,
+        "f1": 0.5384615384615384,
+        "f2": 0.6086956521739131,
+        "average_precision": 0.4073445785202568,
+        "roc_auc": 0.25313283208020054,
+        "confusion_matrix": [
+          [
+            2,
+            17
+          ],
+          [
+            7,
+            14
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 15,
+          "median_error_sec_conditional": 2.0,
+          "p90_error_sec_conditional": 6.0,
+          "point_recall_at_tolerance": {
+            "1s": 0.2727272727272727,
+            "2s": 0.4090909090909091,
+            "5s": 0.5454545454545454
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/colab_results/runs/x3d_s_mil/evaluation/mil_cv_report.json"
+    },
+    {
+      "run": "qwen_embedding_mil",
+      "label": "Qwen 4 frames + MIL",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.475,
+        "balanced_accuracy": 0.4548872180451128,
+        "precision": 0.5,
+        "recall": 0.8571428571428571,
+        "specificity": 0.05263157894736842,
+        "f1": 0.631578947368421,
+        "f2": 0.75,
+        "average_precision": 0.42212710145765925,
+        "roc_auc": 0.32330827067669177,
+        "confusion_matrix": [
+          [
+            1,
+            18
+          ],
+          [
+            3,
+            18
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 19,
+          "median_error_sec_conditional": 3.0,
+          "p90_error_sec_conditional": 12.386666870117175,
+          "point_recall_at_tolerance": {
+            "1s": 0.18181818181818182,
+            "2s": 0.3181818181818182,
+            "5s": 0.45454545454545453
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/colab_results/runs/qwen_embedding_mil/evaluation/mil_cv_report.json"
+    },
+    {
+      "run": "qwen_dense_mil",
+      "label": "Qwen 8 frames + MIL",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.35,
+        "balanced_accuracy": 0.3408521303258145,
+        "precision": 0.4074074074074074,
+        "recall": 0.5238095238095238,
+        "specificity": 0.15789473684210525,
+        "f1": 0.4583333333333333,
+        "f2": 0.4954954954954955,
+        "average_precision": 0.43004812240780776,
+        "roc_auc": 0.2832080200501253,
+        "confusion_matrix": [
+          [
+            3,
+            16
+          ],
+          [
+            10,
+            11
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 12,
+          "median_error_sec_conditional": 3.5,
+          "p90_error_sec_conditional": 8.0,
+          "point_recall_at_tolerance": {
+            "1s": 0.09090909090909091,
+            "2s": 0.13636363636363635,
+            "5s": 0.3181818181818182
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "report": "artifacts/colab_results/runs/qwen_dense_mil/evaluation/mil_cv_report.json"
+    }
+  ],
+  "limitations": [
+    "87% accuracy was not achieved.",
+    "Binary point labels do not provide event types or exhaustive intervals.",
+    "Grouping covers exact duplicates; related filming takes require reviewed group metadata.",
+    "Fold class composition varies; this small corpus provides unstable development estimates.",
+    "An earlier sparse eight-frame DINO prototype also scored 45% on unique recordings, under a different protocol."
+  ]
+}

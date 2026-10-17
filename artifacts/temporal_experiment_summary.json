@@ -1,0 +1,956 @@
+{
+  "created_at": "2026-10-17T19:47:44.740276+00:00",
+  "tool_sha256": "e4705c652e5c0f7c7fab05afa7b4b0eb2e7b9c38ffc936912cbcfdc999e99eec",
+  "results_root": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1",
+  "baseline_report_path": "C:\\projects\\datathon\\dtFinal\\runs\\clip_b32\\evaluation\\cv_report.json",
+  "baseline_report_sha256": "8e716080485cfc78a593bca7cb87454e764d7b843c7a7d45dccbf0533794d085",
+  "n": 40,
+  "positive_videos": 21,
+  "normal_videos": 19,
+  "all_learned_models_original_SHA_labels_and_folds_verified": true,
+  "original_fold_assignment_sha256": "69ff66e40f3707e639a09a84e0cc78f2e9bc49a36560c35c1f0fcc47f42490c9",
+  "model_comparisons": [
+    {
+      "model": "original_clip_b32",
+      "label": "Original CLIP baseline",
+      "role": "baseline",
+      "perception_family": "original_clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.575,
+        "balanced_accuracy": 0.587719298245614,
+        "recall": 0.3333333333333333,
+        "specificity": 0.8421052631578947,
+        "precision": 0.7,
+        "f1": 0.45161290322580644,
+        "confusion_matrix": [
+          [
+            16,
+            3
+          ],
+          [
+            14,
+            7
+          ]
+        ],
+        "f2": 0.3723404255319149,
+        "average_precision": 0.6506270654765468,
+        "roc_auc": 0.5714285714285714,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 23,
+      "accuracy_wilson95": {
+        "low": 0.42195068541991065,
+        "high": 0.7149060744004962,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 0,
+        "model_correct_baseline_wrong": 0,
+        "discordant_pairs": 0,
+        "exact_two_sided_p": 1.0,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\dtFinal\\runs\\clip_b32\\evaluation\\cv_report.json",
+      "source_report_sha256": "8e716080485cfc78a593bca7cb87454e764d7b843c7a7d45dccbf0533794d085",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\dtFinal\\runs\\clip_b32\\model\\model.joblib",
+      "artifact_sha256": "71034ec3efee70924cee93e631bf14f9b68a99ef1e804440213fa2217ca0d7e6",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\dtFinal\\runs\\clip_b32\\model\\model.joblib"
+    },
+    {
+      "model": "semantic_clip/linear_temporal",
+      "label": "CLIP · linear temporal",
+      "role": "linear_temporal",
+      "perception_family": "semantic_clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.625,
+        "balanced_accuracy": 0.6303258145363408,
+        "recall": 0.5238095238095238,
+        "specificity": 0.7368421052631579,
+        "precision": 0.6875,
+        "f1": 0.5945945945945946,
+        "confusion_matrix": [
+          [
+            14,
+            5
+          ],
+          [
+            10,
+            11
+          ]
+        ],
+        "f2": 0.55,
+        "average_precision": 0.6255285793954899,
+        "roc_auc": 0.5664160401002507,
+        "brier_score": 0.26752305976773894,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 25,
+      "accuracy_wilson95": {
+        "low": 0.47032439137301096,
+        "high": 0.7577702083276673,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 5,
+        "model_correct_baseline_wrong": 7,
+        "discordant_pairs": 12,
+        "exact_two_sided_p": 0.7744140625,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\evaluation\\temporal_cv_report.json",
+      "source_report_sha256": "934b743770df8e392df8ee3c5d34cb264e9cc647c121ca5d1a0982a51b745f5f",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\model\\model_temporal.joblib",
+      "artifact_sha256": "034ef8ec0df87601400aef0451bc21411b0dd6be5a07c1a62d9b883eed3b71a1",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\model\\model_temporal.joblib"
+    },
+    {
+      "model": "semantic_qwen4b/linear_temporal",
+      "label": "Qwen4B · linear temporal",
+      "role": "linear_temporal",
+      "perception_family": "semantic_qwen4b",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.4,
+        "balanced_accuracy": 0.39097744360902253,
+        "recall": 0.5714285714285714,
+        "specificity": 0.21052631578947367,
+        "precision": 0.4444444444444444,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            4,
+            15
+          ],
+          [
+            9,
+            12
+          ]
+        ],
+        "f2": 0.5405405405405406,
+        "average_precision": 0.4510148712073899,
+        "roc_auc": 0.3007518796992481,
+        "brier_score": 0.3144759715397737,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 16,
+      "accuracy_wilson95": {
+        "low": 0.2634832568429192,
+        "high": 0.5540410633965381,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 16,
+        "model_correct_baseline_wrong": 9,
+        "discordant_pairs": 25,
+        "exact_two_sided_p": 0.2295229434967041,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\evaluation\\temporal_cv_report.json",
+      "source_report_sha256": "6efba300c169b14befb594134555883bb07860ff313b2bf596f9d0b26ae9b8ba",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\model\\model_temporal.joblib",
+      "artifact_sha256": "c8a3c0625c2ce422f5c9da826a11593a1e01ba083c1d74eb35b742365bd3b997",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\model\\model_temporal.joblib"
+    },
+    {
+      "model": "semantic_clip/inner_selected_heads",
+      "label": "CLIP · inner-selected family policy",
+      "role": "inner_selected_family_policy",
+      "perception_family": "semantic_clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.6,
+        "balanced_accuracy": 0.6090225563909775,
+        "recall": 0.42857142857142855,
+        "specificity": 0.7894736842105263,
+        "precision": 0.6923076923076923,
+        "f1": 0.5294117647058824,
+        "confusion_matrix": [
+          [
+            15,
+            4
+          ],
+          [
+            12,
+            9
+          ]
+        ],
+        "f2": 0.4639175257731959,
+        "average_precision": 0.5891766510922158,
+        "roc_auc": 0.4987468671679198,
+        "brier_score": 0.27463829305150705,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 24,
+      "accuracy_wilson95": {
+        "low": 0.44595893660346186,
+        "high": 0.7365167431570808,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 6,
+        "model_correct_baseline_wrong": 7,
+        "discordant_pairs": 13,
+        "exact_two_sided_p": 1.0,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\evaluation\\semantic_head_cv_report.json",
+      "source_report_sha256": "7d77dc229f183fd50d6df3912c119efb8a78c1045d959074d6c348236c24cd20",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\model\\model_semantic_head.joblib",
+      "artifact_sha256": "8e4b7d4c3b29ff8d4e40c32ca65ab54af63a596a82e7dda16900dc97caf3e067",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\model\\model_semantic_head.joblib"
+    },
+    {
+      "model": "semantic_clip/family_extra_trees",
+      "label": "CLIP · family extra_trees",
+      "role": "family_specific_nested_oof",
+      "perception_family": "semantic_clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.375,
+        "balanced_accuracy": 0.3771929824561403,
+        "recall": 0.3333333333333333,
+        "specificity": 0.42105263157894735,
+        "precision": 0.3888888888888889,
+        "f1": 0.358974358974359,
+        "confusion_matrix": [
+          [
+            8,
+            11
+          ],
+          [
+            14,
+            7
+          ]
+        ],
+        "f2": 0.3431372549019608,
+        "average_precision": 0.42191419837411914,
+        "roc_auc": 0.29072681704260656,
+        "brier_score": 0.2949761476547086,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 15,
+      "accuracy_wilson95": {
+        "low": 0.24222979167233266,
+        "high": 0.5296756086269889,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 14,
+        "model_correct_baseline_wrong": 6,
+        "discordant_pairs": 20,
+        "exact_two_sided_p": 0.11531829833984375,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\evaluation\\semantic_head_cv_report.json",
+      "source_report_sha256": "7d77dc229f183fd50d6df3912c119efb8a78c1045d959074d6c348236c24cd20",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\model\\model_semantic_extra_trees.joblib",
+      "artifact_sha256": "8bed71ef736e6731c4eb541bf8e55e77952df9ee5f53735d2c36514ac16979ac",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\model\\model_semantic_extra_trees.joblib"
+    },
+    {
+      "model": "semantic_clip/family_linear",
+      "label": "CLIP · family linear",
+      "role": "family_specific_nested_oof",
+      "perception_family": "semantic_clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.625,
+        "balanced_accuracy": 0.6303258145363408,
+        "recall": 0.5238095238095238,
+        "specificity": 0.7368421052631579,
+        "precision": 0.6875,
+        "f1": 0.5945945945945946,
+        "confusion_matrix": [
+          [
+            14,
+            5
+          ],
+          [
+            10,
+            11
+          ]
+        ],
+        "f2": 0.55,
+        "average_precision": 0.6255285793954899,
+        "roc_auc": 0.5664160401002507,
+        "brier_score": 0.26752305976773894,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 25,
+      "accuracy_wilson95": {
+        "low": 0.47032439137301096,
+        "high": 0.7577702083276673,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 5,
+        "model_correct_baseline_wrong": 7,
+        "discordant_pairs": 12,
+        "exact_two_sided_p": 0.7744140625,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\evaluation\\semantic_head_cv_report.json",
+      "source_report_sha256": "7d77dc229f183fd50d6df3912c119efb8a78c1045d959074d6c348236c24cd20",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\model\\model_semantic_linear.joblib",
+      "artifact_sha256": "4d94071304366c8f449ca851f1f143798d22aff0a48a96be09c58c679e83cbf9",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\model\\model_semantic_linear.joblib"
+    },
+    {
+      "model": "semantic_clip/family_rbf",
+      "label": "CLIP · family rbf",
+      "role": "family_specific_nested_oof",
+      "perception_family": "semantic_clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.375,
+        "balanced_accuracy": 0.38471177944862156,
+        "recall": 0.19047619047619047,
+        "specificity": 0.5789473684210527,
+        "precision": 0.3333333333333333,
+        "f1": 0.24242424242424243,
+        "confusion_matrix": [
+          [
+            11,
+            8
+          ],
+          [
+            17,
+            4
+          ]
+        ],
+        "f2": 0.20833333333333334,
+        "average_precision": 0.4437558434737,
+        "roc_auc": 0.3759398496240602,
+        "brier_score": 0.2733394684315911,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 15,
+      "accuracy_wilson95": {
+        "low": 0.24222979167233266,
+        "high": 0.5296756086269889,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 15,
+        "model_correct_baseline_wrong": 7,
+        "discordant_pairs": 22,
+        "exact_two_sided_p": 0.13380050659179688,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\evaluation\\semantic_head_cv_report.json",
+      "source_report_sha256": "7d77dc229f183fd50d6df3912c119efb8a78c1045d959074d6c348236c24cd20",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\model\\model_semantic_rbf.joblib",
+      "artifact_sha256": "68a7ca0e7e0d41bcff24e82ef276a6dd1810e5d6e6dce3b6bab44cd28cf50e77",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\nonlinear_heads\\model\\model_semantic_rbf.joblib"
+    },
+    {
+      "model": "semantic_qwen4b/inner_selected_heads",
+      "label": "Qwen4B · inner-selected family policy",
+      "role": "inner_selected_family_policy",
+      "perception_family": "semantic_qwen4b",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.4887218045112782,
+        "recall": 0.7142857142857143,
+        "specificity": 0.2631578947368421,
+        "precision": 0.5172413793103449,
+        "f1": 0.6,
+        "confusion_matrix": [
+          [
+            5,
+            14
+          ],
+          [
+            6,
+            15
+          ]
+        ],
+        "f2": 0.6637168141592921,
+        "average_precision": 0.4774620704388361,
+        "roc_auc": 0.3634085213032581,
+        "brier_score": 0.29323610112576143,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 20,
+      "accuracy_wilson95": {
+        "low": 0.35199526933465386,
+        "high": 0.6480047306653461,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 14,
+        "model_correct_baseline_wrong": 11,
+        "discordant_pairs": 25,
+        "exact_two_sided_p": 0.6900379657745361,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\evaluation\\semantic_head_cv_report.json",
+      "source_report_sha256": "7296f11f87ef0783f70966ec7ef47cdb3b333a410b047981a1dc9e426fe441e7",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\model\\model_semantic_head.joblib",
+      "artifact_sha256": "3c13317ec8a1239a3f8b34b1c3f55874a28cd4c5e307d1e3158ce06876e972ed",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\model\\model_semantic_head.joblib"
+    },
+    {
+      "model": "semantic_qwen4b/family_extra_trees",
+      "label": "Qwen4B · family extra_trees",
+      "role": "family_specific_nested_oof",
+      "perception_family": "semantic_qwen4b",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.45,
+        "balanced_accuracy": 0.44611528822055135,
+        "recall": 0.5238095238095238,
+        "specificity": 0.3684210526315789,
+        "precision": 0.4782608695652174,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            7,
+            12
+          ],
+          [
+            10,
+            11
+          ]
+        ],
+        "f2": 0.514018691588785,
+        "average_precision": 0.44965894783268645,
+        "roc_auc": 0.2756892230576441,
+        "brier_score": 0.2842035374933935,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 18,
+      "accuracy_wilson95": {
+        "low": 0.3070530781090492,
+        "high": 0.6017090820106794,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 14,
+        "model_correct_baseline_wrong": 9,
+        "discordant_pairs": 23,
+        "exact_two_sided_p": 0.4048728942871094,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\evaluation\\semantic_head_cv_report.json",
+      "source_report_sha256": "7296f11f87ef0783f70966ec7ef47cdb3b333a410b047981a1dc9e426fe441e7",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\model\\model_semantic_extra_trees.joblib",
+      "artifact_sha256": "bc0f6d7601fc8351bfc194d63bd244401926896d5bd3fd86a31fbdff1b395059",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\model\\model_semantic_extra_trees.joblib"
+    },
+    {
+      "model": "semantic_qwen4b/family_linear",
+      "label": "Qwen4B · family linear",
+      "role": "family_specific_nested_oof",
+      "perception_family": "semantic_qwen4b",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.4,
+        "balanced_accuracy": 0.39097744360902253,
+        "recall": 0.5714285714285714,
+        "specificity": 0.21052631578947367,
+        "precision": 0.4444444444444444,
+        "f1": 0.5,
+        "confusion_matrix": [
+          [
+            4,
+            15
+          ],
+          [
+            9,
+            12
+          ]
+        ],
+        "f2": 0.5405405405405406,
+        "average_precision": 0.4510148712073899,
+        "roc_auc": 0.3007518796992481,
+        "brier_score": 0.3144759715397737,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 16,
+      "accuracy_wilson95": {
+        "low": 0.2634832568429192,
+        "high": 0.5540410633965381,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 16,
+        "model_correct_baseline_wrong": 9,
+        "discordant_pairs": 25,
+        "exact_two_sided_p": 0.2295229434967041,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\evaluation\\semantic_head_cv_report.json",
+      "source_report_sha256": "7296f11f87ef0783f70966ec7ef47cdb3b333a410b047981a1dc9e426fe441e7",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\model\\model_semantic_linear.joblib",
+      "artifact_sha256": "6c3410d33ae5e70fc3b430e83c7eaf2d45dea5187340abee4f72ed99e1d2d712",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\model\\model_semantic_linear.joblib"
+    },
+    {
+      "model": "semantic_qwen4b/family_rbf",
+      "label": "Qwen4B · family rbf",
+      "role": "family_specific_nested_oof",
+      "perception_family": "semantic_qwen4b",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.475,
+        "balanced_accuracy": 0.4674185463659148,
+        "recall": 0.6190476190476191,
+        "specificity": 0.3157894736842105,
+        "precision": 0.5,
+        "f1": 0.5531914893617021,
+        "confusion_matrix": [
+          [
+            6,
+            13
+          ],
+          [
+            8,
+            13
+          ]
+        ],
+        "f2": 0.5909090909090909,
+        "average_precision": 0.5003892978560599,
+        "roc_auc": 0.39598997493734334,
+        "brier_score": 0.2856043239585017,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 19,
+      "accuracy_wilson95": {
+        "low": 0.329354701126789,
+        "high": 0.6250263789330753,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 15,
+        "model_correct_baseline_wrong": 11,
+        "discordant_pairs": 26,
+        "exact_two_sided_p": 0.557197093963623,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\evaluation\\semantic_head_cv_report.json",
+      "source_report_sha256": "7296f11f87ef0783f70966ec7ef47cdb3b333a410b047981a1dc9e426fe441e7",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": true,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\model\\model_semantic_rbf.joblib",
+      "artifact_sha256": "693adc7fbe53bf23a6b786c41602af985449dbf5616ee8dd0318d6256b482b65",
+      "artifact_available": true,
+      "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\nonlinear_heads\\model\\model_semantic_rbf.joblib"
+    }
+  ],
+  "frozen_rule_comparisons": [
+    {
+      "model": "semantic_clip/frozen_rules",
+      "label": "CLIP · frozen observable rules",
+      "role": "frozen_rules",
+      "perception_family": "semantic_clip",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.475,
+        "balanced_accuracy": 0.5,
+        "recall": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "confusion_matrix": [
+          [
+            19,
+            0
+          ],
+          [
+            21,
+            0
+          ]
+        ],
+        "f2": 0.0,
+        "average_precision": 0.525,
+        "roc_auc": 0.5,
+        "brier_score": 0.525,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "correct": 19,
+      "accuracy_wilson95": {
+        "low": 0.329354701126789,
+        "high": 0.6250263789330753,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 7,
+        "model_correct_baseline_wrong": 3,
+        "discordant_pairs": 10,
+        "exact_two_sided_p": 0.34375,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\evaluation\\temporal_cv_report.json",
+      "source_report_sha256": "934b743770df8e392df8ee3c5d34cb264e9cc647c121ca5d1a0982a51b745f5f",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": null,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": null,
+      "artifact_sha256": null,
+      "artifact_available": false,
+      "artifact_kind": "frozen_observable_rules_no_fitted_head"
+    },
+    {
+      "model": "semantic_qwen4b/frozen_rules",
+      "label": "Qwen4B · frozen observable rules",
+      "role": "frozen_rules",
+      "perception_family": "semantic_qwen4b",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.425,
+        "balanced_accuracy": 0.4448621553884712,
+        "recall": 0.047619047619047616,
+        "specificity": 0.8421052631578947,
+        "precision": 0.25,
+        "f1": 0.08,
+        "confusion_matrix": [
+          [
+            16,
+            3
+          ],
+          [
+            20,
+            1
+          ]
+        ],
+        "f2": 0.056818181818181816,
+        "average_precision": 0.5119047619047619,
+        "roc_auc": 0.4448621553884712,
+        "brier_score": 0.56774999833107,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.045454545454545456,
+            "2s": 0.045454545454545456,
+            "5s": 0.045454545454545456
+          },
+          "median_error_sec_conditional": 6.5,
+          "p90_error_sec_conditional": 10.9
+        }
+      },
+      "correct": 17,
+      "accuracy_wilson95": {
+        "low": 0.28509392559950375,
+        "high": 0.5780493145800892,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 9,
+        "model_correct_baseline_wrong": 3,
+        "discordant_pairs": 12,
+        "exact_two_sided_p": 0.14599609375,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_qwen4b\\evaluation\\temporal_cv_report.json",
+      "source_report_sha256": "6efba300c169b14befb594134555883bb07860ff313b2bf596f9d0b26ae9b8ba",
+      "original_SHA_and_labels_verified": true,
+      "original_outer_folds_verified": null,
+      "evaluation": "repeated_development_comparison_not_independent_test",
+      "selection_is_independent_test": false,
+      "target_accuracy": 0.87,
+      "target_achieved_on_development": false,
+      "case_ready": false,
+      "artifact_path": null,
+      "artifact_sha256": null,
+      "artifact_available": false,
+      "artifact_kind": "frozen_observable_rules_no_fitted_head"
+    }
+  ],
+  "posthoc_best_development_model": {
+    "model": "semantic_clip/linear_temporal",
+    "label": "CLIP · linear temporal",
+    "role": "linear_temporal",
+    "perception_family": "semantic_clip",
+    "metrics": {
+      "n": 40,
+      "accuracy": 0.625,
+      "balanced_accuracy": 0.6303258145363408,
+      "recall": 0.5238095238095238,
+      "specificity": 0.7368421052631579,
+      "precision": 0.6875,
+      "f1": 0.5945945945945946,
+      "confusion_matrix": [
+        [
+          14,
+          5
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "f2": 0.55,
+      "average_precision": 0.6255285793954899,
+      "roc_auc": 0.5664160401002507,
+      "brier_score": 0.26752305976773894,
+      "localization": {
+        "annotated_points": 22,
+        "point_recall_at_tolerance": {
+          "1s": 0.0,
+          "2s": 0.0,
+          "5s": 0.0
+        },
+        "median_error_sec_conditional": null,
+        "p90_error_sec_conditional": null
+      }
+    },
+    "correct": 25,
+    "accuracy_wilson95": {
+      "low": 0.47032439137301096,
+      "high": 0.7577702083276673,
+      "method": "Wilson 95%; illustrative independent-binomial approximation"
+    },
+    "paired_vs_original_clip": {
+      "baseline_correct_model_wrong": 5,
+      "model_correct_baseline_wrong": 7,
+      "discordant_pairs": 12,
+      "exact_two_sided_p": 0.7744140625,
+      "multiple_comparison_adjusted": false,
+      "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+    },
+    "source_report_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\evaluation\\temporal_cv_report.json",
+    "source_report_sha256": "934b743770df8e392df8ee3c5d34cb264e9cc647c121ca5d1a0982a51b745f5f",
+    "original_SHA_and_labels_verified": true,
+    "original_outer_folds_verified": true,
+    "evaluation": "repeated_development_comparison_not_independent_test",
+    "selection_is_independent_test": false,
+    "target_accuracy": 0.87,
+    "target_achieved_on_development": false,
+    "case_ready": false,
+    "artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\model\\model_temporal.joblib",
+    "artifact_sha256": "034ef8ec0df87601400aef0451bc21411b0dd6be5a07c1a62d9b883eed3b71a1",
+    "artifact_available": true,
+    "expected_artifact_path": "C:\\projects\\datathon\\artifacts\\temporal_results\\runs\\semantic_temporal_v1\\semantic_clip\\model\\model_temporal.joblib",
+    "selection_basis": "Posthoc maximum balanced accuracy, then accuracy; frozen rules excluded",
+    "posthoc_selection": true,
+    "is_primary_inner_selected_policy": false
+  },
+  "target_accuracy": 0.87,
+  "target_scope": "learned models; frozen-rule diagnostics reported separately",
+  "target_achieved_on_development": false,
+  "case_ready": false,
+  "selection_is_independent_test": false,
+  "limitations": [
+    "All models reuse the same 40 staged development recordings; no independent or new-camera test is established.",
+    "The posthoc best model is distinct from the primary policy that selects its family inside training folds.",
+    "Wilson intervals assume independent binomial trials and are illustrative; related recordings and model selection add uncertainty.",
+    "Exact McNemar p-values are unadjusted descriptive paired diagnostics across repeated comparisons, not independent confirmation or causal evidence.",
+    "Capped state dwell/run counts and max/top-k statistics remain sensitive to recording exposure length.",
+    "Observable-rule scores and machine annotation proposals are not verified semantic or legal ground truth.",
+    "Achieving measured development accuracy of 87% does not make the case ready."
+  ]
+}

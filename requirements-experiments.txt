@@ -1,0 +1,4 @@
+# Optional CLIP and X3D representation comparisons; core DINOv2 does not need these.
+open_clip_torch==3.2.0
+fvcore>=0.1.5.post20221221
+iopath>=0.1.10,<0.2

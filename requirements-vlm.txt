@@ -1,0 +1,5 @@
+# Optional directly executed open-weight multimodal embedding encoder.
+# No hosted inference API or remote helper code is used.
+transformers>=4.57.1,<5
+huggingface_hub>=0.34,<1
+accelerate>=1.1,<2

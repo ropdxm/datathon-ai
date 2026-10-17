@@ -1,0 +1,277 @@
+{
+  "small_v2": {
+    "metrics": {
+      "n": 40,
+      "accuracy": 0.5,
+      "balanced_accuracy": 0.5012531328320802,
+      "precision": 0.5263157894736842,
+      "recall": 0.47619047619047616,
+      "specificity": 0.5263157894736842,
+      "f1": 0.5,
+      "f2": 0.4854368932038835,
+      "average_precision": 0.516137659427929,
+      "roc_auc": 0.45614035087719296,
+      "confusion_matrix": [
+        [
+          10,
+          9
+        ],
+        [
+          11,
+          10
+        ]
+      ],
+      "confusion_order": [
+        [
+          "TN",
+          "FP"
+        ],
+        [
+          "FN",
+          "TP"
+        ]
+      ],
+      "localization": {
+        "annotated_points": 22,
+        "points_with_any_prediction": 0,
+        "median_error_sec_conditional": null,
+        "p90_error_sec_conditional": null,
+        "point_recall_at_tolerance": {
+          "1s": 0.0,
+          "2s": 0.0,
+          "5s": 0.0
+        },
+        "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+      }
+    },
+    "model_comparisons": {
+      "point": {
+        "n": 40,
+        "accuracy": 0.45,
+        "balanced_accuracy": 0.45363408521303256,
+        "precision": 0.47058823529411764,
+        "recall": 0.38095238095238093,
+        "specificity": 0.5263157894736842,
+        "f1": 0.42105263157894735,
+        "f2": 0.39603960396039606,
+        "average_precision": 0.43248246428902815,
+        "roc_auc": 0.24561403508771934,
+        "confusion_matrix": [
+          [
+            10,
+            9
+          ],
+          [
+            13,
+            8
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 8,
+          "median_error_sec_conditional": 3.0,
+          "p90_error_sec_conditional": 6.049999999999999,
+          "point_recall_at_tolerance": {
+            "1s": 0.045454545454545456,
+            "2s": 0.09090909090909091,
+            "5s": 0.3181818181818182
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "pooled": {
+        "n": 40,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5012531328320802,
+        "precision": 0.5263157894736842,
+        "recall": 0.47619047619047616,
+        "specificity": 0.5263157894736842,
+        "f1": 0.5,
+        "f2": 0.4854368932038835,
+        "average_precision": 0.516137659427929,
+        "roc_auc": 0.45614035087719296,
+        "confusion_matrix": [
+          [
+            10,
+            9
+          ],
+          [
+            11,
+            10
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 0,
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      }
+    },
+    "elapsed_sec": 178.8
+  },
+  "base_reg_v2": {
+    "metrics": {
+      "n": 40,
+      "accuracy": 0.5,
+      "balanced_accuracy": 0.4987468671679198,
+      "precision": 0.5238095238095238,
+      "recall": 0.5238095238095238,
+      "specificity": 0.47368421052631576,
+      "f1": 0.5238095238095238,
+      "f2": 0.5238095238095238,
+      "average_precision": 0.5274173462632804,
+      "roc_auc": 0.43107769423558895,
+      "confusion_matrix": [
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "confusion_order": [
+        [
+          "TN",
+          "FP"
+        ],
+        [
+          "FN",
+          "TP"
+        ]
+      ],
+      "localization": {
+        "annotated_points": 22,
+        "points_with_any_prediction": 0,
+        "median_error_sec_conditional": null,
+        "p90_error_sec_conditional": null,
+        "point_recall_at_tolerance": {
+          "1s": 0.0,
+          "2s": 0.0,
+          "5s": 0.0
+        },
+        "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+      }
+    },
+    "model_comparisons": {
+      "point": {
+        "n": 40,
+        "accuracy": 0.325,
+        "balanced_accuracy": 0.3220551378446115,
+        "precision": 0.36363636363636365,
+        "recall": 0.38095238095238093,
+        "specificity": 0.2631578947368421,
+        "f1": 0.37209302325581395,
+        "f2": 0.37735849056603776,
+        "average_precision": 0.39893292169402894,
+        "roc_auc": 0.25814536340852134,
+        "confusion_matrix": [
+          [
+            5,
+            14
+          ],
+          [
+            13,
+            8
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 9,
+          "median_error_sec_conditional": 2.0,
+          "p90_error_sec_conditional": 9.5,
+          "point_recall_at_tolerance": {
+            "1s": 0.13636363636363635,
+            "2s": 0.2727272727272727,
+            "5s": 0.3181818181818182
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "pooled": {
+        "n": 40,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.4987468671679198,
+        "precision": 0.5238095238095238,
+        "recall": 0.5238095238095238,
+        "specificity": 0.47368421052631576,
+        "f1": 0.5238095238095238,
+        "f2": 0.5238095238095238,
+        "average_precision": 0.5274173462632804,
+        "roc_auc": 0.43107769423558895,
+        "confusion_matrix": [
+          [
+            9,
+            10
+          ],
+          [
+            10,
+            11
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 0,
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      }
+    },
+    "elapsed_sec": 266.1
+  },
+  "note": "Recovered verbatim numeric metrics from the saved Colab notebook. Temporary DINO trained artifacts were lost at runtime reset. Development OOF only."
+}

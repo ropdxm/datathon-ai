@@ -1,0 +1,5 @@
+# Fitted heads fingerprint exact source bytes. Preserve line endings on every OS.
+* -text
+*.png binary
+*.jpg binary
+*.jpeg binary
