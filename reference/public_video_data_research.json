@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "researched_on": "2026-10-18",
+  "scope": "Public action video data for visual cash-handling and procedural-compliance transfer learning. Only generic research queries and public metadata were used; no private video, frame, audio, or description was uploaded.",
+  "conclusion": {
+    "direct_binary_compliance_augmentation_candidates": 0,
+    "new_video_files_downloaded": 0,
+    "reason": "The closest verified releases supervise visible atomic actions, products, or generic anomalies. None establishes this competition's bank-procedure violation and timestamp ground truth. Their normal, take, phone, theft, or counting-money labels must not be renamed normal/violation.",
+    "immediate_experiment": "Use an existing Kinetics-400-pretrained X3D checkpoint as a frozen local motion encoder, including a bounded comparison of all 400 action logits. Fit classifier, optional PCA, and thresholds only inside original training folds. This obtains relevant cash-action transfer without downloading unrelated videos.",
+    "next_external_data_candidate": "CAP is the best permissively licensed action-supervision candidate for cabinet/drawer, counter pickup/setdown, and handover perception. A class-balanced, inspected subset would be auxiliary action training only; its improvement on private compliance validation must be measured.",
+    "highest_value_data": "Verified labels for existing custom scenes, with the simultaneous MOV/MP4 views grouped by underlying scene and an entire new filming session reserved for independent evaluation."
+  },
+  "candidates": [
+    {
+      "name": "Consented Activities of People (CAP)",
+      "rank_for_auxiliary_supervision": 1,
+      "official_sources": [
+        "https://visym.github.io/cap/",
+        "https://github.com/visym/cap",
+        "https://raw.githubusercontent.com/visym/cap/main/classification/cap_labels.csv",
+        "https://registry.opendata.aws/visym-cap/"
+      ],
+      "matching_labels": ["person_opens_cabinet", "person_closes_cabinet", "person_opens_kitchen_drawer", "person_closes_kitchen_drawer", "person_picks_up_object_from_countertop", "person_puts_down_object_on_countertop", "person_transfers_object_to_person", "person_puts_phone_into_pocket", "person_takes_phone_from_pocket"],
+      "annotation": "Actor bounding-box tracks and action start/end frames. Deliberately independent atomic activities; a security-style third-person view recorded with handheld/mobile cameras.",
+      "data_license": "CC BY 4.0; consented primary participants and blurred non-consenting bystanders.",
+      "access": "Public AWS bucket requires no account. A live XML listing of train/ contained only two monolithic gzip archives, not class-selective video objects. The classification archives contain training/validation sets, not training clips alone.",
+      "verified_archive_sizes_bytes": {"cap_classification_clip.tar.gz": 308736485473, "cap_classification_pad.tar.gz": 414871950280},
+      "smaller_release": "The official 0.9 GB handheld detection validation release is a different evaluation package; needed class coverage and sample quality have not been verified.",
+      "direct_binary_target_eligible": false,
+      "download_now": false,
+      "limitation_and_inference": "Strongest auxiliary action fit, but household props and independent actions do not demonstrate cash custody, simultaneous phone/cash use, omitted checks, or a violation. Avoid a 308.7 GB (approximately 288 GiB) download before a bounded target-domain transfer experiment."
+    },
+    {
+      "name": "NTU RGB+D 120",
+      "rank_for_auxiliary_supervision": 2,
+      "official_sources": ["https://rose1.ntu.edu.sg/dataset/actionRecognition/"],
+      "matching_labels": ["A74 counting money", "A28 phone call", "A29 play with phone/tablet", "A56 giving object", "A118 exchange things"],
+      "class_identifier_note": "NTU uses publisher class identifier A74 (often filename A074), the 74th action. This is separate from Kinetics-400 zero-based logit index 74; do not reuse one dataset's integer encoding for the other.",
+      "annotation": "114,480 staged action samples across 120 classes, three concurrently captured Kinect views; action class, RGB, depth, infrared and body skeletons.",
+      "data_license": "Academic research only for educational/research institutes, non-commercial. The publisher requires express permission for redistribution, derivative/new datasets, and commercial use.",
+      "access": "Registration, release agreement and publisher approval. RGB storage totals 136+124 GB; counting money belongs to the additional 60 classes.",
+      "direct_binary_target_eligible": false,
+      "download_now": false,
+      "limitation_and_inference": "Closest explicit money-counting action label found, but a staged generic gesture does not encode banking procedure. Do not mirror restricted clips or create a relabeled derivative release. A separately approved auxiliary study could test RGB transfer."
+    },
+    {
+      "name": "People in Public (PIP-175k)",
+      "rank_for_auxiliary_supervision": 3,
+      "official_sources": ["https://visym.github.io/collector/pip_175k/"],
+      "matching_labels": ["person_texting_on_phone", "person_transfers_object_to_person", "person_picks_up_object", "person_sets_down_object", "person_abandons_package"],
+      "annotation": "184,379 clips, 66 activities. Actor-centered, temporally clipped tracks, resized to at most 512x512. At least two human reviewers; handheld camera movement and temporal padding.",
+      "data_license": "CC BY 4.0 with consented primary participants.",
+      "access": "54.02 GB archive. The 87 MB training random-sample link is a visualization, not a verified reusable class-balanced video subset.",
+      "important_source_detail": "The publisher explicitly says the cashier-purchase class was temporarily removed. Object props are collector-selected; money is not guaranteed.",
+      "direct_binary_target_eligible": false,
+      "download_now": false,
+      "limitation_and_inference": "Useful phone/handover perception supervision, but neither purchase nor abandonment is equivalent to this competition's compliance label. Actor crops may hide the second person and workstation context."
+    },
+    {
+      "name": "RetailAction",
+      "rank_for_auxiliary_supervision": 4,
+      "official_sources": [
+        "https://huggingface.co/datasets/standard-cognition/RetailAction",
+        "https://huggingface.co/datasets/standard-cognition/RetailAction/blob/main/LICENSE",
+        "https://huggingface.co/datasets/standard-cognition/RetailAction/tree/main/data",
+        "https://openaccess.thecvf.com/content/ICCV2025W/RetailVision/html/Mazzini_RetailAction_Dataset_for_Multi-View_Spatio-Temporal_Localization_of_Human-Object_Interactions_in_ICCVW_2025_paper.html"
+      ],
+      "matching_labels": ["take", "put", "touch"],
+      "annotation": "21,000 paired ceiling-camera retail samples across ten actual stores, with temporal intervals and interaction points; official splits separate shopper identities. Motion-aware sampling retains at most 32 frames per view.",
+      "data_license": "Custom Standard.AI Dataset License, not an unrestricted open-source license. Attribution/license/notice and deidentification requirements apply, including to distributed AI models; revenue over USD10,000 triggers a separately requested license.",
+      "access": "Public Hugging Face archives: train 26.1 GB, validation 1.94 GB, test 3.84 GB; total 31.9 GB.",
+      "direct_binary_target_eligible": false,
+      "download_now": false,
+      "limitation_and_inference": "Good real CCTV geometry and localization, but labels concern customer-product interactions, overwhelmingly take. No cash-counting, custody, or procedural-compliance targets. Sparse irregular frames need timestamp-aware decoding rather than assuming the MP4 rate equals real action speed."
+    },
+    {
+      "name": "Kinetics-400",
+      "rank_for_auxiliary_supervision": 5,
+      "official_sources": [
+        "https://research.google/pubs/the-kinetics-human-action-video-dataset/",
+        "https://github.com/google-deepmind/kinetics-i3d/blob/master/data/label_map.txt",
+        "https://github.com/cvdfoundation/kinetics-dataset"
+      ],
+      "matching_labels": ["counting money", "texting", "using computer", "writing", "tossing coin"],
+      "annotation": "Human-labeled approximately ten-second single-action clips drawn from distinct YouTube source videos.",
+      "data_license": "Underlying source-video rights are separate from the annotation and downloader/model code licenses. A code license is not permission to redistribute the source videos.",
+      "access": "Official CVDF split archives and annotation CSVs are available; no private compliance labels are supplied.",
+      "direct_binary_target_eligible": false,
+      "download_now": false,
+      "limitation_and_inference": "Relevant action knowledge is already present in K400-pretrained X3D. Prefer evaluating its existing frozen weights over collecting another cash-counting subset and pretending those clips establish compliant or violating transactions."
+    }
+  ],
+  "pretrained_x3d_provenance": {
+    "official_tutorial": "https://pytorch.org/hub/facebookresearch_pytorchvideo_x3d/",
+    "official_model_zoo": "https://pytorchvideo.readthedocs.io/en/latest/model_zoo.html",
+    "official_loader": "https://github.com/facebookresearch/pytorchvideo/blob/main/pytorchvideo/models/hub/x3d.py",
+    "official_checkpoint_root": "https://dl.fbaipublicfiles.com/pytorchvideo/model_zoo/kinetics/",
+    "class_mapping_url": "https://dl.fbaipublicfiles.com/pyslowfast/dataset/class_names/kinetics_classnames.json",
+    "class_mapping_bytes": 10326,
+    "class_mapping_sha256": "00c6a6afcc5a121287419e8ae4075bd591b0bb816d04fb7720d526f04024e1a2",
+    "class_count": 400,
+    "id_range": [0, 399],
+    "selected_public_label_ids_for_provenance_only": {"counting money": 74, "texting": 355, "tossing coin": 361, "using computer": 373, "writing": 396},
+    "mapping_note": "Map supplied zero-based integer values to class names; some keys contain literal double quotes. The official tutorial removes them. Do not infer IDs from a separately sorted taxonomy. K400 index 74 and NTU class A74 belong to different taxonomies and indexing conventions.",
+    "licensing_basis": "Official PyTorchVideo documentation provides downloadable pretrained checkpoints and a local inference tutorial; the repository is Apache 2.0. No separate weight-specific terms were identified in the examined primary pages. No underlying training-video rights are implied.",
+    "code_license_url": "https://github.com/facebookresearch/pytorchvideo/blob/main/LICENSE",
+    "inference_constraint": "All private-video forward passes remain native/local in Colab. Do not display semantic predictions or sample content in a hosted assistant. Numeric arrays can train the private classifier.",
+    "experimental_interpretation": "Counting-money logits are an auxiliary representation, not a violation score. Freeze the representation choice and any class subset before reading outer-fold outcomes; preferably compare the complete 400-vector."
+  },
+  "excluded_families": [
+    {"name": "UCF-Crime", "official_source": "https://www.crcv.ucf.edu/research/real-world-anomaly-detection-in-surveillance-videos/", "reason": "Crime/anomaly labels such as robbery and shoplifting, and normal meaning no crime, differ from teller procedure compliance. Generic normal footage can contain phone use or cash handling that is labeled differently under this task. Do not merge binary labels."},
+    {"name": "MECCANO", "official_source": "https://github.com/fpv-iplab/MECCANO", "reason": "Egocentric toy assembly and industrial-like hand-object actions, without cash-procedure supervision. Less direct than an already pretrained video backbone."},
+    {"name": "AVA", "official_source": "https://sites.research.google/gr/ava/download/", "reason": "Movie-person atomic actions have phone, giving and taking labels, but substantial domain shift and source-video rights are separate. No procedural compliance supervision."},
+    {"name": "Driver anomaly data", "official_source": "https://www.ce.cit.tum.de/en/mmk/dad/", "reason": "Driver/simulator distractions and infrared/depth data do not establish teller compliance, even when a phone action is visually present."},
+    {"name": "Stock or social-media cash clips", "reason": "Search titles and footage licenses do not establish event timestamps, complete procedure, or correct target labels. Attractive closeups, edits, watermarks and unverified/AI-generated content can produce shortcuts rather than improve CCTV generalization."}
+  ],
+  "external_clip_admission_policy": [
+    "Preserve the original visible-action annotation. Never convert an action, crime, abnormality, or stock title directly into a target compliance label.",
+    "Confirm the actual data license and source access, and record source URL, version, checksum, actor/session/view grouping, action interval, and preprocessing.",
+    "Review each accepted clip for visible relevant action, complete temporal context, representative camera scale, no synthetic/edited shortcuts, and reliable annotation; remove audio from training derivatives.",
+    "Keep all views and derivatives of an underlying source together. Deduplicate against private recordings and evaluation sources before fitting.",
+    "Train external atomic-action perception separately or as auxiliary supervision. Fit the compliance head on verified target labels and assess any gain with the fixed target-domain folds.",
+    "Reserve an untouched, separately filmed target-domain test. Repeatedly inspected development folds cannot certify 87% generalization."
+  ],
+  "audit": {
+    "memory_recall_id": "89e52268-acf7-49da-8042-4b8ec0369e76",
+    "file_memory_gate": "No file memories or matching prior sessions. file_history was unavailable; search_sessions used as fallback.",
+    "source_type": "Publisher websites, official repositories, dataset-host license/files, research-paper publisher pages, and a live public S3 metadata listing.",
+    "private_content_disclosed": false,
+    "downloaded_content": "Public class-map metadata and transient public S3 directory XML only. No external videos or frames downloaded."
+  }
+}

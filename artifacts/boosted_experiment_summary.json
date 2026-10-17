@@ -1,0 +1,1809 @@
+{
+  "status": "completed_available_boosted_experiments",
+  "created_at": "2026-10-17T22:59:27.210581+00:00",
+  "tool_sha256": "adb6211493f4ca1afa13f29ccf225f3b40f7f27d1fc0bdf9a560074365d98867",
+  "n": 40,
+  "baseline_report_sha256": "8e716080485cfc78a593bca7cb87454e764d7b843c7a7d45dccbf0533794d085",
+  "all_completed_new_predictions_SHA_labels_folds_and_metrics_verified": true,
+  "nested_fit_preprocessing_and_threshold_ownership_verified": true,
+  "ML_source_fingerprints_verified": {
+    "boosted": {
+      "boosted.py": "2ef7aa4fc14ec65afd6578965abe06f8e325de28a4e29722b0cede50e5e598d8",
+      "model.py": "9eaa61e54faaf405a4b0ea61a5c7a7de3d3245ddafae7c0de930ce05638bdb71",
+      "temporal.py": "8fc78c56f43eeaf21bd951a35fd5674703a0f6028dc6d5fa86e0a9d4d4bee74e"
+    },
+    "motion_action": {
+      "motion_action_experiment.py": "6bd051ef0836e905af0897d92105456cab8ebd1cd336558e287a7c2e0b9f76a9",
+      "motion.py": "da2e739f3d7b651afd7d2afadc9e1bde2b163e1cb749b04e2183ce2a411432d5",
+      "boosted.py": "2ef7aa4fc14ec65afd6578965abe06f8e325de28a4e29722b0cede50e5e598d8",
+      "model.py": "9eaa61e54faaf405a4b0ea61a5c7a7de3d3245ddafae7c0de930ce05638bdb71",
+      "temporal.py": "8fc78c56f43eeaf21bd951a35fd5674703a0f6028dc6d5fa86e0a9d4d4bee74e"
+    }
+  },
+  "protocol": {
+    "protocol_sha256": "de5db8300d1390dcd7277d1676c256d304fd6260d6b26cb9bc55ab95f6a99246",
+    "config": {
+      "seed": 42,
+      "outer_folds": 5,
+      "inner_folds": 3,
+      "iterations": 160,
+      "learning_rate": 0.03,
+      "pca_components": 16,
+      "threads": 2,
+      "primary_metric": "balanced_accuracy"
+    },
+    "candidate_grid": [
+      {
+        "arm": "semantic_raw",
+        "depth": 2,
+        "l2_leaf_reg": 10.0
+      },
+      {
+        "arm": "semantic_raw",
+        "depth": 3,
+        "l2_leaf_reg": 10.0
+      },
+      {
+        "arm": "semantic_raw",
+        "depth": 3,
+        "l2_leaf_reg": 30.0
+      },
+      {
+        "arm": "clip_all_raw",
+        "depth": 2,
+        "l2_leaf_reg": 10.0
+      },
+      {
+        "arm": "clip_all_raw",
+        "depth": 3,
+        "l2_leaf_reg": 10.0
+      },
+      {
+        "arm": "clip_all_raw",
+        "depth": 3,
+        "l2_leaf_reg": 30.0
+      },
+      {
+        "arm": "clip_all_pca16",
+        "depth": 2,
+        "l2_leaf_reg": 10.0
+      },
+      {
+        "arm": "clip_all_pca16",
+        "depth": 3,
+        "l2_leaf_reg": 10.0
+      },
+      {
+        "arm": "clip_all_pca16",
+        "depth": 3,
+        "l2_leaf_reg": 30.0
+      },
+      {
+        "arm": "clip_full_raw",
+        "depth": 2,
+        "l2_leaf_reg": 10.0
+      },
+      {
+        "arm": "clip_full_raw",
+        "depth": 3,
+        "l2_leaf_reg": 10.0
+      },
+      {
+        "arm": "clip_full_raw",
+        "depth": 3,
+        "l2_leaf_reg": 30.0
+      }
+    ],
+    "fold_source": {
+      "kind": "frozen_report",
+      "path": "/content/datathon_ml_workspace/reference/clip_baseline_cv.json",
+      "file_sha256": "8e716080485cfc78a593bca7cb87454e764d7b843c7a7d45dccbf0533794d085",
+      "reference_seed": 42,
+      "reference_evaluation": "nested_grouped_out_of_fold",
+      "fold_assignment_sha256": "2893beac10c45e400f2dc4fc472b3b7192f49df7189b03b6482d2a0eeabaf250"
+    }
+  },
+  "model_comparisons": [
+    {
+      "model": "historical_clip",
+      "label": "Previous CLIP baseline",
+      "role": "historical_baseline",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.575,
+        "balanced_accuracy": 0.587719298245614,
+        "precision": 0.7,
+        "recall": 0.3333333333333333,
+        "specificity": 0.8421052631578947,
+        "f1": 0.45161290322580644,
+        "f2": 0.3723404255319149,
+        "average_precision": 0.6506270654765468,
+        "roc_auc": 0.5714285714285714,
+        "confusion_matrix": [
+          [
+            16,
+            3
+          ],
+          [
+            14,
+            7
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "annotated_points": 22,
+          "points_with_any_prediction": 0,
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+        }
+      },
+      "source_report_path": "/content/datathon_ml_workspace/reference/clip_baseline_cv.json",
+      "source_report_sha256": "8e716080485cfc78a593bca7cb87454e764d7b843c7a7d45dccbf0533794d085",
+      "original_SHA_labels_folds_verified": true,
+      "classification_metrics_recomputed": true,
+      "accuracy_wilson95": {
+        "low": 0.42195068541991065,
+        "high": 0.7149060744004962,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 0,
+        "model_correct_baseline_wrong": 0,
+        "discordant_pairs": 0,
+        "exact_two_sided_p": 1.0,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "artifact_path": null,
+      "artifact_sha256": null,
+      "independent_test": false
+    },
+    {
+      "model": "previous_semantic_temporal",
+      "label": "Previous best: semantic temporal",
+      "role": "previous_development_best",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.625,
+        "balanced_accuracy": 0.6303258145363408,
+        "recall": 0.5238095238095238,
+        "specificity": 0.7368421052631579,
+        "precision": 0.6875,
+        "f1": 0.5945945945945946,
+        "confusion_matrix": [
+          [
+            14,
+            5
+          ],
+          [
+            10,
+            11
+          ]
+        ],
+        "f2": 0.55,
+        "average_precision": 0.6255285793954899,
+        "roc_auc": 0.5664160401002507,
+        "brier_score": 0.26752305976773894,
+        "localization": {
+          "annotated_points": 22,
+          "point_recall_at_tolerance": {
+            "1s": 0.0,
+            "2s": 0.0,
+            "5s": 0.0
+          },
+          "median_error_sec_conditional": null,
+          "p90_error_sec_conditional": null
+        }
+      },
+      "source_report_path": "/content/datathon_ml_workspace/artifacts/custom_experiment_summary.json",
+      "source_report_sha256": "c1b58f5eb921f0c12069c46acde4d43bec37dd396ccd85f62b11654a299ae876",
+      "verification": "Imported unchanged from previously verified numeric original40 aggregate",
+      "classification_metrics_recomputed": false,
+      "original_SHA_labels_folds_verified": true,
+      "independent_test": false
+    },
+    {
+      "model": "boosted_primary",
+      "label": "CatBoost: inner-selected policy",
+      "role": "primary_inner_selected_policy",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.55,
+        "balanced_accuracy": 0.5463659147869674,
+        "precision": 0.5652173913043478,
+        "recall": 0.6190476190476191,
+        "specificity": 0.47368421052631576,
+        "f1": 0.5909090909090909,
+        "f2": 0.6074766355140186,
+        "average_precision": 0.5519174566491134,
+        "roc_auc": 0.550125313283208,
+        "confusion_matrix": [
+          [
+            9,
+            10
+          ],
+          [
+            8,
+            13
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "available": false,
+          "point_recall_5s": null,
+          "reason": "Recording-level pooling provides no event timestamp"
+        }
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/boosted_v1/boosted_cv_report.json",
+      "source_report_sha256": "583060e23753e5e524b10e1cc07816957a842832789936769ba1cf83e38c6b16",
+      "original_SHA_labels_folds_verified": true,
+      "classification_metrics_recomputed": true,
+      "accuracy_wilson95": {
+        "low": 0.39829091798932054,
+        "high": 0.6929469218909508,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 8,
+        "model_correct_baseline_wrong": 7,
+        "discordant_pairs": 15,
+        "exact_two_sided_p": 1.0,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "artifact_path": "/content/datathon_ml_workspace/runs/boosted_v1/model/model_boosted.joblib",
+      "artifact_sha256": "31e10f11d1e57d00c1ec24ea1b411914a3a9098c3a5a27fe6ce6cb5693233827",
+      "independent_test": false
+    },
+    {
+      "model": "semantic_raw",
+      "label": "CatBoost: semantic temporal vector",
+      "role": "predeclared_arm_development_comparison",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.45,
+        "balanced_accuracy": 0.45363408521303256,
+        "precision": 0.47058823529411764,
+        "recall": 0.38095238095238093,
+        "specificity": 0.5263157894736842,
+        "f1": 0.42105263157894735,
+        "f2": 0.39603960396039606,
+        "average_precision": 0.6387280438069014,
+        "roc_auc": 0.462406015037594,
+        "confusion_matrix": [
+          [
+            10,
+            9
+          ],
+          [
+            13,
+            8
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "available": false,
+          "point_recall_5s": null,
+          "reason": "Recording-level pooling provides no event timestamp"
+        }
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/boosted_v1/boosted_cv_report.json",
+      "source_report_sha256": "583060e23753e5e524b10e1cc07816957a842832789936769ba1cf83e38c6b16",
+      "original_SHA_labels_folds_verified": true,
+      "classification_metrics_recomputed": true,
+      "accuracy_wilson95": {
+        "low": 0.3070530781090492,
+        "high": 0.6017090820106794,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 9,
+        "model_correct_baseline_wrong": 4,
+        "discordant_pairs": 13,
+        "exact_two_sided_p": 0.266845703125,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "artifact_path": "/content/datathon_ml_workspace/runs/boosted_v1/model/model_semantic_raw.joblib",
+      "artifact_sha256": "90a0e2af05d8be7997238a6cc69fde4f3424f5d1e7998225cb1c8e0b4238d8fe",
+      "independent_test": false
+    },
+    {
+      "model": "clip_all_raw",
+      "label": "CatBoost: all-view CLIP",
+      "role": "predeclared_arm_development_comparison",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.575,
+        "balanced_accuracy": 0.575187969924812,
+        "precision": 0.6,
+        "recall": 0.5714285714285714,
+        "specificity": 0.5789473684210527,
+        "f1": 0.5853658536585366,
+        "f2": 0.5769230769230769,
+        "average_precision": 0.5361705542827642,
+        "roc_auc": 0.531328320802005,
+        "confusion_matrix": [
+          [
+            11,
+            8
+          ],
+          [
+            9,
+            12
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "available": false,
+          "point_recall_5s": null,
+          "reason": "Recording-level pooling provides no event timestamp"
+        }
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/boosted_v1/boosted_cv_report.json",
+      "source_report_sha256": "583060e23753e5e524b10e1cc07816957a842832789936769ba1cf83e38c6b16",
+      "original_SHA_labels_folds_verified": true,
+      "classification_metrics_recomputed": true,
+      "accuracy_wilson95": {
+        "low": 0.42195068541991065,
+        "high": 0.7149060744004962,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 6,
+        "model_correct_baseline_wrong": 6,
+        "discordant_pairs": 12,
+        "exact_two_sided_p": 1.0,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "artifact_path": "/content/datathon_ml_workspace/runs/boosted_v1/model/model_clip_all_raw.joblib",
+      "artifact_sha256": "f809f79c0709a4cfa99175715abfe1053db1327d6016accbcd65f1e5e14b4715",
+      "independent_test": false
+    },
+    {
+      "model": "clip_all_pca16",
+      "label": "CatBoost: all-view CLIP + PCA16",
+      "role": "predeclared_arm_development_comparison",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.4837092731829574,
+        "precision": 0.5151515151515151,
+        "recall": 0.8095238095238095,
+        "specificity": 0.15789473684210525,
+        "f1": 0.6296296296296297,
+        "f2": 0.7264957264957265,
+        "average_precision": 0.5003561843416916,
+        "roc_auc": 0.4385964912280702,
+        "confusion_matrix": [
+          [
+            3,
+            16
+          ],
+          [
+            4,
+            17
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "available": false,
+          "point_recall_5s": null,
+          "reason": "Recording-level pooling provides no event timestamp"
+        }
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/boosted_v1/boosted_cv_report.json",
+      "source_report_sha256": "583060e23753e5e524b10e1cc07816957a842832789936769ba1cf83e38c6b16",
+      "original_SHA_labels_folds_verified": true,
+      "classification_metrics_recomputed": true,
+      "accuracy_wilson95": {
+        "low": 0.35199526933465386,
+        "high": 0.6480047306653461,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 13,
+        "model_correct_baseline_wrong": 10,
+        "discordant_pairs": 23,
+        "exact_two_sided_p": 0.6776394844055176,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "artifact_path": "/content/datathon_ml_workspace/runs/boosted_v1/model/model_clip_all_pca16.joblib",
+      "artifact_sha256": "09fe27976c9b8e185751690c88e7d57c722bad94fcab3d66d1b00b5d13cdc66f",
+      "independent_test": false
+    },
+    {
+      "model": "clip_full_raw",
+      "label": "CatBoost: full-frame CLIP",
+      "role": "predeclared_arm_development_comparison",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.425,
+        "balanced_accuracy": 0.4348370927318296,
+        "precision": 0.4166666666666667,
+        "recall": 0.23809523809523808,
+        "specificity": 0.631578947368421,
+        "f1": 0.30303030303030304,
+        "f2": 0.2604166666666667,
+        "average_precision": 0.5553267244683284,
+        "roc_auc": 0.47117794486215536,
+        "confusion_matrix": [
+          [
+            12,
+            7
+          ],
+          [
+            16,
+            5
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "available": false,
+          "point_recall_5s": null,
+          "reason": "Recording-level pooling provides no event timestamp"
+        }
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/boosted_v1/boosted_cv_report.json",
+      "source_report_sha256": "583060e23753e5e524b10e1cc07816957a842832789936769ba1cf83e38c6b16",
+      "original_SHA_labels_folds_verified": true,
+      "classification_metrics_recomputed": true,
+      "accuracy_wilson95": {
+        "low": 0.28509392559950375,
+        "high": 0.5780493145800892,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 11,
+        "model_correct_baseline_wrong": 5,
+        "discordant_pairs": 16,
+        "exact_two_sided_p": 0.210113525390625,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "artifact_path": "/content/datathon_ml_workspace/runs/boosted_v1/model/model_clip_full_raw.joblib",
+      "artifact_sha256": "9232b61821a11e0a73e22d1560f3ec5bebe58497bfd6500db1bc9179eb891c06",
+      "independent_test": false
+    },
+    {
+      "model": "motion_action",
+      "label": "X3D pretrained action scores + CatBoost",
+      "role": "separate_predeclared_transfer_test",
+      "metrics": {
+        "n": 40,
+        "accuracy": 0.425,
+        "balanced_accuracy": 0.43734335839599,
+        "precision": 0.4,
+        "recall": 0.19047619047619047,
+        "specificity": 0.6842105263157895,
+        "f1": 0.25806451612903225,
+        "f2": 0.2127659574468085,
+        "average_precision": 0.3972554495080848,
+        "roc_auc": 0.23057644110275693,
+        "confusion_matrix": [
+          [
+            13,
+            6
+          ],
+          [
+            17,
+            4
+          ]
+        ],
+        "confusion_order": [
+          [
+            "TN",
+            "FP"
+          ],
+          [
+            "FN",
+            "TP"
+          ]
+        ],
+        "localization": {
+          "available": false,
+          "point_recall_5s": null,
+          "reason": "Recording-level pooling provides no event timestamp"
+        }
+      },
+      "source_report_path": "/content/datathon_ml_workspace/runs/boosted_v1/motion_action/motion_action_cv_report.json",
+      "source_report_sha256": "382c029d09cd644fe551aed1268ea1f422533d69df6e2199ef9ded131c3d5a09",
+      "original_SHA_labels_folds_verified": true,
+      "classification_metrics_recomputed": true,
+      "accuracy_wilson95": {
+        "low": 0.28509392559950375,
+        "high": 0.5780493145800892,
+        "method": "Wilson 95%; illustrative independent-binomial approximation"
+      },
+      "paired_vs_original_clip": {
+        "baseline_correct_model_wrong": 9,
+        "model_correct_baseline_wrong": 3,
+        "discordant_pairs": 12,
+        "exact_two_sided_p": 0.14599609375,
+        "multiple_comparison_adjusted": false,
+        "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+      },
+      "artifact_path": "/content/datathon_ml_workspace/runs/boosted_v1/motion_action/model/model_motion_action.joblib",
+      "artifact_sha256": "0fbc136c14c33e32e382c4f46cb00aa3ae6c57a4c4645db6464ce5e7068abada",
+      "independent_test": false
+    }
+  ],
+  "posthoc_best_development_model": {
+    "model": "previous_semantic_temporal",
+    "label": "Previous best: semantic temporal",
+    "role": "previous_development_best",
+    "metrics": {
+      "n": 40,
+      "accuracy": 0.625,
+      "balanced_accuracy": 0.6303258145363408,
+      "recall": 0.5238095238095238,
+      "specificity": 0.7368421052631579,
+      "precision": 0.6875,
+      "f1": 0.5945945945945946,
+      "confusion_matrix": [
+        [
+          14,
+          5
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "f2": 0.55,
+      "average_precision": 0.6255285793954899,
+      "roc_auc": 0.5664160401002507,
+      "brier_score": 0.26752305976773894,
+      "localization": {
+        "annotated_points": 22,
+        "point_recall_at_tolerance": {
+          "1s": 0.0,
+          "2s": 0.0,
+          "5s": 0.0
+        },
+        "median_error_sec_conditional": null,
+        "p90_error_sec_conditional": null
+      }
+    },
+    "source_report_path": "/content/datathon_ml_workspace/artifacts/custom_experiment_summary.json",
+    "source_report_sha256": "c1b58f5eb921f0c12069c46acde4d43bec37dd396ccd85f62b11654a299ae876",
+    "verification": "Imported unchanged from previously verified numeric original40 aggregate",
+    "classification_metrics_recomputed": false,
+    "original_SHA_labels_folds_verified": true,
+    "independent_test": false
+  },
+  "primary_inner_selected_policy": {
+    "model": "boosted_primary",
+    "label": "CatBoost: inner-selected policy",
+    "role": "primary_inner_selected_policy",
+    "metrics": {
+      "n": 40,
+      "accuracy": 0.55,
+      "balanced_accuracy": 0.5463659147869674,
+      "precision": 0.5652173913043478,
+      "recall": 0.6190476190476191,
+      "specificity": 0.47368421052631576,
+      "f1": 0.5909090909090909,
+      "f2": 0.6074766355140186,
+      "average_precision": 0.5519174566491134,
+      "roc_auc": 0.550125313283208,
+      "confusion_matrix": [
+        [
+          9,
+          10
+        ],
+        [
+          8,
+          13
+        ]
+      ],
+      "confusion_order": [
+        [
+          "TN",
+          "FP"
+        ],
+        [
+          "FN",
+          "TP"
+        ]
+      ],
+      "localization": {
+        "available": false,
+        "point_recall_5s": null,
+        "reason": "Recording-level pooling provides no event timestamp"
+      }
+    },
+    "source_report_path": "/content/datathon_ml_workspace/runs/boosted_v1/boosted_cv_report.json",
+    "source_report_sha256": "583060e23753e5e524b10e1cc07816957a842832789936769ba1cf83e38c6b16",
+    "original_SHA_labels_folds_verified": true,
+    "classification_metrics_recomputed": true,
+    "accuracy_wilson95": {
+      "low": 0.39829091798932054,
+      "high": 0.6929469218909508,
+      "method": "Wilson 95%; illustrative independent-binomial approximation"
+    },
+    "paired_vs_original_clip": {
+      "baseline_correct_model_wrong": 8,
+      "model_correct_baseline_wrong": 7,
+      "discordant_pairs": 15,
+      "exact_two_sided_p": 1.0,
+      "multiple_comparison_adjusted": false,
+      "interpretation": "Descriptive paired development diagnostic; not independent confirmation or causal evidence"
+    },
+    "artifact_path": "/content/datathon_ml_workspace/runs/boosted_v1/model/model_boosted.joblib",
+    "artifact_sha256": "31e10f11d1e57d00c1ec24ea1b411914a3a9098c3a5a27fe6ce6cb5693233827",
+    "independent_test": false
+  },
+  "execution": {
+    "boosted": {
+      "source_runtime_sha256": "8a321471a15257f713234df01fcb2fed18aeecb6d207e3f1d3b7b68a811798be",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 915.1976255009977,
+      "network_attempts": 0,
+      "completed": true,
+      "completed_cv_report": true
+    },
+    "motion_action": {
+      "source_runtime_sha256": "87d8ca3b908235b016d8fe25349e629ad7af99daf2650408fc6acf5e2be47cc1",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 772.2369614270028,
+      "network_attempts": 0,
+      "completed": true,
+      "completed_cv_report": true
+    },
+    "implementation_tests": {
+      "source_runtime_sha256": "ac39baff350f492c4e07c1e5b0dd86b9eeef2853f83cb3c8dbbab5f757fa1f78",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 126.228,
+      "network_attempts": null,
+      "completed": true,
+      "test_count": 145
+    }
+  },
+  "preprocessing_audit": {
+    "source_report_sha256": "25dca72a9c14afdb4a51f7359c8bad4535c679217c2beb5bfaa2387d73841c88",
+    "status": "numeric_preprocessing_audit_complete",
+    "created_at": "2026-10-17T22:40:08.680098+00:00",
+    "tool_sha256": "2b601326edae5d4b090a0641cce0f4f58e189d1640786a87b0baafb0267da66c",
+    "sources": 40,
+    "extractor_config": {
+      "backbone": "clip_vit_b32_openai",
+      "decoder": "opencv-sequential-monotonic-pts-final-valid-v1",
+      "encoder": "open_clip.openai.load_openai_model-quickgelu",
+      "hub_repo": "openai/CLIP:a1d071733d7111c9c014f024669f959182114e33",
+      "image_size": 224,
+      "open_clip_version": "3.2.0",
+      "opencv_version": "4.14.0",
+      "precision": "cuda-float16",
+      "preprocessing": "rgb-clipnorm-letterbox-imagenetpad-square-overlap-v1;prompts=none",
+      "prompts_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sample_fps": 2.0,
+      "schema_version": 1,
+      "torch_version": "2.11.0+cu130",
+      "use_text_features": false,
+      "views": [
+        "full",
+        "top",
+        "middle",
+        "bottom"
+      ],
+      "weights_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af"
+    },
+    "feature_norm": {
+      "n": 10624,
+      "min": 0.9999998807907104,
+      "p05": 0.9999999403953552,
+      "median": 1.0,
+      "mean": 0.99999998392627,
+      "p95": 1.0,
+      "max": 1.0000001192092896
+    },
+    "sample_gap_sec": {
+      "n": 2616,
+      "min": 0.03333282470703125,
+      "p05": 0.5,
+      "median": 0.5,
+      "mean": 0.4963812445281842,
+      "p95": 0.5,
+      "max": 0.5333337783813477
+    },
+    "samples_per_source_diagnostic_only": {
+      "n": 40,
+      "min": 25.0,
+      "p05": 30.95,
+      "median": 45.5,
+      "mean": 66.4,
+      "p95": 147.59999999999997,
+      "max": 286.0
+    },
+    "adjacent_frame_cosine": {
+      "n": 10464,
+      "min": 0.7365018129348755,
+      "p05": 0.9643893897533417,
+      "median": 0.9915600717067719,
+      "mean": 0.9876161481364878,
+      "p95": 0.9982692331075669,
+      "max": 0.9996728897094727
+    },
+    "view_pair_cosine": {
+      "full__top": {
+        "n": 2656,
+        "min": 0.6630223989486694,
+        "p05": 0.783259242773056,
+        "median": 0.856602668762207,
+        "mean": 0.847943323810237,
+        "p95": 0.8915156722068787,
+        "max": 0.9119482040405273
+      },
+      "full__middle": {
+        "n": 2656,
+        "min": 0.731902003288269,
+        "p05": 0.8072223365306854,
+        "median": 0.8537770211696625,
+        "mean": 0.8510828622538282,
+        "p95": 0.8876530975103378,
+        "max": 0.9112271070480347
+      },
+      "full__bottom": {
+        "n": 2656,
+        "min": 0.7632749080657959,
+        "p05": 0.8093539774417877,
+        "median": 0.8593578934669495,
+        "mean": 0.8580704465598227,
+        "p95": 0.8998062908649445,
+        "max": 0.9159893989562988
+      },
+      "top__middle": {
+        "n": 2656,
+        "min": 0.7845826745033264,
+        "p05": 0.90238356590271,
+        "median": 0.9423350989818573,
+        "mean": 0.9388237978634705,
+        "p95": 0.9639442563056946,
+        "max": 0.9793956875801086
+      },
+      "top__bottom": {
+        "n": 2656,
+        "min": 0.6738486289978027,
+        "p05": 0.7540065795183182,
+        "median": 0.867926687002182,
+        "mean": 0.8572394331490778,
+        "p95": 0.9235329627990723,
+        "max": 0.9479424953460693
+      },
+      "middle__bottom": {
+        "n": 2656,
+        "min": 0.7456057071685791,
+        "p05": 0.8075207471847534,
+        "median": 0.9065487682819366,
+        "mean": 0.8955588577966015,
+        "p95": 0.9423458576202393,
+        "max": 0.9701179265975952
+      }
+    },
+    "provided_point_nearest_sample_gap_sec": {
+      "n": 22,
+      "min": 0.0,
+      "p05": 0.0,
+      "median": 0.0,
+      "mean": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "provided_points": 22,
+    "provided_points_after_last_decoded_sample": 0,
+    "provided_points_with_nearest_gap_over_0_5sec": 0,
+    "pca_protocol": {
+      "sampling": "uniform max distinct temporal rows per training source",
+      "max_windows_per_source": 24,
+      "max_components": 64,
+      "scaler": "training_only_standard_scaler",
+      "seed": 42,
+      "fit_inputs_exclude_labels_points_filenames_durations": true,
+      "representation": "unchanged_model_window_features_radii_1_2_4_seconds"
+    },
+    "fold_source": {
+      "kind": "frozen_report",
+      "path": "/content/datathon_ml_workspace/reference/clip_baseline_cv.json",
+      "file_sha256": "8e716080485cfc78a593bca7cb87454e764d7b843c7a7d45dccbf0533794d085",
+      "reference_seed": 42,
+      "reference_evaluation": "nested_grouped_out_of_fold",
+      "fold_assignment_sha256": "2893beac10c45e400f2dc4fc472b3b7192f49df7189b03b6482d2a0eeabaf250"
+    },
+    "pca_folds": [
+      {
+        "fold": 0,
+        "pca_fit_owner_sha256": [
+          "05af66ce27b83d7c10c5d33b6f1847ec042c01ed21afdcbd43a13abcefd28199",
+          "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+          "1f5840bff58f298e89c4afa00cb1c18f6dafc5c4096c251d9b507604ebefe906",
+          "209e8aaca88df59064e5f28b3bcc489fee3eea9eb920889b69c03c83d52430c6",
+          "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+          "39e28d7be01cdb090ede1881ce3ef704fa413271deb69d6735c1953f340d6069",
+          "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+          "524bf9ff2d5e81211dbbeff73129dbb5f3a5e5e35a64f443f53e16b1c2d471c7",
+          "5385be9420e6a70547d6bcfd0b13d60f9c0738877645afa277d09550a96b8445",
+          "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+          "66fc5d28c2371592f9260305589bdc86636fdd2ebe7a7ec976eec00a23d43df4",
+          "69caf59620fcd80bedcb664514730ab38f2f800da27000a8e037d7440be5dc7a",
+          "6a53e10acdcf52396ad5b1697eead32d8322c0911d792523a5c33fe5b388f4e7",
+          "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+          "7d6890ecb4a2b28bbdd3b61b6711566eee84a53ab3439c40cd9b6a3a6714c681",
+          "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+          "8911a9219b9433091824e553a70bb80335f075fd8ac982d2062d2ecf023c16bc",
+          "901f61cf1a1b8754dda56466308c19fc203a1a4c0e85d1e7827849d34e2d52f0",
+          "955755baf54418b48ea645dcd98e7e8dcca1d1e227e9b286a9427062db304fd4",
+          "9774ed882153af3ba1a7e71c9b9249619e2b3a97ae336aad6143369802ca3522",
+          "a37930cf119bb691be77d8624b18333b04d9c67066a7f4627d63e3208dfa6057",
+          "ac4cf04844c0aa08a5e19f5f7fe984f1477943294922d6ef77bdc5b88b97160e",
+          "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+          "b637677ef5a7f0fa54d9f116ce6493cf74a4c99b8149a9c9916b96ef257535bd",
+          "bcc277cbf1a36245156b2bb9a0e0b826432390b42040c0b82201a8c21ab23ce9",
+          "c175a683749401d5a9ecf6f1c188b64fa8a09543f41482c1e4eb2232255715d3",
+          "c9a30d44907e4a41b3a8ccf101774cd2e0804de20927bfbc9e1ccba1f2326b78",
+          "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+          "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+          "e3a00b6e0f38b1d9b5498140f14906c71e204359262a90ce7a9974d64bf081e9",
+          "efd876a04224cac781ac64bf5d6e107ded67340b7b7715fd9ca3408b240a1075",
+          "f3e351bea71150f4e8c76e2c8f0656a4e92063319d7cd39e264078c5ba9139c3"
+        ],
+        "test_sha256": [
+          "0378b8026b2e6afd1775a5d0fdd12dd09c491785b626e9c20428f7dc6bd59364",
+          "26430119e074d6f0eb5dbc7ec3e26bbc31cf18903265bb4372bd7d7104908640",
+          "57a0e46c7a45f0e831f61d9c80722fefe4b74dbcfe1d3031ff58307d481f9a5c",
+          "6a81739ced0efdcd4a4feb76ea16562a20ceb53a2232a801528716c450366c9f",
+          "90607b0b0cb772fcf29b0c7e0e56fa6af36da6fac0efe93b8a616b5de94a156c",
+          "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+          "b9bfb76ac8ea47eb368fc78a2f6370e4d98e79185972f63cf301ee22f12b5941",
+          "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d"
+        ],
+        "train_test_owner_overlap": 0,
+        "training_rows": 768,
+        "held_out_rows": 192,
+        "input_dimensions": 22528,
+        "fitted_components": 64,
+        "training_variance_retained": {
+          "8": 0.42873620986938477,
+          "16": 0.5341213941574097,
+          "32": 0.6274378895759583,
+          "64": 0.7184860706329346
+        },
+        "rank_for_80pct_within_fitted_components": null,
+        "rank_for_90pct_within_fitted_components": null,
+        "variance_ratio": [
+          0.15399198234081268,
+          0.07609131932258606,
+          0.05322253704071045,
+          0.04115115478634834,
+          0.03182067722082138,
+          0.02757548913359642,
+          0.025314975529909134,
+          0.019568074494600296,
+          0.018376102671027184,
+          0.015607330948114395,
+          0.01376440841704607,
+          0.013176566921174526,
+          0.012090221978724003,
+          0.011525069363415241,
+          0.010805304162204266,
+          0.010040187276899815,
+          0.008802295662462711,
+          0.008207096718251705,
+          0.007243824657052755,
+          0.0070222909562289715,
+          0.006776044145226479,
+          0.0063000875525176525,
+          0.005709316115826368,
+          0.005395122803747654,
+          0.005260540638118982,
+          0.005014258436858654,
+          0.004858700092881918,
+          0.004760317970067263,
+          0.004667041357606649,
+          0.0046142530627548695,
+          0.004404018633067608,
+          0.0042812940664589405,
+          0.004099651239812374,
+          0.003933057188987732,
+          0.0038625341840088367,
+          0.0037911362014710903,
+          0.003637158079072833,
+          0.003488949267193675,
+          0.0033679509069770575,
+          0.0033311089500784874,
+          0.0033020044211298227,
+          0.003243995364755392,
+          0.0031954634469002485,
+          0.0030502364970743656,
+          0.0029586325399577618,
+          0.002851873869076371,
+          0.0028252769261598587,
+          0.002769751939922571,
+          0.0027140879537910223,
+          0.002649667439982295,
+          0.002614337019622326,
+          0.002541208639740944,
+          0.0025336674880236387,
+          0.002448104787617922,
+          0.002420958364382386,
+          0.0023521219845861197,
+          0.0023022585082799196,
+          0.0022826525382697582,
+          0.0022026642691344023,
+          0.0021615559235215187,
+          0.0020907085854560137,
+          0.002062079729512334,
+          0.0020230086520314217,
+          0.0019403090700507164
+        ],
+        "scaler_training_raw_variance": {
+          "n": 22528,
+          "min": 8.100104072250976e-08,
+          "p05": 1.770422033189516e-06,
+          "median": 1.0753224226040879e-05,
+          "mean": 6.688462789256397e-05,
+          "p95": 0.0002224523916180697,
+          "max": 0.004065824115855289
+        },
+        "dimensions_with_raw_variance_below_1e_8": 0,
+        "held_out_reconstruction_mse_standardized": 0.5287307500839233,
+        "held_out_centered_baseline_mse": 1.0694010257720947,
+        "held_out_relative_reconstruction_error": 0.4944176574940033,
+        "labels_used_to_fit_projection": 0,
+        "anchors_used_to_fit_projection": 0
+      },
+      {
+        "fold": 1,
+        "pca_fit_owner_sha256": [
+          "0378b8026b2e6afd1775a5d0fdd12dd09c491785b626e9c20428f7dc6bd59364",
+          "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+          "1f5840bff58f298e89c4afa00cb1c18f6dafc5c4096c251d9b507604ebefe906",
+          "209e8aaca88df59064e5f28b3bcc489fee3eea9eb920889b69c03c83d52430c6",
+          "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+          "26430119e074d6f0eb5dbc7ec3e26bbc31cf18903265bb4372bd7d7104908640",
+          "39e28d7be01cdb090ede1881ce3ef704fa413271deb69d6735c1953f340d6069",
+          "524bf9ff2d5e81211dbbeff73129dbb5f3a5e5e35a64f443f53e16b1c2d471c7",
+          "5385be9420e6a70547d6bcfd0b13d60f9c0738877645afa277d09550a96b8445",
+          "57a0e46c7a45f0e831f61d9c80722fefe4b74dbcfe1d3031ff58307d481f9a5c",
+          "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+          "66fc5d28c2371592f9260305589bdc86636fdd2ebe7a7ec976eec00a23d43df4",
+          "6a81739ced0efdcd4a4feb76ea16562a20ceb53a2232a801528716c450366c9f",
+          "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+          "7d6890ecb4a2b28bbdd3b61b6711566eee84a53ab3439c40cd9b6a3a6714c681",
+          "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+          "901f61cf1a1b8754dda56466308c19fc203a1a4c0e85d1e7827849d34e2d52f0",
+          "90607b0b0cb772fcf29b0c7e0e56fa6af36da6fac0efe93b8a616b5de94a156c",
+          "955755baf54418b48ea645dcd98e7e8dcca1d1e227e9b286a9427062db304fd4",
+          "9774ed882153af3ba1a7e71c9b9249619e2b3a97ae336aad6143369802ca3522",
+          "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+          "ac4cf04844c0aa08a5e19f5f7fe984f1477943294922d6ef77bdc5b88b97160e",
+          "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+          "b637677ef5a7f0fa54d9f116ce6493cf74a4c99b8149a9c9916b96ef257535bd",
+          "b9bfb76ac8ea47eb368fc78a2f6370e4d98e79185972f63cf301ee22f12b5941",
+          "c175a683749401d5a9ecf6f1c188b64fa8a09543f41482c1e4eb2232255715d3",
+          "c9a30d44907e4a41b3a8ccf101774cd2e0804de20927bfbc9e1ccba1f2326b78",
+          "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+          "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+          "e3a00b6e0f38b1d9b5498140f14906c71e204359262a90ce7a9974d64bf081e9",
+          "efd876a04224cac781ac64bf5d6e107ded67340b7b7715fd9ca3408b240a1075",
+          "f3e351bea71150f4e8c76e2c8f0656a4e92063319d7cd39e264078c5ba9139c3"
+        ],
+        "test_sha256": [
+          "05af66ce27b83d7c10c5d33b6f1847ec042c01ed21afdcbd43a13abcefd28199",
+          "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+          "69caf59620fcd80bedcb664514730ab38f2f800da27000a8e037d7440be5dc7a",
+          "6a53e10acdcf52396ad5b1697eead32d8322c0911d792523a5c33fe5b388f4e7",
+          "8911a9219b9433091824e553a70bb80335f075fd8ac982d2062d2ecf023c16bc",
+          "a37930cf119bb691be77d8624b18333b04d9c67066a7f4627d63e3208dfa6057",
+          "bcc277cbf1a36245156b2bb9a0e0b826432390b42040c0b82201a8c21ab23ce9",
+          "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187"
+        ],
+        "train_test_owner_overlap": 0,
+        "training_rows": 768,
+        "held_out_rows": 192,
+        "input_dimensions": 22528,
+        "fitted_components": 64,
+        "training_variance_retained": {
+          "8": 0.4389001727104187,
+          "16": 0.5457262396812439,
+          "32": 0.6435747146606445,
+          "64": 0.7346787452697754
+        },
+        "rank_for_80pct_within_fitted_components": null,
+        "rank_for_90pct_within_fitted_components": null,
+        "variance_ratio": [
+          0.15125522017478943,
+          0.07970847934484482,
+          0.05950155481696129,
+          0.040639981627464294,
+          0.03341156616806984,
+          0.030014926567673683,
+          0.024231547489762306,
+          0.020136890932917595,
+          0.017620261758565903,
+          0.016892414540052414,
+          0.014977612532675266,
+          0.014087509363889694,
+          0.012115318328142166,
+          0.010763673111796379,
+          0.010624321177601814,
+          0.009744972921907902,
+          0.008967810310423374,
+          0.008143583312630653,
+          0.007905309088528156,
+          0.00722756190225482,
+          0.00704290671274066,
+          0.006602711975574493,
+          0.006234444212168455,
+          0.005800129845738411,
+          0.0057145473547279835,
+          0.0054661547765135765,
+          0.005290647502988577,
+          0.005042443983256817,
+          0.00489788269624114,
+          0.004649401176720858,
+          0.004469035193324089,
+          0.004393911920487881,
+          0.004149132873862982,
+          0.003974917810410261,
+          0.003829571884125471,
+          0.0037132955621927977,
+          0.0036684346850961447,
+          0.0035270103253424168,
+          0.0033933217637240887,
+          0.0033515493851155043,
+          0.0032813865691423416,
+          0.00317777250893414,
+          0.003102752147242427,
+          0.0029883054085075855,
+          0.002968626329675317,
+          0.0029054838232696056,
+          0.002854372840374708,
+          0.0027915702667087317,
+          0.002681522397324443,
+          0.002646645763888955,
+          0.002605122048407793,
+          0.002591772237792611,
+          0.0024954902473837137,
+          0.0024585193023085594,
+          0.0024259130004793406,
+          0.0023492544423788786,
+          0.002293084282428026,
+          0.0022534464951604605,
+          0.0022195579949766397,
+          0.002168431179597974,
+          0.0021135741844773293,
+          0.00208603055216372,
+          0.0020399459172040224,
+          0.0019982107914984226
+        ],
+        "scaler_training_raw_variance": {
+          "n": 22528,
+          "min": 7.078102171758171e-08,
+          "p05": 1.7913452924965628e-06,
+          "median": 1.0868914632760727e-05,
+          "mean": 6.662247621050953e-05,
+          "p95": 0.00021923072956561135,
+          "max": 0.004141065778199616
+        },
+        "dimensions_with_raw_variance_below_1e_8": 0,
+        "held_out_reconstruction_mse_standardized": 0.5964515209197998,
+        "held_out_centered_baseline_mse": 1.0905563831329346,
+        "held_out_relative_reconstruction_error": 0.5469240565135408,
+        "labels_used_to_fit_projection": 0,
+        "anchors_used_to_fit_projection": 0
+      },
+      {
+        "fold": 2,
+        "pca_fit_owner_sha256": [
+          "0378b8026b2e6afd1775a5d0fdd12dd09c491785b626e9c20428f7dc6bd59364",
+          "05af66ce27b83d7c10c5d33b6f1847ec042c01ed21afdcbd43a13abcefd28199",
+          "1f5840bff58f298e89c4afa00cb1c18f6dafc5c4096c251d9b507604ebefe906",
+          "209e8aaca88df59064e5f28b3bcc489fee3eea9eb920889b69c03c83d52430c6",
+          "26430119e074d6f0eb5dbc7ec3e26bbc31cf18903265bb4372bd7d7104908640",
+          "39e28d7be01cdb090ede1881ce3ef704fa413271deb69d6735c1953f340d6069",
+          "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+          "524bf9ff2d5e81211dbbeff73129dbb5f3a5e5e35a64f443f53e16b1c2d471c7",
+          "57a0e46c7a45f0e831f61d9c80722fefe4b74dbcfe1d3031ff58307d481f9a5c",
+          "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+          "66fc5d28c2371592f9260305589bdc86636fdd2ebe7a7ec976eec00a23d43df4",
+          "69caf59620fcd80bedcb664514730ab38f2f800da27000a8e037d7440be5dc7a",
+          "6a53e10acdcf52396ad5b1697eead32d8322c0911d792523a5c33fe5b388f4e7",
+          "6a81739ced0efdcd4a4feb76ea16562a20ceb53a2232a801528716c450366c9f",
+          "7d6890ecb4a2b28bbdd3b61b6711566eee84a53ab3439c40cd9b6a3a6714c681",
+          "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+          "8911a9219b9433091824e553a70bb80335f075fd8ac982d2062d2ecf023c16bc",
+          "90607b0b0cb772fcf29b0c7e0e56fa6af36da6fac0efe93b8a616b5de94a156c",
+          "955755baf54418b48ea645dcd98e7e8dcca1d1e227e9b286a9427062db304fd4",
+          "9774ed882153af3ba1a7e71c9b9249619e2b3a97ae336aad6143369802ca3522",
+          "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+          "a37930cf119bb691be77d8624b18333b04d9c67066a7f4627d63e3208dfa6057",
+          "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+          "b637677ef5a7f0fa54d9f116ce6493cf74a4c99b8149a9c9916b96ef257535bd",
+          "b9bfb76ac8ea47eb368fc78a2f6370e4d98e79185972f63cf301ee22f12b5941",
+          "bcc277cbf1a36245156b2bb9a0e0b826432390b42040c0b82201a8c21ab23ce9",
+          "c9a30d44907e4a41b3a8ccf101774cd2e0804de20927bfbc9e1ccba1f2326b78",
+          "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+          "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+          "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+          "e3a00b6e0f38b1d9b5498140f14906c71e204359262a90ce7a9974d64bf081e9",
+          "f3e351bea71150f4e8c76e2c8f0656a4e92063319d7cd39e264078c5ba9139c3"
+        ],
+        "test_sha256": [
+          "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+          "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+          "5385be9420e6a70547d6bcfd0b13d60f9c0738877645afa277d09550a96b8445",
+          "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+          "901f61cf1a1b8754dda56466308c19fc203a1a4c0e85d1e7827849d34e2d52f0",
+          "ac4cf04844c0aa08a5e19f5f7fe984f1477943294922d6ef77bdc5b88b97160e",
+          "c175a683749401d5a9ecf6f1c188b64fa8a09543f41482c1e4eb2232255715d3",
+          "efd876a04224cac781ac64bf5d6e107ded67340b7b7715fd9ca3408b240a1075"
+        ],
+        "train_test_owner_overlap": 0,
+        "training_rows": 768,
+        "held_out_rows": 192,
+        "input_dimensions": 22528,
+        "fitted_components": 64,
+        "training_variance_retained": {
+          "8": 0.4319131076335907,
+          "16": 0.5398337244987488,
+          "32": 0.6357264518737793,
+          "64": 0.7292259931564331
+        },
+        "rank_for_80pct_within_fitted_components": null,
+        "rank_for_90pct_within_fitted_components": null,
+        "variance_ratio": [
+          0.15546353161334991,
+          0.07410432398319244,
+          0.05634594336152077,
+          0.040714796632528305,
+          0.03246144950389862,
+          0.0286160409450531,
+          0.02474740520119667,
+          0.019459616392850876,
+          0.018388554453849792,
+          0.016099493950605392,
+          0.01476849801838398,
+          0.013943982310593128,
+          0.013252626173198223,
+          0.011487042531371117,
+          0.010175458155572414,
+          0.009804942645132542,
+          0.008655154146254063,
+          0.008266789838671684,
+          0.007683488540351391,
+          0.007195101585239172,
+          0.006534938234835863,
+          0.006384517531841993,
+          0.006114829331636429,
+          0.005890949629247189,
+          0.005511109251528978,
+          0.005449973978102207,
+          0.005081225652247667,
+          0.005055317655205727,
+          0.004727486986666918,
+          0.004603989887982607,
+          0.004436117596924305,
+          0.004301793407648802,
+          0.004174601286649704,
+          0.004047742113471031,
+          0.003893537912517786,
+          0.003863230347633362,
+          0.0038121789693832397,
+          0.0036506897304207087,
+          0.0036164207849651575,
+          0.0034398278221488,
+          0.003338384674862027,
+          0.0032659147400408983,
+          0.0031899309251457453,
+          0.0031637968495488167,
+          0.0030558016151189804,
+          0.002958487719297409,
+          0.0028976108878850937,
+          0.0028895309660583735,
+          0.0027884517330676317,
+          0.0027259946800768375,
+          0.0026940363459289074,
+          0.0026148869656026363,
+          0.002523741452023387,
+          0.0025176191702485085,
+          0.0024455375969409943,
+          0.002392756985500455,
+          0.002365954453125596,
+          0.0023377039469778538,
+          0.0022762278094887733,
+          0.0022337541449815035,
+          0.0021443308796733618,
+          0.00210682419128716,
+          0.0020754425786435604,
+          0.0019985088147222996
+        ],
+        "scaler_training_raw_variance": {
+          "n": 22528,
+          "min": 8.595463112467608e-08,
+          "p05": 1.7911045620934067e-06,
+          "median": 1.1138567471007966e-05,
+          "mean": 6.767018109420095e-05,
+          "p95": 0.000222104203529135,
+          "max": 0.004223725647679551
+        },
+        "dimensions_with_raw_variance_below_1e_8": 0,
+        "held_out_reconstruction_mse_standardized": 0.4788574278354645,
+        "held_out_centered_baseline_mse": 0.9569067358970642,
+        "held_out_relative_reconstruction_error": 0.5004222562887005,
+        "labels_used_to_fit_projection": 0,
+        "anchors_used_to_fit_projection": 0
+      },
+      {
+        "fold": 3,
+        "pca_fit_owner_sha256": [
+          "0378b8026b2e6afd1775a5d0fdd12dd09c491785b626e9c20428f7dc6bd59364",
+          "05af66ce27b83d7c10c5d33b6f1847ec042c01ed21afdcbd43a13abcefd28199",
+          "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+          "209e8aaca88df59064e5f28b3bcc489fee3eea9eb920889b69c03c83d52430c6",
+          "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+          "26430119e074d6f0eb5dbc7ec3e26bbc31cf18903265bb4372bd7d7104908640",
+          "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+          "524bf9ff2d5e81211dbbeff73129dbb5f3a5e5e35a64f443f53e16b1c2d471c7",
+          "5385be9420e6a70547d6bcfd0b13d60f9c0738877645afa277d09550a96b8445",
+          "57a0e46c7a45f0e831f61d9c80722fefe4b74dbcfe1d3031ff58307d481f9a5c",
+          "66fc5d28c2371592f9260305589bdc86636fdd2ebe7a7ec976eec00a23d43df4",
+          "69caf59620fcd80bedcb664514730ab38f2f800da27000a8e037d7440be5dc7a",
+          "6a53e10acdcf52396ad5b1697eead32d8322c0911d792523a5c33fe5b388f4e7",
+          "6a81739ced0efdcd4a4feb76ea16562a20ceb53a2232a801528716c450366c9f",
+          "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+          "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+          "8911a9219b9433091824e553a70bb80335f075fd8ac982d2062d2ecf023c16bc",
+          "901f61cf1a1b8754dda56466308c19fc203a1a4c0e85d1e7827849d34e2d52f0",
+          "90607b0b0cb772fcf29b0c7e0e56fa6af36da6fac0efe93b8a616b5de94a156c",
+          "9774ed882153af3ba1a7e71c9b9249619e2b3a97ae336aad6143369802ca3522",
+          "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+          "a37930cf119bb691be77d8624b18333b04d9c67066a7f4627d63e3208dfa6057",
+          "ac4cf04844c0aa08a5e19f5f7fe984f1477943294922d6ef77bdc5b88b97160e",
+          "b637677ef5a7f0fa54d9f116ce6493cf74a4c99b8149a9c9916b96ef257535bd",
+          "b9bfb76ac8ea47eb368fc78a2f6370e4d98e79185972f63cf301ee22f12b5941",
+          "bcc277cbf1a36245156b2bb9a0e0b826432390b42040c0b82201a8c21ab23ce9",
+          "c175a683749401d5a9ecf6f1c188b64fa8a09543f41482c1e4eb2232255715d3",
+          "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+          "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+          "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+          "e3a00b6e0f38b1d9b5498140f14906c71e204359262a90ce7a9974d64bf081e9",
+          "efd876a04224cac781ac64bf5d6e107ded67340b7b7715fd9ca3408b240a1075"
+        ],
+        "test_sha256": [
+          "1f5840bff58f298e89c4afa00cb1c18f6dafc5c4096c251d9b507604ebefe906",
+          "39e28d7be01cdb090ede1881ce3ef704fa413271deb69d6735c1953f340d6069",
+          "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+          "7d6890ecb4a2b28bbdd3b61b6711566eee84a53ab3439c40cd9b6a3a6714c681",
+          "955755baf54418b48ea645dcd98e7e8dcca1d1e227e9b286a9427062db304fd4",
+          "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+          "c9a30d44907e4a41b3a8ccf101774cd2e0804de20927bfbc9e1ccba1f2326b78",
+          "f3e351bea71150f4e8c76e2c8f0656a4e92063319d7cd39e264078c5ba9139c3"
+        ],
+        "train_test_owner_overlap": 0,
+        "training_rows": 768,
+        "held_out_rows": 192,
+        "input_dimensions": 22528,
+        "fitted_components": 64,
+        "training_variance_retained": {
+          "8": 0.4237061142921448,
+          "16": 0.5307309031486511,
+          "32": 0.6258479356765747,
+          "64": 0.7217777371406555
+        },
+        "rank_for_80pct_within_fitted_components": null,
+        "rank_for_90pct_within_fitted_components": null,
+        "variance_ratio": [
+          0.1377250999212265,
+          0.0901050865650177,
+          0.05202065408229828,
+          0.03751479461789131,
+          0.031971096992492676,
+          0.02968583256006241,
+          0.02418147213757038,
+          0.020502060651779175,
+          0.01978052780032158,
+          0.018434131518006325,
+          0.014274954795837402,
+          0.012312822043895721,
+          0.01180400513112545,
+          0.011267253197729588,
+          0.010200736112892628,
+          0.008950375951826572,
+          0.008464254438877106,
+          0.00797960627824068,
+          0.007182352244853973,
+          0.006857580505311489,
+          0.006648782175034285,
+          0.006494185887277126,
+          0.006054542493075132,
+          0.005875998176634312,
+          0.005714632570743561,
+          0.005490222480148077,
+          0.005139839835464954,
+          0.004947019275277853,
+          0.004856162238866091,
+          0.004653431940823793,
+          0.004394334740936756,
+          0.004364124033600092,
+          0.004275380168110132,
+          0.00414611492305994,
+          0.004096904769539833,
+          0.003950202837586403,
+          0.0038435261230915785,
+          0.0036835295613855124,
+          0.003547602565959096,
+          0.003488057991489768,
+          0.0033932889346033335,
+          0.003355412743985653,
+          0.0032531721517443657,
+          0.0032140486873686314,
+          0.003123357193544507,
+          0.003064570017158985,
+          0.0030032603535801172,
+          0.0028957861941307783,
+          0.0028703336138278246,
+          0.00282712047919631,
+          0.0027778649237006903,
+          0.0026934000197798014,
+          0.002660322468727827,
+          0.0025943019427359104,
+          0.002554415026679635,
+          0.0024306238628923893,
+          0.002401922130957246,
+          0.002343009924516082,
+          0.0023188975173979998,
+          0.0023017453495413065,
+          0.002281524008139968,
+          0.0022377942223101854,
+          0.002161127282306552,
+          0.0021411345805972815
+        ],
+        "scaler_training_raw_variance": {
+          "n": 22528,
+          "min": 7.428635698109652e-08,
+          "p05": 1.6582950863337787e-06,
+          "median": 1.0634822709826517e-05,
+          "mean": 6.610434715505468e-05,
+          "p95": 0.0002181774315537842,
+          "max": 0.004320078024553858
+        },
+        "dimensions_with_raw_variance_below_1e_8": 0,
+        "held_out_reconstruction_mse_standardized": 0.6341496706008911,
+        "held_out_centered_baseline_mse": 1.211113691329956,
+        "held_out_relative_reconstruction_error": 0.5236087042369363,
+        "labels_used_to_fit_projection": 0,
+        "anchors_used_to_fit_projection": 0
+      },
+      {
+        "fold": 4,
+        "pca_fit_owner_sha256": [
+          "0378b8026b2e6afd1775a5d0fdd12dd09c491785b626e9c20428f7dc6bd59364",
+          "05af66ce27b83d7c10c5d33b6f1847ec042c01ed21afdcbd43a13abcefd28199",
+          "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+          "1f5840bff58f298e89c4afa00cb1c18f6dafc5c4096c251d9b507604ebefe906",
+          "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+          "26430119e074d6f0eb5dbc7ec3e26bbc31cf18903265bb4372bd7d7104908640",
+          "39e28d7be01cdb090ede1881ce3ef704fa413271deb69d6735c1953f340d6069",
+          "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+          "5385be9420e6a70547d6bcfd0b13d60f9c0738877645afa277d09550a96b8445",
+          "57a0e46c7a45f0e831f61d9c80722fefe4b74dbcfe1d3031ff58307d481f9a5c",
+          "5a6f6a13ef88191ec1d9a2a303f1be74d16aa3381a57aaadba8850aac715ff10",
+          "69caf59620fcd80bedcb664514730ab38f2f800da27000a8e037d7440be5dc7a",
+          "6a53e10acdcf52396ad5b1697eead32d8322c0911d792523a5c33fe5b388f4e7",
+          "6a81739ced0efdcd4a4feb76ea16562a20ceb53a2232a801528716c450366c9f",
+          "6a9fa7dd2e6db4cbe57f3c96a6cb256f23c04aa4e6fd44622fdf5de662cc0649",
+          "7d6890ecb4a2b28bbdd3b61b6711566eee84a53ab3439c40cd9b6a3a6714c681",
+          "8911a9219b9433091824e553a70bb80335f075fd8ac982d2062d2ecf023c16bc",
+          "901f61cf1a1b8754dda56466308c19fc203a1a4c0e85d1e7827849d34e2d52f0",
+          "90607b0b0cb772fcf29b0c7e0e56fa6af36da6fac0efe93b8a616b5de94a156c",
+          "955755baf54418b48ea645dcd98e7e8dcca1d1e227e9b286a9427062db304fd4",
+          "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+          "a37930cf119bb691be77d8624b18333b04d9c67066a7f4627d63e3208dfa6057",
+          "ac4cf04844c0aa08a5e19f5f7fe984f1477943294922d6ef77bdc5b88b97160e",
+          "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+          "b9bfb76ac8ea47eb368fc78a2f6370e4d98e79185972f63cf301ee22f12b5941",
+          "bcc277cbf1a36245156b2bb9a0e0b826432390b42040c0b82201a8c21ab23ce9",
+          "c175a683749401d5a9ecf6f1c188b64fa8a09543f41482c1e4eb2232255715d3",
+          "c9a30d44907e4a41b3a8ccf101774cd2e0804de20927bfbc9e1ccba1f2326b78",
+          "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+          "deeeee54539fb894b17447296bd7f0807b9dc662bad9af4dcd27f4fbdd677187",
+          "efd876a04224cac781ac64bf5d6e107ded67340b7b7715fd9ca3408b240a1075",
+          "f3e351bea71150f4e8c76e2c8f0656a4e92063319d7cd39e264078c5ba9139c3"
+        ],
+        "test_sha256": [
+          "209e8aaca88df59064e5f28b3bcc489fee3eea9eb920889b69c03c83d52430c6",
+          "524bf9ff2d5e81211dbbeff73129dbb5f3a5e5e35a64f443f53e16b1c2d471c7",
+          "66fc5d28c2371592f9260305589bdc86636fdd2ebe7a7ec976eec00a23d43df4",
+          "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+          "9774ed882153af3ba1a7e71c9b9249619e2b3a97ae336aad6143369802ca3522",
+          "b637677ef5a7f0fa54d9f116ce6493cf74a4c99b8149a9c9916b96ef257535bd",
+          "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+          "e3a00b6e0f38b1d9b5498140f14906c71e204359262a90ce7a9974d64bf081e9"
+        ],
+        "train_test_owner_overlap": 0,
+        "training_rows": 768,
+        "held_out_rows": 192,
+        "input_dimensions": 22528,
+        "fitted_components": 64,
+        "training_variance_retained": {
+          "8": 0.4176980257034302,
+          "16": 0.5216581225395203,
+          "32": 0.6189062595367432,
+          "64": 0.7115715742111206
+        },
+        "rank_for_80pct_within_fitted_components": null,
+        "rank_for_90pct_within_fitted_components": null,
+        "variance_ratio": [
+          0.14484409987926483,
+          0.08155549317598343,
+          0.053929220885038376,
+          0.03811798244714737,
+          0.03212534636259079,
+          0.023937048390507698,
+          0.023385684937238693,
+          0.01980312541127205,
+          0.018853766843676567,
+          0.016665058210492134,
+          0.014848047867417336,
+          0.013191853649914265,
+          0.011602293699979782,
+          0.010098432190716267,
+          0.009624706581234932,
+          0.009075955487787724,
+          0.008689322508871555,
+          0.00831392128020525,
+          0.008066377602517605,
+          0.007563627790659666,
+          0.0067779310047626495,
+          0.006378381513059139,
+          0.006229846738278866,
+          0.00586434081196785,
+          0.005564827471971512,
+          0.005407855845987797,
+          0.005087281111627817,
+          0.004989148583263159,
+          0.004728739149868488,
+          0.0046083563938736916,
+          0.004580377135425806,
+          0.0043977838940918446,
+          0.004254222381860018,
+          0.00413941778242588,
+          0.003945225849747658,
+          0.003837785916402936,
+          0.0037753707729279995,
+          0.003568696090951562,
+          0.003469314659014344,
+          0.003381151705980301,
+          0.003278159536421299,
+          0.0032248739153146744,
+          0.003100514179095626,
+          0.0030476206447929144,
+          0.0030022787395864725,
+          0.0029358386527746916,
+          0.0028842345345765352,
+          0.0028296103700995445,
+          0.0027420225087553263,
+          0.002646936336532235,
+          0.002591620199382305,
+          0.002582290442660451,
+          0.002512910170480609,
+          0.002497663488611579,
+          0.002474370179697871,
+          0.002380299847573042,
+          0.002366152359172702,
+          0.002305298577994108,
+          0.0022764266468584538,
+          0.002240879461169243,
+          0.0021669610869139433,
+          0.002128263469785452,
+          0.0020533010829240084,
+          0.0020256012212485075
+        ],
+        "scaler_training_raw_variance": {
+          "n": 22528,
+          "min": 7.802619837900568e-08,
+          "p05": 1.8598120691651289e-06,
+          "median": 1.1255612378473383e-05,
+          "mean": 6.735930617282497e-05,
+          "p95": 0.00022582916412208697,
+          "max": 0.0040067397306226
+        },
+        "dimensions_with_raw_variance_below_1e_8": 0,
+        "held_out_reconstruction_mse_standardized": 0.4171361029148102,
+        "held_out_centered_baseline_mse": 0.9750389456748962,
+        "held_out_relative_reconstruction_error": 0.4278148116699888,
+        "labels_used_to_fit_projection": 0,
+        "anchors_used_to_fit_projection": 0
+      }
+    ],
+    "limitations": [
+      "Retained variance and reconstruction error do not measure violation separability or prove visual detail is adequate.",
+      "PCA is fit on uniformly sampled original training windows, not the historical supervised-point sample distribution.",
+      "A null variance-rank means the requested threshold was not reached within fitted components; it is not the full data rank.",
+      "High adjacent or cross-view cosine does not prove the views or actions are redundant.",
+      "Point-to-sample gaps audit timestamp coverage only; brief actions between samples can still be missed.",
+      "The audited folds are repeatedly inspected development folds, not an independent test."
+    ]
+  },
+  "public_data_audit": {
+    "path": "/content/datathon_ml_workspace/reference/public_video_data_research.json",
+    "sha256": "8153bccdab751c411633b023b2af1d19c2e7a479ac18b1ed37b30179e53548bc",
+    "research": {
+      "schema_version": 1,
+      "researched_on": "2026-10-18",
+      "scope": "Public action video data for visual cash-handling and procedural-compliance transfer learning. Only generic research queries and public metadata were used; no private video, frame, audio, or description was uploaded.",
+      "conclusion": {
+        "direct_binary_compliance_augmentation_candidates": 0,
+        "new_video_files_downloaded": 0,
+        "reason": "The closest verified releases supervise visible atomic actions, products, or generic anomalies. None establishes this competition's bank-procedure violation and timestamp ground truth. Their normal, take, phone, theft, or counting-money labels must not be renamed normal/violation.",
+        "immediate_experiment": "Use an existing Kinetics-400-pretrained X3D checkpoint as a frozen local motion encoder, including a bounded comparison of all 400 action logits. Fit classifier, optional PCA, and thresholds only inside original training folds. This obtains relevant cash-action transfer without downloading unrelated videos.",
+        "next_external_data_candidate": "CAP is the best permissively licensed action-supervision candidate for cabinet/drawer, counter pickup/setdown, and handover perception. A class-balanced, inspected subset would be auxiliary action training only; its improvement on private compliance validation must be measured.",
+        "highest_value_data": "Verified labels for existing custom scenes, with the simultaneous MOV/MP4 views grouped by underlying scene and an entire new filming session reserved for independent evaluation."
+      },
+      "candidates": [
+        {
+          "name": "Consented Activities of People (CAP)",
+          "rank_for_auxiliary_supervision": 1,
+          "official_sources": [
+            "https://visym.github.io/cap/",
+            "https://github.com/visym/cap",
+            "https://raw.githubusercontent.com/visym/cap/main/classification/cap_labels.csv",
+            "https://registry.opendata.aws/visym-cap/"
+          ],
+          "matching_labels": [
+            "person_opens_cabinet",
+            "person_closes_cabinet",
+            "person_opens_kitchen_drawer",
+            "person_closes_kitchen_drawer",
+            "person_picks_up_object_from_countertop",
+            "person_puts_down_object_on_countertop",
+            "person_transfers_object_to_person",
+            "person_puts_phone_into_pocket",
+            "person_takes_phone_from_pocket"
+          ],
+          "annotation": "Actor bounding-box tracks and action start/end frames. Deliberately independent atomic activities; a security-style third-person view recorded with handheld/mobile cameras.",
+          "data_license": "CC BY 4.0; consented primary participants and blurred non-consenting bystanders.",
+          "access": "Public AWS bucket requires no account. A live XML listing of train/ contained only two monolithic gzip archives, not class-selective video objects. The classification archives contain training/validation sets, not training clips alone.",
+          "verified_archive_sizes_bytes": {
+            "cap_classification_clip.tar.gz": 308736485473,
+            "cap_classification_pad.tar.gz": 414871950280
+          },
+          "smaller_release": "The official 0.9 GB handheld detection validation release is a different evaluation package; needed class coverage and sample quality have not been verified.",
+          "direct_binary_target_eligible": false,
+          "download_now": false,
+          "limitation_and_inference": "Strongest auxiliary action fit, but household props and independent actions do not demonstrate cash custody, simultaneous phone/cash use, omitted checks, or a violation. Avoid a 308.7 GB (approximately 288 GiB) download before a bounded target-domain transfer experiment."
+        },
+        {
+          "name": "NTU RGB+D 120",
+          "rank_for_auxiliary_supervision": 2,
+          "official_sources": [
+            "https://rose1.ntu.edu.sg/dataset/actionRecognition/"
+          ],
+          "matching_labels": [
+            "A74 counting money",
+            "A28 phone call",
+            "A29 play with phone/tablet",
+            "A56 giving object",
+            "A118 exchange things"
+          ],
+          "class_identifier_note": "NTU uses publisher class identifier A74 (often filename A074), the 74th action. This is separate from Kinetics-400 zero-based logit index 74; do not reuse one dataset's integer encoding for the other.",
+          "annotation": "114,480 staged action samples across 120 classes, three concurrently captured Kinect views; action class, RGB, depth, infrared and body skeletons.",
+          "data_license": "Academic research only for educational/research institutes, non-commercial. The publisher requires express permission for redistribution, derivative/new datasets, and commercial use.",
+          "access": "Registration, release agreement and publisher approval. RGB storage totals 136+124 GB; counting money belongs to the additional 60 classes.",
+          "direct_binary_target_eligible": false,
+          "download_now": false,
+          "limitation_and_inference": "Closest explicit money-counting action label found, but a staged generic gesture does not encode banking procedure. Do not mirror restricted clips or create a relabeled derivative release. A separately approved auxiliary study could test RGB transfer."
+        },
+        {
+          "name": "People in Public (PIP-175k)",
+          "rank_for_auxiliary_supervision": 3,
+          "official_sources": [
+            "https://visym.github.io/collector/pip_175k/"
+          ],
+          "matching_labels": [
+            "person_texting_on_phone",
+            "person_transfers_object_to_person",
+            "person_picks_up_object",
+            "person_sets_down_object",
+            "person_abandons_package"
+          ],
+          "annotation": "184,379 clips, 66 activities. Actor-centered, temporally clipped tracks, resized to at most 512x512. At least two human reviewers; handheld camera movement and temporal padding.",
+          "data_license": "CC BY 4.0 with consented primary participants.",
+          "access": "54.02 GB archive. The 87 MB training random-sample link is a visualization, not a verified reusable class-balanced video subset.",
+          "important_source_detail": "The publisher explicitly says the cashier-purchase class was temporarily removed. Object props are collector-selected; money is not guaranteed.",
+          "direct_binary_target_eligible": false,
+          "download_now": false,
+          "limitation_and_inference": "Useful phone/handover perception supervision, but neither purchase nor abandonment is equivalent to this competition's compliance label. Actor crops may hide the second person and workstation context."
+        },
+        {
+          "name": "RetailAction",
+          "rank_for_auxiliary_supervision": 4,
+          "official_sources": [
+            "https://huggingface.co/datasets/standard-cognition/RetailAction",
+            "https://huggingface.co/datasets/standard-cognition/RetailAction/blob/main/LICENSE",
+            "https://huggingface.co/datasets/standard-cognition/RetailAction/tree/main/data",
+            "https://openaccess.thecvf.com/content/ICCV2025W/RetailVision/html/Mazzini_RetailAction_Dataset_for_Multi-View_Spatio-Temporal_Localization_of_Human-Object_Interactions_in_ICCVW_2025_paper.html"
+          ],
+          "matching_labels": [
+            "take",
+            "put",
+            "touch"
+          ],
+          "annotation": "21,000 paired ceiling-camera retail samples across ten actual stores, with temporal intervals and interaction points; official splits separate shopper identities. Motion-aware sampling retains at most 32 frames per view.",
+          "data_license": "Custom Standard.AI Dataset License, not an unrestricted open-source license. Attribution/license/notice and deidentification requirements apply, including to distributed AI models; revenue over USD10,000 triggers a separately requested license.",
+          "access": "Public Hugging Face archives: train 26.1 GB, validation 1.94 GB, test 3.84 GB; total 31.9 GB.",
+          "direct_binary_target_eligible": false,
+          "download_now": false,
+          "limitation_and_inference": "Good real CCTV geometry and localization, but labels concern customer-product interactions, overwhelmingly take. No cash-counting, custody, or procedural-compliance targets. Sparse irregular frames need timestamp-aware decoding rather than assuming the MP4 rate equals real action speed."
+        },
+        {
+          "name": "Kinetics-400",
+          "rank_for_auxiliary_supervision": 5,
+          "official_sources": [
+            "https://research.google/pubs/the-kinetics-human-action-video-dataset/",
+            "https://github.com/google-deepmind/kinetics-i3d/blob/master/data/label_map.txt",
+            "https://github.com/cvdfoundation/kinetics-dataset"
+          ],
+          "matching_labels": [
+            "counting money",
+            "texting",
+            "using computer",
+            "writing",
+            "tossing coin"
+          ],
+          "annotation": "Human-labeled approximately ten-second single-action clips drawn from distinct YouTube source videos.",
+          "data_license": "Underlying source-video rights are separate from the annotation and downloader/model code licenses. A code license is not permission to redistribute the source videos.",
+          "access": "Official CVDF split archives and annotation CSVs are available; no private compliance labels are supplied.",
+          "direct_binary_target_eligible": false,
+          "download_now": false,
+          "limitation_and_inference": "Relevant action knowledge is already present in K400-pretrained X3D. Prefer evaluating its existing frozen weights over collecting another cash-counting subset and pretending those clips establish compliant or violating transactions."
+        }
+      ],
+      "pretrained_x3d_provenance": {
+        "official_tutorial": "https://pytorch.org/hub/facebookresearch_pytorchvideo_x3d/",
+        "official_model_zoo": "https://pytorchvideo.readthedocs.io/en/latest/model_zoo.html",
+        "official_loader": "https://github.com/facebookresearch/pytorchvideo/blob/main/pytorchvideo/models/hub/x3d.py",
+        "official_checkpoint_root": "https://dl.fbaipublicfiles.com/pytorchvideo/model_zoo/kinetics/",
+        "class_mapping_url": "https://dl.fbaipublicfiles.com/pyslowfast/dataset/class_names/kinetics_classnames.json",
+        "class_mapping_bytes": 10326,
+        "class_mapping_sha256": "00c6a6afcc5a121287419e8ae4075bd591b0bb816d04fb7720d526f04024e1a2",
+        "class_count": 400,
+        "id_range": [
+          0,
+          399
+        ],
+        "selected_public_label_ids_for_provenance_only": {
+          "counting money": 74,
+          "texting": 355,
+          "tossing coin": 361,
+          "using computer": 373,
+          "writing": 396
+        },
+        "mapping_note": "Map supplied zero-based integer values to class names; some keys contain literal double quotes. The official tutorial removes them. Do not infer IDs from a separately sorted taxonomy. K400 index 74 and NTU class A74 belong to different taxonomies and indexing conventions.",
+        "licensing_basis": "Official PyTorchVideo documentation provides downloadable pretrained checkpoints and a local inference tutorial; the repository is Apache 2.0. No separate weight-specific terms were identified in the examined primary pages. No underlying training-video rights are implied.",
+        "code_license_url": "https://github.com/facebookresearch/pytorchvideo/blob/main/LICENSE",
+        "inference_constraint": "All private-video forward passes remain native/local in Colab. Do not display semantic predictions or sample content in a hosted assistant. Numeric arrays can train the private classifier.",
+        "experimental_interpretation": "Counting-money logits are an auxiliary representation, not a violation score. Freeze the representation choice and any class subset before reading outer-fold outcomes; preferably compare the complete 400-vector."
+      },
+      "excluded_families": [
+        {
+          "name": "UCF-Crime",
+          "official_source": "https://www.crcv.ucf.edu/research/real-world-anomaly-detection-in-surveillance-videos/",
+          "reason": "Crime/anomaly labels such as robbery and shoplifting, and normal meaning no crime, differ from teller procedure compliance. Generic normal footage can contain phone use or cash handling that is labeled differently under this task. Do not merge binary labels."
+        },
+        {
+          "name": "MECCANO",
+          "official_source": "https://github.com/fpv-iplab/MECCANO",
+          "reason": "Egocentric toy assembly and industrial-like hand-object actions, without cash-procedure supervision. Less direct than an already pretrained video backbone."
+        },
+        {
+          "name": "AVA",
+          "official_source": "https://sites.research.google/gr/ava/download/",
+          "reason": "Movie-person atomic actions have phone, giving and taking labels, but substantial domain shift and source-video rights are separate. No procedural compliance supervision."
+        },
+        {
+          "name": "Driver anomaly data",
+          "official_source": "https://www.ce.cit.tum.de/en/mmk/dad/",
+          "reason": "Driver/simulator distractions and infrared/depth data do not establish teller compliance, even when a phone action is visually present."
+        },
+        {
+          "name": "Stock or social-media cash clips",
+          "reason": "Search titles and footage licenses do not establish event timestamps, complete procedure, or correct target labels. Attractive closeups, edits, watermarks and unverified/AI-generated content can produce shortcuts rather than improve CCTV generalization."
+        }
+      ],
+      "external_clip_admission_policy": [
+        "Preserve the original visible-action annotation. Never convert an action, crime, abnormality, or stock title directly into a target compliance label.",
+        "Confirm the actual data license and source access, and record source URL, version, checksum, actor/session/view grouping, action interval, and preprocessing.",
+        "Review each accepted clip for visible relevant action, complete temporal context, representative camera scale, no synthetic/edited shortcuts, and reliable annotation; remove audio from training derivatives.",
+        "Keep all views and derivatives of an underlying source together. Deduplicate against private recordings and evaluation sources before fitting.",
+        "Train external atomic-action perception separately or as auxiliary supervision. Fit the compliance head on verified target labels and assess any gain with the fixed target-domain folds.",
+        "Reserve an untouched, separately filmed target-domain test. Repeatedly inspected development folds cannot certify 87% generalization."
+      ],
+      "audit": {
+        "memory_recall_id": "89e52268-acf7-49da-8042-4b8ec0369e76",
+        "file_memory_gate": "No file memories or matching prior sessions. file_history was unavailable; search_sessions used as fallback.",
+        "source_type": "Publisher websites, official repositories, dataset-host license/files, research-paper publisher pages, and a live public S3 metadata listing.",
+        "private_content_disclosed": false,
+        "downloaded_content": "Public class-map metadata and transient public S3 directory XML only. No external videos or frames downloaded."
+      }
+    }
+  },
+  "external_training_videos_added": 0,
+  "target_accuracy": 0.87,
+  "target_achieved_on_development": false,
+  "independent_87_percent_accuracy_established": false,
+  "case_ready": false,
+  "limitations": [
+    "Repeated development comparisons on the same 40 original recordings; no independent test.",
+    "The primary inner-selected policy differs from selecting the highest outer-scoring arm after evaluation.",
+    "Recording-level heads cannot supply timestamp recall; unavailable is not a measured zero.",
+    "PCA retained variance is not violation-class separability or proof of preprocessing adequacy.",
+    "Public datasets require domain, label, license and source-overlap review before training."
+  ]
+}

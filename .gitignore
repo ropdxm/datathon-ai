@@ -22,6 +22,10 @@
 !/artifacts/custom_experiment_summary.json
 !/artifacts/custom_model_comparison.csv
 !/artifacts/custom_model_comparison.png
+!/artifacts/boosted_experiment_summary.json
+!/artifacts/boosted_model_comparison.csv
+!/artifacts/boosted_model_comparison.png
+!/artifacts/preprocessing_audit.json
 
 # Recordings, checkpoints, trained heads, feature caches and export bundles.
 *.mov

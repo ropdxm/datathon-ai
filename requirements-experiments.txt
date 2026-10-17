@@ -4,3 +4,5 @@ fvcore>=0.1.5.post20221221
 iopath>=0.1.10,<0.2
 # Numeric experiment-comparison charts; unused by inference.
 matplotlib>=3.8,<4
+# Optional regularized gradient-boosted tree comparisons on frozen visual features.
+catboost==1.2.10

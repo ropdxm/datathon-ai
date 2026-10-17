@@ -1,5 +1,41 @@
 # Datathon model experiments
 
+## CatBoost, PCA and public data: 18 October 2026
+
+The completed CatBoost experiment scored **55.0% accuracy (22/40)** and **54.64% balanced accuracy** for its primary inner-selected policy. Violation recall is 61.90%, specificity 47.37%, and the confusion matrix is `[[9, 10], [8, 13]]` with true rows/predicted columns ordered normal, violation. This means eight missed violations and ten false alarms. It does not improve the existing **62.5% CLIP semantic temporal model**, and the requested 87% target remains unmet. All results on these repeatedly inspected 40 recordings remain development evidence.
+
+The four feature arms and three tree configurations were declared before reading their outer results. The primary policy selects among all twelve candidates using three inner grouped folds and balanced accuracy; each feature arm also has its own inner-selected tree setting and threshold for the paired diagnostic below.
+
+| CatBoost policy / feature arm | Accuracy | Balanced accuracy | Violation recall | Specificity |
+|---|---:|---:|---:|---:|
+| Primary: inner-select feature arm and tree setting | 55.0% | 54.64% | 61.90% | 47.37% |
+| Semantic temporal summaries | 45.0% | 45.36% | — | — |
+| CLIP summaries, all four views | 57.5% | 57.52% | 57.14% | 57.89% |
+| All-view CLIP, 16-component PCA | 50.0% | 48.37% | 80.95% | 15.79% |
+| CLIP summaries, full frame only | 42.5% | 43.48% | — | — |
+
+Dashes leave metrics to the complete numeric report rather than infer them from rounded aggregate values. The all-view PCA arm missed fewer violations but classified 16/19 normal recordings as violations. High recall at that operating point is not sufficient for the case's false-alarm requirement. The apparent all-view/full-frame difference is a development comparison; it does not establish that a particular crop causes better generalization.
+
+`datathon_ml/boosted.py` uses pinned CatBoost 1.2.10 with 160 iterations, learning rate 0.03, depth/L2 settings `(2, 10)`, `(3, 10)` and `(3, 30)`, CPU execution and two threads. It uses one row per recording and class weights fitted from the current training labels. Raw arms pass their summaries directly to the trees. Only the PCA arm standardizes and fits PCA, using at most 16 components and only the current training recordings. No outer-fold early stopping or score calibration is used. Original SHA-to-outer-fold assignments are restored exactly; all derived views stay with their source. Feature transforms and selection never use held-out labels or supplied event points.
+
+These are whole-recording classifiers. They do not return an event timestamp, and they do not learn that every unmarked span of a positive recording is normal. The semantic arm summarizes the previously defined visual-state/time-order features; the other arms pool frozen CLIP image embeddings from either all four views or the letterboxed full frame. Filename, recording ID and annotation timestamps are not predictor columns.
+
+The separate numeric preprocessing audit checks cache identity, timestamp coverage and training-owned feature variance. All 22 supplied positive event points coincide exactly with cached samples. Typical sampling gaps are 0.5 seconds and the maximum gap is 0.5333 seconds. This rules out a cache-to-anchor timing mismatch at those points, but does not validate the event labels or guarantee that a small cash detail remains visible. Training-only PCA of uniformly sampled window features retains **61.89–64.36% of variance in 32 components** across outer folds. This audit is separate from the 16-component recording-level CatBoost arm. Variance retention measures reconstruction of feature variation, not retained class information, so it cannot predict or certify classification accuracy.
+
+Pretraining is already used throughout this repository: DINOv2 and CLIP supply appearance representations, X3D supplies short-motion representations, and the local Qwen branches were tested for ordered visual context. Gradient boosting is a reasonable small-head comparison for these numeric descriptors, but the learner cannot recover a procedural fact absent from its features or resolve an incorrect label. Neither an encoder's published benchmark nor a high PCA variance ratio is evidence of an 87% compliance model.
+
+The public-data search found useful auxiliary action supervision, but no release with verified labels for this banking procedure. [CAP](https://visym.github.io/cap/) offers CC BY 4.0 cabinet/drawer, counter pickup/setdown and handover annotations; its classification archives combine training/validation data and weigh 308.7 GB and 414.9 GB. [NTU120](https://rose1.ntu.edu.sg/dataset/actionRecognition/) includes counting money, but requires approval and restricts derivative datasets. [RetailAction](https://huggingface.co/datasets/standard-cognition/RetailAction) provides real paired CCTV views labeled take/put/touch under custom terms. Those actions cannot safely become normal/violation labels. Existing [Kinetics-pretrained X3D weights](https://pytorch.org/hub/facebookresearch_pytorchvideo_x3d/) already incorporate counting-money action supervision, allowing a bounded local transfer experiment without downloading more footage. NTU class A74/A074 and Kinetics' zero-based logit index 74 are distinct taxonomy identifiers. No external raw videos were added. Full sources, access, license qualifications and class-map provenance are in the [public-data audit](reference/public_video_data_research.json).
+
+The clean [CatBoost/PCA notebook](datathon_boosted.ipynb) embeds matching source and uses existing private feature caches. Its measured [summary](artifacts/boosted_experiment_summary.json), [table](artifacts/boosted_model_comparison.csv), [chart](artifacts/boosted_model_comparison.png) and [preprocessing audit](artifacts/preprocessing_audit.json) retain the completed comparisons. At this benchmark snapshot, all **145 regression tests passed locally (42.854 seconds) and in Colab (126.228 seconds)**; passing implementation tests does not establish model quality. Reproduce the fixed comparison with:
+
+```bash
+python boosted_experiment.py compare --original-manifest runs/clip_b32/manifest.json --clip-features runs/clip_b32/features --semantic-features runs/semantic_temporal_v1/semantic_clip/features --folds-from reference/clip_baseline_cv.json --output-dir runs/boosted_v1 --fit-final
+```
+
+The best next step remains verified **violation + timestamp** labels for the custom scenes and matched normal actions, with paired camera views grouped together. Improve task-specific action perception, then train the small temporal head and explicit procedure rules. Reserve entire new filming sessions and unseen scenes for final evaluation. The following sections preserve historical experiments and their test counts.
+
+The separate X3D-S transfer comparison retained all 400 Kinetics action scores, including pretrained cash-counting actions, and fitted the same three fixed CatBoost settings. It scored **42.5% accuracy**, **43.73% balanced accuracy**, 19.05% violation recall and 68.42% specificity (17 misses, 6 false alarms). It supplies no timestamps and is not selected. All five tree artifacts and the X3D artifact were fitted and exported; fresh-process feature-only prediction passed offline. Training and prediction guards observed zero Python network attempts. These feature-cache prediction checks are not uncached video-latency measurements.
+
 ## Custom footage: 18 October 2026
 
 The new `open/customVideos` batch contains 39 views (21 iPhone MOV and 18 Samsung MP4), recorded simultaneously from two positions. These are paired views of fewer underlying scenes, not 39 independent sessions. Exact pair correspondences are unknown; all custom views share one conservative filming group. Their workbook's first three columns exactly reproduce the original 42 X-* labels and reference none of the custom filenames. Its added D/E columns contain 84 unverified notes about the original 40 sources. No original labels or notes are attached to new footage, and the provided workbook is preserved.
