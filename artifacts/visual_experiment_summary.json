@@ -1,0 +1,266 @@
+{
+  "evaluation": "previously_exposed_mixed_development_partition_after_visual_finetuning",
+  "independent_test": false,
+  "metrics": {
+    "n": 12,
+    "accuracy": 0.5,
+    "balanced_accuracy": 0.5,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "specificity": 0.3333333333333333,
+    "f1": 0.5714285714285714,
+    "f2": 0.625,
+    "average_precision": 0.4981481481481481,
+    "roc_auc": 0.44444444444444453,
+    "confusion_matrix": [
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "confusion_order": [
+      [
+        "TN",
+        "FP"
+      ],
+      [
+        "FN",
+        "TP"
+      ]
+    ],
+    "localization": {
+      "annotated_points": 6,
+      "points_with_any_prediction": 4,
+      "median_error_sec_conditional": 3.5,
+      "p90_error_sec_conditional": 5.7,
+      "point_recall_at_tolerance": {
+        "1s": 0.16666666666666666,
+        "2s": 0.3333333333333333,
+        "5s": 0.5
+      },
+      "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+    },
+    "mean_group_accuracy": 0.5333333333333334,
+    "groups": 10,
+    "accuracy_wilson_95pct": [
+      0.2537815976337061,
+      0.7462184023662939
+    ],
+    "confidence_interval_note": "Descriptive recording-level interval; related recording groups reduce effective sample size."
+  },
+  "domain_metrics": {
+    "custom": {
+      "n": 4,
+      "accuracy": 0.5,
+      "balanced_accuracy": 0.5,
+      "precision": 0.5,
+      "recall": 0.5,
+      "specificity": 0.5,
+      "f1": 0.5,
+      "f2": 0.5,
+      "average_precision": 0.75,
+      "roc_auc": 0.5,
+      "confusion_matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "confusion_order": [
+        [
+          "TN",
+          "FP"
+        ],
+        [
+          "FN",
+          "TP"
+        ]
+      ],
+      "localization": {
+        "annotated_points": 2,
+        "points_with_any_prediction": 1,
+        "median_error_sec_conditional": 0.0,
+        "p90_error_sec_conditional": 0.0,
+        "point_recall_at_tolerance": {
+          "1s": 0.5,
+          "2s": 0.5,
+          "5s": 0.5
+        },
+        "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+      },
+      "mean_group_accuracy": 0.6666666666666666,
+      "groups": 2,
+      "accuracy_wilson_95pct": [
+        0.15003898915214947,
+        0.8499610108478506
+      ],
+      "confidence_interval_note": "Descriptive recording-level interval; related recording groups reduce effective sample size."
+    },
+    "original": {
+      "n": 8,
+      "accuracy": 0.5,
+      "balanced_accuracy": 0.5,
+      "precision": 0.5,
+      "recall": 0.75,
+      "specificity": 0.25,
+      "f1": 0.6,
+      "f2": 0.6818181818181818,
+      "average_precision": 0.47619047619047616,
+      "roc_auc": 0.375,
+      "confusion_matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "confusion_order": [
+        [
+          "TN",
+          "FP"
+        ],
+        [
+          "FN",
+          "TP"
+        ]
+      ],
+      "localization": {
+        "annotated_points": 4,
+        "points_with_any_prediction": 3,
+        "median_error_sec_conditional": 5.0,
+        "p90_error_sec_conditional": 5.8,
+        "point_recall_at_tolerance": {
+          "1s": 0.0,
+          "2s": 0.25,
+          "5s": 0.5
+        },
+        "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+      },
+      "mean_group_accuracy": 0.5,
+      "groups": 8,
+      "accuracy_wilson_95pct": [
+        0.21521606221387757,
+        0.7847839377861224
+      ],
+      "confidence_interval_note": "Descriptive recording-level interval; related recording groups reduce effective sample size."
+    }
+  },
+  "validation_metrics": {
+    "n": 12,
+    "accuracy": 0.75,
+    "balanced_accuracy": 0.75,
+    "precision": 0.8,
+    "recall": 0.6666666666666666,
+    "specificity": 0.8333333333333334,
+    "f1": 0.7272727272727273,
+    "f2": 0.6896551724137931,
+    "average_precision": 0.825925925925926,
+    "roc_auc": 0.75,
+    "confusion_matrix": [
+      [
+        5,
+        1
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "confusion_order": [
+      [
+        "TN",
+        "FP"
+      ],
+      [
+        "FN",
+        "TP"
+      ]
+    ],
+    "localization": {
+      "annotated_points": 6,
+      "points_with_any_prediction": 4,
+      "median_error_sec_conditional": 1.5,
+      "p90_error_sec_conditional": 3.4000000000000004,
+      "point_recall_at_tolerance": {
+        "1s": 0.3333333333333333,
+        "2s": 0.5,
+        "5s": 0.6666666666666666
+      },
+      "note": "Unofficial point diagnostics; error conditional on a detected event. Missing detections count against recall. Unmarked true events are unknown, so event precision and interval IoU are not identifiable."
+    },
+    "mean_group_accuracy": 0.75,
+    "groups": 12,
+    "accuracy_wilson_95pct": [
+      0.46769466506643426,
+      0.9110583316059453
+    ],
+    "confidence_interval_note": "Descriptive recording-level interval; related recording groups reduce effective sample size."
+  },
+  "selected_candidate": {
+    "name": "clip_last1_lr1e5_epoch8",
+    "last_blocks": 1,
+    "learning_rate": 1e-05,
+    "epochs": 8
+  },
+  "threshold": 0.5504589541043565,
+  "candidate_count": 2,
+  "training_recordings": 34,
+  "validation_recordings": 12,
+  "previously_exposed_development_recordings": 12,
+  "source_sha256": {
+    "finetune_visual": "a1bff5b688873ce11b8ee668fb9648d92f5276b082d29a5361f1d181777dd7ce",
+    "clip_features": "2c46c9de2c92c90129949fb9e51fe7a4e98a58a23aa6e783b644a8b3004f05c2",
+    "reviewed_models": "03fab2030e97f3a197dbd0a16db314ca6ec96b2228407d4ad056d986ec898a12",
+    "scene_temporal": "18916f76767cbaa803b5e5b45564ce1f56456373f6ae70e2f1942e3adf2fe688",
+    "model": "9eaa61e54faaf405a4b0ea61a5c7a7de3d3245ddafae7c0de930ce05638bdb71"
+  },
+  "runtimes": {
+    "focused_tests": {
+      "status": "completed",
+      "completed": true,
+      "network_attempts": 0,
+      "elapsed_seconds": 8.814913382999976,
+      "returncode": 0,
+      "budget_seconds": 600
+    },
+    "fit": {
+      "status": "completed",
+      "completed": true,
+      "network_attempts": 0,
+      "elapsed_seconds": 55.372992994000015,
+      "returncode": 0,
+      "budget_seconds": 3600
+    },
+    "score": {
+      "status": "completed",
+      "completed": true,
+      "network_attempts": 0,
+      "elapsed_seconds": 15.161644552000098,
+      "returncode": 0,
+      "budget_seconds": 1800
+    },
+    "inference": {
+      "status": "completed",
+      "completed": true,
+      "network_attempts": 0,
+      "elapsed_seconds": 13.50330466499986,
+      "returncode": 0,
+      "budget_seconds": 600
+    }
+  },
+  "labels_groups_predictions_metrics_and_artifact_verified": true,
+  "new_session_accuracy_established": false,
+  "hosted_llm_api_used": false,
+  "audio_used": false
+}

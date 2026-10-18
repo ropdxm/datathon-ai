@@ -59,6 +59,8 @@
 *.7z
 
 !artifacts/visual_framepack_audit.json
+!artifacts/visual_experiment_summary.json
+!artifacts/reviewed_representation_audit.json
 
 # Local Python/Jupyter state and credentials.
 __pycache__/

@@ -1,5 +1,22 @@
 # Datathon model experiments
 
+## Current reviewed-label experiments: 18 October 2026
+
+The human has manually reviewed the custom workbook. Its exact hash supplies 35 accepted targets (16 violation, 19 normal) and 16 valid positive timestamps. These labels supersede the older unreviewed snapshots below. The fixed study uses 40 original sources plus 18 MOV sources; all opposite-camera MP4 views are excluded globally. Native same-camera overlaps remain grouped. Train/validation/test membership is frozen at 34/12/12, with eight original and four custom sources in each held partition. This is within-batch development, not verified new-scene/session generalization.
+
+| Experiment | Validation accuracy | Mixed 12-record result | F1 | Recall | Specificity |
+|---|---:|---:|---:|---:|---:|
+| Frozen CLIP/semantic features, validation-selected regularized head | 83.3% | 41.7% locked test | 53.3% | 66.7% | 16.7% |
+| Supervised CLIP final-block fine-tuning with point-guided MIL | 75.0% | 50.0% exposed development | 57.1% | 66.7% | 33.3% |
+
+The first experiment evaluated 52 predefined candidates using training-owned scalers/PCA and validation-only selection. Test caches were physically withheld until the selected model and threshold were hashed. Its failure is preserved, and the 12 recordings are no longer an independent test for subsequent experiments. The second experiment updated actual vision weights with two fixed 8/12-epoch settings. Unmarked positive frames remain unlabeled; normal frames receive negative supervision. Evaluation covers every packed one-second time without consulting event annotations. It matched 3/6 supplied development points within five seconds. Neither result meets the over-80% request.
+
+The private frame pack uses 58 verified sources, 1,879 uniform timestamps and 3,758 full/middle RGB224 JPEGs (33.63 MB), with per-member hashes. It ignores audio, does not truncate long recordings and does not use labels to select frames. Hash-only relocation resolves moved files without changing the frozen manifest or split. Hosted AI never receives frames or descriptions. The local suite passes 208 tests; guarded fitting, scoring and fresh-process inference observe zero Python network attempts.
+
+Reproduce preparation with `tools/ingest_reviewed_workbook.py`, `tools/reviewed_scene_groups.py`, `tools/prepare_reviewed_protocol.py`, `tools/extract_reviewed_features.py` and `tools/prepare_visual_framepack.py`. Use `datathon_reviewed.ipynb` for the first study and `datathon_visual.ipynb` for supervised vision fine-tuning. The latter runs in a native Kaggle GPU workspace because the Colab GPU quota was exhausted. Private model deltas, exact fitted source, predictions and logs are retained in `artifacts/datathon_visual_results.zip`; the verified public CLIP base checkpoint is required to restore the deltas. Fresh-process frame-pack inference took 13.50 seconds including checkpoint loading; original-video decoding is excluded.
+
+The training/validation-only representation audit detects original/custom domain with AUC 1.0, but event discrimination is weaker. It found no timestamp or normalization defect. A sequence model is therefore a meaningful next comparison. Continue reporting balanced accuracy, F1/F2, recall, specificity, PR-AUC and confusion counts alongside accuracy. Use point recall at 1/2/5 seconds for the incomplete event labels; event precision and interval IoU cannot be established from point annotations alone. Separate filming sessions remain necessary for independent acceptance. Earlier sections below are historical experiment snapshots.
+
 ## Point-guided temporal model and scene verification: 18 October 2026
 
 The new point-guided TCN completed native Colab CPU evaluation on the exact original 40 source-SHA folds: **45.0% accuracy (18/40)**, **44.61% balanced accuracy**, 52.38% violation recall and 36.84% specificity. The normal/violation confusion matrix is `[[7, 12], [10, 11]]`. The prior 62.5% model remains the reference; neither this comparison nor the previous experiments achieves the requested 87%.

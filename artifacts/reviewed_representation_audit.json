@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "implementation_sha256": "25b61b21df3c6b56a22d418e142737b0e48566f7727104b37f3c9660f1b28c74",
+  "manifest_sha256": "de63ec1167433e3317c720402ce3188b84dd2e90bfe9df5bb1a5c46b7a92d55f",
+  "split_sha256": "96bb658ab69b234edb5f3e70105f44f2330c22a861f587f921efb146a84c1bf2",
+  "train_source_count": 34,
+  "validation_source_count": 12,
+  "test_feature_files_opened": 0,
+  "model_scores_or_model_artifacts_opened": 0,
+  "media_or_descriptions_opened": false,
+  "diagnostic_only_not_model_selection": true,
+  "representations": {
+    "clip512": {
+      "feature_dimension": 512,
+      "view": "first_full_view_only",
+      "source_caches_opened": 46,
+      "test_feature_caches_opened": 0,
+      "sample_count_distribution": {
+        "count": 46,
+        "min": 30.0,
+        "median": 48.5,
+        "mean": 65.47826086956522,
+        "max": 286.0
+      },
+      "sample_gap_seconds": {
+        "count": 2966,
+        "min": 0.033333778381347656,
+        "median": 0.5,
+        "mean": 0.4964036864359798,
+        "max": 0.5333337783813477
+      },
+      "feature_value_min": -0.7340399668617943,
+      "feature_value_max": 0.23704135391064385,
+      "input_unit_norm_distribution": {
+        "count": 3012,
+        "min": 0.9999997919270003,
+        "median": 0.9999999991084143,
+        "mean": 0.9999999991305915,
+        "max": 1.0000002049972414
+      },
+      "training_grouped_domain_probe": {
+        "roc_auc": 1.0,
+        "balanced_accuracy_at_fixed_half": 1.0,
+        "accuracy_at_fixed_half": 1.0,
+        "fold_group_counts": [
+          {
+            "fit_groups": 22,
+            "held_groups": 12
+          },
+          {
+            "fit_groups": 23,
+            "held_groups": 11
+          },
+          {
+            "fit_groups": 23,
+            "held_groups": 11
+          }
+        ]
+      },
+      "validation_domain_probe": {
+        "roc_auc": 1.0,
+        "balanced_accuracy_at_fixed_half": 1.0
+      },
+      "domain_centroid_standardized_rms_difference": 1.3174755968800373,
+      "validation_nearest_training_coverage": {
+        "original": {
+          "sources": 8,
+          "nearest_training_cosine": {
+            "count": 8,
+            "min": 0.9854760886255142,
+            "median": 0.9941462721695851,
+            "mean": 0.993801927360355,
+            "max": 0.9982626537361475
+          },
+          "nearest_training_same_domain_fraction": 1.0,
+          "nearest_training_same_label_fraction": 0.625
+        },
+        "custom": {
+          "sources": 4,
+          "nearest_training_cosine": {
+            "count": 4,
+            "min": 0.9853877247960208,
+            "median": 0.9920583242213457,
+            "mean": 0.9916085938163747,
+            "max": 0.9969300020267866
+          },
+          "nearest_training_same_domain_fraction": 1.0,
+          "nearest_training_same_label_fraction": 0.75
+        }
+      },
+      "training_point_positive_vs_normal_probe": {
+        "roc_auc": 0.6446486928104576,
+        "balanced_accuracy_at_fixed_half": 0.5603758169934641,
+        "accuracy_at_fixed_half": 0.6298342541436464,
+        "fold_group_counts": [
+          {
+            "fit_groups": 22,
+            "held_groups": 12
+          },
+          {
+            "fit_groups": 22,
+            "held_groups": 12
+          },
+          {
+            "fit_groups": 24,
+            "held_groups": 10
+          }
+        ],
+        "window_class_counts": {
+          "normal": 272,
+          "positive_anchor": 90
+        },
+        "positive_anchor_oof_score": {
+          "count": 90,
+          "min": 0.007564194571099231,
+          "median": 0.2991600735364839,
+          "mean": 0.4588699370865814,
+          "max": 0.9997241260486509
+        },
+        "normal_window_oof_score": {
+          "count": 272,
+          "min": 0.0003605359203371461,
+          "median": 0.12225084443605011,
+          "mean": 0.31753956442316367,
+          "max": 0.9981572101263783
+        },
+        "source_mean_roc_auc": 0.6401384083044983,
+        "source_balanced_positive_minus_normal_oof_score_margin": 0.14257350329673246
+      },
+      "training_point_anchor_gap_seconds": {
+        "count": 18,
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "training_anchors_without_sample_within_one_second": 0,
+      "source_balanced_positive_normal_centroid_cosine": 0.9907275842233767,
+      "positive_training_owner_count": 17,
+      "normal_training_owner_count": 17,
+      "probe_protocol": "fixedC0.1linear_balanced_logistic_train_owned_standardization_3groupfolds_seed42_no_modelselection"
+    },
+    "semantic18": {
+      "feature_dimension": 18,
+      "view": "single_semantic_view",
+      "source_caches_opened": 46,
+      "test_feature_caches_opened": 0,
+      "sample_count_distribution": {
+        "count": 46,
+        "min": 30.0,
+        "median": 48.5,
+        "mean": 65.47826086956522,
+        "max": 286.0
+      },
+      "sample_gap_seconds": {
+        "count": 2966,
+        "min": 0.033333778381347656,
+        "median": 0.5,
+        "mean": 0.4964036864359798,
+        "max": 0.5333337783813477
+      },
+      "feature_value_min": 0.2941984534263611,
+      "feature_value_max": 0.5939717292785645,
+      "input_unit_norm_distribution": null,
+      "training_grouped_domain_probe": {
+        "roc_auc": 1.0,
+        "balanced_accuracy_at_fixed_half": 1.0,
+        "accuracy_at_fixed_half": 1.0,
+        "fold_group_counts": [
+          {
+            "fit_groups": 22,
+            "held_groups": 12
+          },
+          {
+            "fit_groups": 23,
+            "held_groups": 11
+          },
+          {
+            "fit_groups": 23,
+            "held_groups": 11
+          }
+        ]
+      },
+      "validation_domain_probe": {
+        "roc_auc": 1.0,
+        "balanced_accuracy_at_fixed_half": 1.0
+      },
+      "domain_centroid_standardized_rms_difference": 1.2337980499227743,
+      "validation_nearest_training_coverage": {
+        "original": {
+          "sources": 8,
+          "nearest_training_cosine": {
+            "count": 8,
+            "min": 0.9998386733218436,
+            "median": 0.9999485279567752,
+            "mean": 0.9999296395920487,
+            "max": 0.9999794181288321
+          },
+          "nearest_training_same_domain_fraction": 1.0,
+          "nearest_training_same_label_fraction": 0.625
+        },
+        "custom": {
+          "sources": 4,
+          "nearest_training_cosine": {
+            "count": 4,
+            "min": 0.9998391885239216,
+            "median": 0.999951468315862,
+            "mean": 0.9999300838732769,
+            "max": 0.9999782103374618
+          },
+          "nearest_training_same_domain_fraction": 1.0,
+          "nearest_training_same_label_fraction": 0.75
+        }
+      },
+      "training_point_positive_vs_normal_probe": {
+        "roc_auc": 0.6958333333333333,
+        "balanced_accuracy_at_fixed_half": 0.6233251633986927,
+        "accuracy_at_fixed_half": 0.6629834254143646,
+        "fold_group_counts": [
+          {
+            "fit_groups": 22,
+            "held_groups": 12
+          },
+          {
+            "fit_groups": 22,
+            "held_groups": 12
+          },
+          {
+            "fit_groups": 24,
+            "held_groups": 10
+          }
+        ],
+        "window_class_counts": {
+          "normal": 272,
+          "positive_anchor": 90
+        },
+        "positive_anchor_oof_score": {
+          "count": 90,
+          "min": 0.06462715799562775,
+          "median": 0.5792455065962128,
+          "mean": 0.565435170544537,
+          "max": 0.9696073462888767
+        },
+        "normal_window_oof_score": {
+          "count": 272,
+          "min": 0.01954720587976359,
+          "median": 0.35498768681198645,
+          "mean": 0.3794186622397306,
+          "max": 0.9514232450538354
+        },
+        "source_mean_roc_auc": 0.7370242214532872,
+        "source_balanced_positive_minus_normal_oof_score_margin": 0.20170964809727937
+      },
+      "training_point_anchor_gap_seconds": {
+        "count": 18,
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "training_anchors_without_sample_within_one_second": 0,
+      "source_balanced_positive_normal_centroid_cosine": 0.9997498099390145,
+      "positive_training_owner_count": 17,
+      "normal_training_owner_count": 17,
+      "probe_protocol": "fixedC0.1linear_balanced_logistic_train_owned_standardization_3groupfolds_seed42_no_modelselection"
+    }
+  },
+  "limitations": [
+    "Diagnostics do not establish causality or independent-session performance.",
+    "Domain separation can reflect camera background or other visual factors; no semantic cause is inferred.",
+    "Training-window labels use sparse positive anchors and confirmed normal recordings only.",
+    "High mean-feature cosine proximity does not establish duplicate footage or matching event semantics.",
+    "No test features or test scores were inspected and no training source was changed."
+  ],
+  "elapsed_seconds": 0.39339850000396837
+}
