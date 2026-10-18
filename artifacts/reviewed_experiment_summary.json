@@ -1,0 +1,1325 @@
+{
+  "schema_version": 1,
+  "evaluation": "single_locked_test_after_train_validation_model_selection",
+  "target_accuracy_strictly_greater_than": 0.8,
+  "target_achieved_on_this_locked_test": false,
+  "original_87pct_target_achieved_on_this_locked_test": false,
+  "accuracy_above_80pct_on_new_sessions_established": false,
+  "split_labels_sources_groups_model_threshold_and_metrics_verified": true,
+  "grouping_protocol": {
+    "type": "camera_exclusive_source_overlap_development",
+    "seed": 42,
+    "selected_camera": ".mov",
+    "opposite_camera_excluded_globally": true,
+    "grouping_basis": "native_duplicate_overlap_prevention_not_human_scene_identity",
+    "grouping_map_sha256": "0f4a72d19064761fa7cf25b9a1f45064e9c3eead7a86d2ef87924501a8f00dd9",
+    "family_selection_basis": "largest_usable_label_coverage_before_model_scores",
+    "allocation": "exact_nearest_20_percent_per_domain_class_with_whole_native_overlap_groups",
+    "full_session_grouping_enforced": false,
+    "human_verified_scene_groups": false,
+    "independent_new_scene_test": false,
+    "test_locked_before_candidate_fitting": true,
+    "test_metrics_viewed": false,
+    "selection_policy": "Fit candidates on train, select and freeze winner using validation only, evaluate test once after winner freeze.",
+    "limitations": [
+      "All custom MOV views come from one filming batch. Same-session evaluation does not establish new-session or unseen-scene generalization.",
+      "Native source-overlap groups prevent known duplicate/overlap leakage; they do not certify distinct physical scenes.",
+      "Original recordings and their earlier model results were already repeatedly examined as development data.",
+      "Opposite-camera custom MP4 recordings are excluded from training, validation, test and model selection."
+    ]
+  },
+  "partition_counts": {
+    "train": {
+      "recordings": 34,
+      "groups": 34,
+      "positive": 17,
+      "negative": 17
+    },
+    "validation": {
+      "recordings": 12,
+      "groups": 12,
+      "positive": 6,
+      "negative": 6
+    },
+    "test": {
+      "recordings": 12,
+      "groups": 10,
+      "positive": 6,
+      "negative": 6
+    }
+  },
+  "candidate_count": 52,
+  "candidate_grid": [
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "raw",
+      "C": 0.01,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "raw",
+      "C": 0.1,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "raw",
+      "C": 1.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "raw",
+      "C": 10.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "raw",
+      "C": 0.1,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "raw",
+      "C": 1.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "raw",
+      "C": 10.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 10.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "catboost",
+      "preprocessing": "raw",
+      "depth": 2,
+      "l2_leaf_reg": 10.0,
+      "iterations": 200,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "pooled",
+      "classifier": "catboost",
+      "preprocessing": "raw",
+      "depth": 3,
+      "l2_leaf_reg": 30.0,
+      "iterations": 200,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.01,
+      "aggregation": "max"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.01,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "max"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "max"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "max"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "max"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 10.0,
+      "aggregation": "max"
+    },
+    {
+      "representation": "raw_clip",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 10.0,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "raw",
+      "C": 0.01,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "raw",
+      "C": 0.1,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "raw",
+      "C": 1.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "raw",
+      "C": 10.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "raw",
+      "C": 0.1,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "raw",
+      "C": 1.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "raw",
+      "C": 10.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 10.0,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "catboost",
+      "preprocessing": "raw",
+      "depth": 2,
+      "l2_leaf_reg": 10.0,
+      "iterations": 200,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "pooled",
+      "classifier": "catboost",
+      "preprocessing": "raw",
+      "depth": 3,
+      "l2_leaf_reg": 30.0,
+      "iterations": 200,
+      "aggregation": "pooled"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.01,
+      "aggregation": "max"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.01,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "max"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "max"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "logistic",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "max"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 0.1,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "max"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 1.0,
+      "aggregation": "topk"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 10.0,
+      "aggregation": "max"
+    },
+    {
+      "representation": "semantic18",
+      "head": "point",
+      "classifier": "rbf_svm",
+      "preprocessing": "pca",
+      "C": 10.0,
+      "aggregation": "topk"
+    }
+  ],
+  "selected_candidate": {
+    "representation": "semantic18",
+    "head": "pooled",
+    "classifier": "logistic",
+    "preprocessing": "raw",
+    "C": 0.01,
+    "aggregation": "pooled"
+  },
+  "threshold": 0.5,
+  "validation_metrics": {
+    "n": 12,
+    "accuracy": 0.8333333333333334,
+    "balanced_accuracy": 0.8333333333333334,
+    "precision": 0.8333333333333334,
+    "recall": 0.8333333333333334,
+    "specificity": 0.8333333333333334,
+    "f1": 0.8333333333333334,
+    "f2": 0.8333333333333334,
+    "average_precision": 0.9055555555555554,
+    "roc_auc": 0.8611111111111112,
+    "confusion_matrix": [
+      [
+        5,
+        1
+      ],
+      [
+        1,
+        5
+      ]
+    ],
+    "confusion_order": [
+      [
+        "TN",
+        "FP"
+      ],
+      [
+        "FN",
+        "TP"
+      ]
+    ],
+    "localization": null,
+    "mean_group_accuracy": 0.8333333333333334,
+    "groups": 12,
+    "accuracy_wilson_95pct": [
+      0.5519691377470266,
+      0.9530348578161463
+    ],
+    "confidence_interval_note": "Descriptive recording-level interval; related recording groups reduce effective sample size."
+  },
+  "test_metrics": {
+    "n": 12,
+    "accuracy": 0.4166666666666667,
+    "balanced_accuracy": 0.41666666666666663,
+    "precision": 0.4444444444444444,
+    "recall": 0.6666666666666666,
+    "specificity": 0.16666666666666666,
+    "f1": 0.5333333333333333,
+    "f2": 0.6060606060606061,
+    "average_precision": 0.6510942760942761,
+    "roc_auc": 0.5277777777777778,
+    "confusion_matrix": [
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "confusion_order": [
+      [
+        "TN",
+        "FP"
+      ],
+      [
+        "FN",
+        "TP"
+      ]
+    ],
+    "localization": null,
+    "mean_group_accuracy": 0.36666666666666664,
+    "groups": 10,
+    "accuracy_wilson_95pct": [
+      0.19326031365875665,
+      0.6804886874504503
+    ],
+    "confidence_interval_note": "Descriptive recording-level interval; related recording groups reduce effective sample size."
+  },
+  "test_domain_metrics": {
+    "custom": {
+      "n": 4,
+      "accuracy": 0.5,
+      "balanced_accuracy": 0.5,
+      "precision": 0.5,
+      "recall": 1.0,
+      "specificity": 0.0,
+      "f1": 0.6666666666666666,
+      "f2": 0.8333333333333334,
+      "average_precision": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "confusion_order": [
+        [
+          "TN",
+          "FP"
+        ],
+        [
+          "FN",
+          "TP"
+        ]
+      ],
+      "localization": null,
+      "mean_group_accuracy": 0.3333333333333333,
+      "groups": 2,
+      "accuracy_wilson_95pct": [
+        0.15003898915214947,
+        0.8499610108478506
+      ],
+      "confidence_interval_note": "Descriptive recording-level interval; related recording groups reduce effective sample size."
+    },
+    "original": {
+      "n": 8,
+      "accuracy": 0.375,
+      "balanced_accuracy": 0.375,
+      "precision": 0.4,
+      "recall": 0.5,
+      "specificity": 0.25,
+      "f1": 0.4444444444444444,
+      "f2": 0.47619047619047616,
+      "average_precision": 0.4928571428571429,
+      "roc_auc": 0.375,
+      "confusion_matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "confusion_order": [
+        [
+          "TN",
+          "FP"
+        ],
+        [
+          "FN",
+          "TP"
+        ]
+      ],
+      "localization": null,
+      "mean_group_accuracy": 0.375,
+      "groups": 8,
+      "accuracy_wilson_95pct": [
+        0.13684428582359742,
+        0.6942576053973727
+      ],
+      "confidence_interval_note": "Descriptive recording-level interval; related recording groups reduce effective sample size."
+    }
+  },
+  "test_predictions": [
+    {
+      "sha256": "0d829e993bd79dc2834ce39508b1bcfd097629239d83cb2dfcf35b51b974ce51",
+      "group_id": "camera_exclusive_mov_d4791e431c65b75a",
+      "label": 1,
+      "event_times": [
+        29.0
+      ],
+      "domain": "custom",
+      "score": 0.7223383561053329,
+      "prediction": 1,
+      "threshold": 0.5,
+      "verdict": "violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+      "group_id": "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+      "label": 0,
+      "event_times": [],
+      "domain": "original",
+      "score": 0.5434333773779432,
+      "prediction": 1,
+      "threshold": 0.5,
+      "verdict": "violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+      "group_id": "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+      "label": 0,
+      "event_times": [],
+      "domain": "original",
+      "score": 0.5261731021528299,
+      "prediction": 1,
+      "threshold": 0.5,
+      "verdict": "violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+      "group_id": "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+      "label": 0,
+      "event_times": [],
+      "domain": "original",
+      "score": 0.6143404794975535,
+      "prediction": 1,
+      "threshold": 0.5,
+      "verdict": "violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "5f93a6dfd0b1477dee93b99afabac44b40743959920cad04dbd1f07f8acbdffa",
+      "group_id": "camera_exclusive_mov_d4791e431c65b75a",
+      "label": 0,
+      "event_times": [],
+      "domain": "custom",
+      "score": 0.575078492147319,
+      "prediction": 1,
+      "threshold": 0.5,
+      "verdict": "violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+      "group_id": "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+      "label": 1,
+      "event_times": [
+        5.0
+      ],
+      "domain": "original",
+      "score": 0.450592932481331,
+      "prediction": 0,
+      "threshold": 0.5,
+      "verdict": "no_violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+      "group_id": "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+      "label": 1,
+      "event_times": [
+        10.0
+      ],
+      "domain": "original",
+      "score": 0.511518039513375,
+      "prediction": 1,
+      "threshold": 0.5,
+      "verdict": "violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+      "group_id": "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+      "label": 1,
+      "event_times": [
+        18.0
+      ],
+      "domain": "original",
+      "score": 0.585428700242851,
+      "prediction": 1,
+      "threshold": 0.5,
+      "verdict": "violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+      "group_id": "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+      "label": 1,
+      "event_times": [
+        7.0
+      ],
+      "domain": "original",
+      "score": 0.4729141869187067,
+      "prediction": 0,
+      "threshold": 0.5,
+      "verdict": "no_violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+      "group_id": "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+      "label": 0,
+      "event_times": [],
+      "domain": "original",
+      "score": 0.4342654320515478,
+      "prediction": 0,
+      "threshold": 0.5,
+      "verdict": "no_violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "eda66b46782b5d902edceddb0fa855c306b1b824801682f738ea16943d5d5fa2",
+      "group_id": "camera_exclusive_mov_5c2165bf1299f382",
+      "label": 0,
+      "event_times": [],
+      "domain": "custom",
+      "score": 0.5456460896539954,
+      "prediction": 1,
+      "threshold": 0.5,
+      "verdict": "violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    },
+    {
+      "sha256": "ef71db1a18614ec7d3620f7a4c958989e3970b73b0841ca898f2f0b8aec474b8",
+      "group_id": "camera_exclusive_mov_d4791e431c65b75a",
+      "label": 1,
+      "event_times": [
+        16.0
+      ],
+      "domain": "custom",
+      "score": 0.608388724747282,
+      "prediction": 1,
+      "threshold": 0.5,
+      "verdict": "violation",
+      "events": [],
+      "localization_available": false,
+      "score_calibrated": false,
+      "window_scores": [],
+      "window_timestamps": []
+    }
+  ],
+  "test_open_receipt": {
+    "opened_at": "2026-10-18T05:14:06.413801+00:00",
+    "completed": true,
+    "model_sha256": "739085e6557debea2fd4584a588a3049fc9bceead5ac28086c337995fcab90e3",
+    "split_sha256": "7d53241fa10de91870ef1c5e33124fad3403229ffe53f5e078e20b600a3811f7",
+    "test_open_count": 1
+  },
+  "test_feature_release_receipt": {
+    "model_sha256": "739085e6557debea2fd4584a588a3049fc9bceead5ac28086c337995fcab90e3",
+    "selection_lock_sha256": "729eaa9260f486a80c88032d088af2ab296e1b0498108ab61b2ab435d259502c",
+    "archive_sha256": "8825e20d2afe4da08cb44bf0a664fee240ab0054d13c3dfeacbe24a37f7b78b7",
+    "released_test_sha256": [
+      "0d829e993bd79dc2834ce39508b1bcfd097629239d83cb2dfcf35b51b974ce51",
+      "16065504b21260bff18698c7bbf048ffa356c9de43d43b92643b6c2eddedac0f",
+      "21468fcef4ea5f45ce7d465e620f84e09c8b50314f4ecdc06f69224c701b3a5b",
+      "3f516431cf37e3900b7eae857a7b09be258f485702ab56bc6e5b6129103f1fa5",
+      "5f93a6dfd0b1477dee93b99afabac44b40743959920cad04dbd1f07f8acbdffa",
+      "7e585e33517f7258bd2d1ed3e139556609bc997bb07b78355555060ef193b77a",
+      "9932ae0a10d3b9371bf52ea558dc19092fcf47adcd275a73a52a56b95464bca6",
+      "b3a954a5b761ad47943e061599315e3fe9d22573eeb92bb14bf315cdcd422fc5",
+      "d15ef04bcfae571bd2d7fc4e4d709ba595ae19f44136a43e7277f17e7b6e5b6d",
+      "d3d21494d74e40a7586fe4f6164e515f6621a2d413538c4e15c67d394e85fc2d",
+      "eda66b46782b5d902edceddb0fa855c306b1b824801682f738ea16943d5d5fa2",
+      "ef71db1a18614ec7d3620f7a4c958989e3970b73b0841ca898f2f0b8aec474b8"
+    ],
+    "representation": "semantic18",
+    "released_at": "2026-10-18T05:13:59.639919+00:00",
+    "completed": true
+  },
+  "selected_without_test": true,
+  "training_refit_on_validation": false,
+  "test_features_physically_extracted_after_selection_lock": true,
+  "source_sha256": {
+    "reviewed_models": "03fab2030e97f3a197dbd0a16db314ca6ec96b2228407d4ad056d986ec898a12",
+    "scene_temporal": "18916f76767cbaa803b5e5b45564ce1f56456373f6ae70e2f1942e3adf2fe688",
+    "model": "9eaa61e54faaf405a4b0ea61a5c7a7de3d3245ddafae7c0de930ce05638bdb71",
+    "temporal": "8fc78c56f43eeaf21bd951a35fd5674703a0f6028dc6d5fa86e0a9d4d4bee74e"
+  },
+  "model_sha256": "739085e6557debea2fd4584a588a3049fc9bceead5ac28086c337995fcab90e3",
+  "split_file_sha256": "96bb658ab69b234edb5f3e70105f44f2330c22a861f587f921efb146a84c1bf2",
+  "manifest_file_sha256": "de63ec1167433e3317c720402ce3188b84dd2e90bfe9df5bb1a5c46b7a92d55f",
+  "runtime": {
+    "score_runtime": {
+      "status": "completed",
+      "completed": true,
+      "network_attempts": 0,
+      "elapsed_seconds": 6.698065396999482,
+      "returncode": 0,
+      "budget_seconds": 1800
+    },
+    "inference_runtime": {
+      "status": "completed",
+      "completed": true,
+      "network_attempts": 0,
+      "elapsed_seconds": 2.692856378000215,
+      "returncode": 0,
+      "budget_seconds": 120
+    },
+    "full_tests_runtime": {
+      "status": "completed",
+      "completed": true,
+      "returncode": 0,
+      "test_count": 194,
+      "elapsed_seconds": 66.622,
+      "network_attempts": null,
+      "implementation_checks_not_model_accuracy": true
+    },
+    "fit_runtime": {
+      "status": "completed",
+      "completed": true,
+      "network_attempts": 0,
+      "elapsed_seconds": 63.58110207200025,
+      "returncode": 0,
+      "budget_seconds": 1800
+    }
+  },
+  "audits": {
+    "reviewed_workbook_audit.json": {
+      "schema_version": 1,
+      "workbook_sha256": "c73b6cd50a200c6e64b98ea4581fa769c8996c5ac7e071242aae761592f406e7",
+      "human_user_attestation_accepted": true,
+      "attestation_date": "2026-10-18",
+      "attestation_source": "explicit_human_user_chat_confirmation",
+      "preparation_source_count": 39,
+      "annotation_rows": 35,
+      "accepted_records": 35,
+      "class_counts": {
+        "violation": 16,
+        "no_violation": 19
+      },
+      "verified_point_count": 16,
+      "excluded_rows": 0,
+      "exclusion_reason_counts": {},
+      "preparation_sources_without_accepted_label": 4,
+      "source_and_silent_derivative_hashes_verified": true,
+      "all_accepted_prepared_audio_streams_zero": true,
+      "grouping_basis": "user_confirmed_shared_filming_batch_conservative_union",
+      "accepted_group_count": 1,
+      "individual_scene_pairing_verified": false,
+      "timestamp_policy": "Supplied points only; 0 <= point < min(source duration, silent derivative duration).",
+      "semantic_visual_verification_performed_by_assistant": false,
+      "private_description_columns_used": false,
+      "predictions_used_as_ground_truth": false,
+      "audio_used": false,
+      "preparation_manifest_sha256": "2bf1ccbbd04a7032ee1117efb63a2f517137e1df9002e28fda8bf04e4a2711b7",
+      "created_at_utc": "2026-10-18T04:45:02.533529+00:00"
+    },
+    "reviewed_scene_group_audit.json": {
+      "schema_version": 1,
+      "protocol": {
+        "version": 1,
+        "protocol_name": "camera_exclusive_within_batch_source_development",
+        "family_selection": "choose by usable-label coverage before inspecting any model score",
+        "opposite_camera_policy": "all opposite-family views excluded from train validation and test",
+        "minimum_reviewable_duration_seconds": 3.0,
+        "minimum_overlap_seconds": 3.0,
+        "minimum_shorter_fraction": 0.5,
+        "plausible_overlap_mae": 6.0,
+        "plausible_overlap_phash_median": 10.0,
+        "plausible_overlap_motion_correlation": 0.6,
+        "minimum_dynamic_steps": 3,
+        "dynamic_step_mean_absolute_change": 0.5,
+        "group_policy": "union every plausible same-camera overlap candidate; abstain on short sources",
+        "accuracy_interpretation": "within-filming-batch development only; no independent-session or cross-camera claim",
+        "group_verification": "native duplicate/overlap prevention; not human-verified physical scene identity",
+        "audio": "never decoded; input prepared-file hash and silent lineage verified",
+        "labels": "not read or used by this audit"
+      },
+      "implementation_sha256": "8e99aed7963d18951028351abd3c33f53620262f02b3b523701a357384d3a80a",
+      "source_count": 39,
+      "source_label_values_read": 0,
+      "full_custom_batch_conservative_group_count": 1,
+      "ambiguous_cross_camera_graph_sensitivity": [
+        {
+          "motion_threshold": 0.5,
+          "candidate_edges": 222,
+          "component_count": 3,
+          "component_sizes": [
+            37,
+            1,
+            1
+          ],
+          "available_source_count": 35,
+          "available_component_count": 1,
+          "available_component_sizes": [
+            35
+          ]
+        },
+        {
+          "motion_threshold": 0.6,
+          "candidate_edges": 138,
+          "component_count": 4,
+          "component_sizes": [
+            36,
+            1,
+            1,
+            1
+          ],
+          "available_source_count": 35,
+          "available_component_count": 2,
+          "available_component_sizes": [
+            34,
+            1
+          ]
+        },
+        {
+          "motion_threshold": 0.7,
+          "candidate_edges": 48,
+          "component_count": 12,
+          "component_sizes": [
+            27,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "available_source_count": 35,
+          "available_component_count": 9,
+          "available_component_sizes": [
+            26,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "motion_threshold": 0.8,
+          "candidate_edges": 4,
+          "component_count": 35,
+          "component_sizes": [
+            3,
+            2,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "available_source_count": 35,
+          "available_component_count": 31,
+          "available_component_sizes": [
+            3,
+            2,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "camera_exclusive_family_audits": {
+        "mov": {
+          "source_count": 21,
+          "available_source_count": 18,
+          "unavailable_source_count": 3,
+          "pair_comparisons": 153,
+          "plausible_overlap_edges": 3,
+          "source_overlap_groups": 19,
+          "group_sizes": [
+            3,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "available_source_overlap_groups": 16,
+          "available_group_sizes": [
+            3,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "reviewable_source_count": 18,
+          "short_sources_require_abstention": 0
+        },
+        "mp4": {
+          "source_count": 18,
+          "available_source_count": 17,
+          "unavailable_source_count": 1,
+          "pair_comparisons": 136,
+          "plausible_overlap_edges": 20,
+          "source_overlap_groups": 7,
+          "group_sizes": [
+            12,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "available_source_overlap_groups": 6,
+          "available_group_sizes": [
+            12,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "reviewable_source_count": 17,
+          "short_sources_require_abstention": 0
+        }
+      },
+      "all_opposite_family_views_must_be_excluded": true,
+      "independent_scene_verification": false,
+      "independent_session_validation": false,
+      "private_group_mapping_relative_path": "artifacts\\custom_camera_pairing_private\\reviewed_scene_groups_private.json",
+      "limitations": [
+        "No overlap candidate is not proof of independent physical scenes.",
+        "Perspective transforms speed changes or very brief overlaps can evade this diagnostic.",
+        "Static matching frames alone do not establish duplicate dynamic footage.",
+        "The camera-exclusive protocol is source-based development within one filming batch."
+      ],
+      "elapsed_seconds": 14.409278100007214
+    },
+    "reviewed_protocol_audit.json": {
+      "schema_version": 1,
+      "protocol": {
+        "type": "camera_exclusive_source_overlap_development",
+        "seed": 42,
+        "selected_camera": ".mov",
+        "opposite_camera_excluded_globally": true,
+        "grouping_basis": "native_duplicate_overlap_prevention_not_human_scene_identity",
+        "grouping_map_sha256": "0f4a72d19064761fa7cf25b9a1f45064e9c3eead7a86d2ef87924501a8f00dd9",
+        "family_selection_basis": "largest_usable_label_coverage_before_model_scores",
+        "allocation": "exact_nearest_20_percent_per_domain_class_with_whole_native_overlap_groups",
+        "full_session_grouping_enforced": false,
+        "human_verified_scene_groups": false,
+        "independent_new_scene_test": false,
+        "test_locked_before_candidate_fitting": true,
+        "test_metrics_viewed": false,
+        "selection_policy": "Fit candidates on train, select and freeze winner using validation only, evaluate test once after winner freeze.",
+        "limitations": [
+          "All custom MOV views come from one filming batch. Same-session evaluation does not establish new-session or unseen-scene generalization.",
+          "Native source-overlap groups prevent known duplicate/overlap leakage; they do not certify distinct physical scenes.",
+          "Original recordings and their earlier model results were already repeatedly examined as development data.",
+          "Opposite-camera custom MP4 recordings are excluded from training, validation, test and model selection."
+        ]
+      },
+      "seed": 42,
+      "total_records": 58,
+      "domain_counts": {
+        "original": 40,
+        "custom": 18
+      },
+      "source_family_reviewed_counts_before_selection": {
+        ".mp4": 17,
+        ".mov": 18
+      },
+      "custom_opposite_camera_records_excluded_globally": 17,
+      "split_summary": {
+        "train": {
+          "records": 34,
+          "groups": 34,
+          "domain_class_counts": {
+            "original": {
+              "violation": 13,
+              "no_violation": 11
+            },
+            "custom": {
+              "no_violation": 6,
+              "violation": 4
+            }
+          }
+        },
+        "validation": {
+          "records": 12,
+          "groups": 12,
+          "domain_class_counts": {
+            "original": {
+              "no_violation": 4,
+              "violation": 4
+            },
+            "custom": {
+              "no_violation": 2,
+              "violation": 2
+            }
+          }
+        },
+        "test": {
+          "records": 12,
+          "groups": 10,
+          "domain_class_counts": {
+            "original": {
+              "no_violation": 4,
+              "violation": 4
+            },
+            "custom": {
+              "violation": 2,
+              "no_violation": 2
+            }
+          }
+        }
+      },
+      "assignment_sha256": "9622d9e976bed0a233449e322fdc74ebef62357820a286a31235c00313f2c615",
+      "manifest_sha256": "de63ec1167433e3317c720402ce3188b84dd2e90bfe9df5bb1a5c46b7a92d55f",
+      "split_file_sha256": "96bb658ab69b234edb5f3e70105f44f2330c22a861f587f921efb146a84c1bf2",
+      "reviewed_manifest_sha256": "7022f991b3cf5605814177e8d7407910872a9eea97daf4c0d39405b39de6920b",
+      "source_overlap_groups_disjoint": true,
+      "source_lineage_disjoint": true,
+      "features_or_model_scores_used_to_assign_splits": false,
+      "audio_used": false,
+      "original_source_hashes_and_labels_match_frozen_40": true,
+      "actual_source_paths_freshly_rebuilt": true
+    }
+  },
+  "previous_original_fold_reference_accuracy": 0.625,
+  "comparison_note": "Previous62.5%used40originalOOFdevelopment; this mixed12-recordtest is a different protocol and not a paired accuracy improvement.",
+  "audio_used": false,
+  "hosted_LLM_or_vision_API_used": false,
+  "limitations": [
+    "A locked split protects this experiment's test from model selection; original data were repeatedly inspected in previous development.",
+    "Grouping is only as strong as the explicit protocol; excluding the opposite camera prevents paired-view leakage but does not establish new-session generalization.",
+    "Small validation sets and the declared candidate search can overfit validation; do not optimize further using locked test results.",
+    "Pooled heads provide recording verdicts without timestamps. Sparse point labels do not identify complete event precision or interval IoU.",
+    "Scores are uncalibrated. Visual features can omit small hand/object details and cannot establish legal intent.",
+    "No filename, duration, absolute recording clock or domain indicator is a predictor; temporal pooling can still encode exposure length."
+  ]
+}

@@ -58,6 +58,8 @@
 *.tar.gz
 *.7z
 
+!artifacts/visual_framepack_audit.json
+
 # Local Python/Jupyter state and credentials.
 __pycache__/
 *.py[cod]

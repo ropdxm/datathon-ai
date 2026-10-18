@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "recordings": 58,
+  "time_samples": 1879,
+  "jpeg_images": 3758,
+  "members_with_checksums": 3876,
+  "archive_bytes": 33629314,
+  "archive_sha256": "43a04bb8ae5e8cc34b29c86dc828e614019f2a513093aa5f2376c1e1cd2b4fcf",
+  "completed": true,
+  "elapsed_seconds": 143.65613519999897,
+  "resumed_sources": 0,
+  "relocated_source_paths_resolved_by_exact_sha256": 38,
+  "sample_fps": 1.0,
+  "jpeg_quality": 85,
+  "preprocessing": "raw_rgb_uint8_224_letterbox",
+  "views": [
+    "full",
+    "middle"
+  ],
+  "source_hashes_verified_before_decode": true,
+  "source_count": 58,
+  "manifest_sha256": "de63ec1167433e3317c720402ce3188b84dd2e90bfe9df5bb1a5c46b7a92d55f",
+  "split_sha256": "96bb658ab69b234edb5f3e70105f44f2330c22a861f587f921efb146a84c1bf2",
+  "script_sha256": "e300f3cc98e6c80eff024c07d0799ef401ccf207cd5ffc1aa4eff3500089a8d4",
+  "opencv_version": "4.14.0",
+  "audio_used": false,
+  "network_attempts": 0,
+  "private_pixels_sent_to_hosted_ai": false,
+  "label_or_timestamp_guided_sampling": false,
+  "long_recordings_truncated": false,
+  "maximum_final_timestamp_seconds": 142.5,
+  "domain_counts": {
+    "original": 40,
+    "custom": 18
+  }
+}
