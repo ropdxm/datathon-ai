@@ -23,7 +23,7 @@ def make_cell(kind, source):
 def main():
     members = [ROOT / "experiment.py", ROOT / "mil_experiment.py", ROOT / "requirements-ml.txt", ROOT / "requirements-experiments.txt", ROOT / "requirements-vlm.txt", ROOT / "duplicate_aliases.json"]
     members += sorted((ROOT / "datathon_ml").glob("*.py"))
-    members += sorted((ROOT / "tests").glob("test_*.py"))
+    members += sorted((ROOT / "tests").glob("*.py"))
     buffer = io.BytesIO()
     with ZipFile(buffer, "w", compression=ZIP_DEFLATED) as archive:
         for path in members:
