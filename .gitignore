@@ -1,11 +1,13 @@
 # Organizer recordings, labels and supplied/extracted run folders stay local.
 /open/
 /dtFinal/
-/data/
-/datasets/
+data/
+datasets/
 /runs/
-/models/
+models/
 /weights/
+outputs/
+videos/
 
 # Generated artifacts are opt-in: only compact reviewable evidence is tracked.
 /artifacts/*
@@ -35,9 +37,8 @@
 !/artifacts/reviewed_experiment_summary.json
 
 # Recordings, checkpoints, trained heads, feature caches and export bundles.
-*.mov
-*.MOV
-*.mp4
+*.[mM][oO][vV]
+*.[mM][pP]4
 *.avi
 *.mkv
 *.wav
@@ -48,6 +49,7 @@
 *.pth
 *.ckpt
 *.safetensors
+*.onnx
 *.joblib
 *.pkl
 *.pickle
@@ -61,6 +63,9 @@
 !artifacts/visual_framepack_audit.json
 !artifacts/visual_experiment_summary.json
 !artifacts/reviewed_representation_audit.json
+!artifacts/temporal_video_experiment_summary.json
+!artifacts/direct_vlm_experiment_summary.json
+!artifacts/detail_framepack_audit.json
 
 # Local Python/Jupyter state and credentials.
 __pycache__/
@@ -71,7 +76,9 @@ __pycache__/
 .ruff_cache/
 .cache/
 .venv/
+.venv-web/
 venv/
+.forte-runtime/
 .env
 .env.*
 !.env.example
@@ -81,3 +88,7 @@ credentials*.json
 token.json
 .DS_Store
 Thumbs.db
+
+# Generated demo clips contain no bank footage and remain trackable.
+!/webapp/static/demo.mp4
+!/nurzhol-one/webapp/static/demo.mp4

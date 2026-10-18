@@ -336,7 +336,7 @@ print({'sequence_export_bytes':SEQUENCE_RESULTS_ZIP.stat().st_size,'export_membe
     'sequence_export_sha256':export_digest(SEQUENCE_RESULTS_ZIP.read_bytes()),'private_frames_exported':False})
 from IPython.display import FileLink,display
 display(FileLink(str(SEQUENCE_RESULTS_ZIP)))
-if Path('/content').is_dir():
+if not Path('/kaggle/working').is_dir() and Path('/content').is_dir():
     from google.colab import files
     files.download(str(SEQUENCE_RESULTS_ZIP))
 '''

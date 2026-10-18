@@ -18,6 +18,10 @@ The supervised CLIP follow-up has now completed on a native Kaggle T4 GPU. Its t
 
 A training/validation-only [representation audit](artifacts/reviewed_representation_audit.json) found strong original/custom domain separation and much weaker event discrimination. All training anchors align with cached samples, and normalization checks pass. Ordered video modeling and native direct classification are the next experiments; no new score is assumed.
 
+The ordered-video and direct-classification comparisons have completed. Fine-tuning the final X-CLIP vision blocks and temporal attention reached **83.3% validation / 41.7% mixed development accuracy**, with **1/6** supplied development points localized within five seconds. Native Qwen3-VL-4B direct classification reached **75.0% validation / 25.0% development accuracy**; it provides no timestamps. Both selections were frozen before their development frames were released. All guarded phases observed zero Python network attempts. See the [sequence summary](artifacts/temporal_video_experiment_summary.json), [direct-classification summary](artifacts/direct_vlm_experiment_summary.json) and [combined notebook](datathon_sequence.ipynb). These results do not meet the over-80% target; 220 local tests pass.
+
+The next preprocessing comparison uses 448-pixel detail frames with exactly the same 1,879 timestamps and source identities, plus denser query sampling and eight training examples balanced by domain and class. Its [detail preparation audit](artifacts/detail_framepack_audit.json) records 114.56 MB of private silent images. No held-out labels guide query sampling or example choice.
+
 ## Point-guided temporal follow-up: 18 October 2026
 
 The new compact temporal convolution model completed native Colab CPU training and scored **45.0% accuracy**, **44.61% balanced accuracy**, 52.38% violation recall and 36.84% specificity. It matched **9/22 supplied event points within five seconds**, but raised 22 false-alarm events across 751 observed seconds of normal footage. The previous **62.5% model remains the development reference; the 87% target remains unmet**. The new model is not selected for use.
