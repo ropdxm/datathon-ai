@@ -1,0 +1,10 @@
+fastapi==0.143.3
+starlette==1.8.0
+uvicorn>=0.30,<1
+python-multipart>=0.0.20,<1
+pydantic>=2.9,<3
+av>=14,<18
+Pillow>=11,<14
+opencv-python-headless>=4.10,<5
+httpx>=0.27,<1
+pytest>=8,<10

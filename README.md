@@ -136,3 +136,7 @@ python tools/build_temporal_notebook.py --baseline-cv reference/clip_baseline_cv
 Git tracks source, tests, clean notebooks, requirements, case documentation, original fold assignments and compact measured reports. Recordings, organizer workbooks, downloaded checkpoints, fitted heads, feature/state caches, executed notebook outputs and export archives remain local and are excluded by `.gitignore`. Some paths in historical reports refer to the original experiment workspace; use the tracked reference report to reproduce its folds.
 
 The initial Git snapshot records the completed 17-18 October 2026 experiments. Subsequent model changes should include their measured results and limitations in the same commit so progress stays reviewable.
+
+## Web application
+
+The complete current web service is included in `webapp/`. See [README_WEB.md](README_WEB.md) for setup, local face blurring, API authentication and model integration. Start it with `./scripts/run-web.sh` from this repository root. The existing `nurzhol-one` Git link is retained as a historical reference; the current web source does not require initializing it. Trained violation-model weights, private recordings, runtime files and API keys are supplied separately.

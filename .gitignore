@@ -93,3 +93,11 @@ Thumbs.db
 # Generated demo clips contain no bank footage and remain trackable.
 !/webapp/static/demo.mp4
 !/nurzhol-one/webapp/static/demo.mp4
+
+# Web service: private runtime, credentials and generated outputs.
+.venv-web/
+.forte-runtime/
+/outputs/
+.playwright-mcp/
+*.onnx
+!webapp/assets/face_detection_yunet_2023mar.onnx
