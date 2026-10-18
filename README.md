@@ -2,6 +2,16 @@
 
 Model experiments for detecting possible cashier procedure violations in video. All inference runs in Python with downloaded pretrained weights; no hosted LLM API is used. Work currently focuses on models and evaluation.
 
+## Point-guided temporal follow-up: 18 October 2026
+
+The new compact temporal convolution model completed native Colab CPU training and scored **45.0% accuracy**, **44.61% balanced accuracy**, 52.38% violation recall and 36.84% specificity. It matched **9/22 supplied event points within five seconds**, but raised 22 false-alarm events across 751 observed seconds of normal footage. The previous **62.5% model remains the development reference; the 87% target remains unmet**. The new model is not selected for use.
+
+The fresh custom audit verifies all 39 original/derivative hashes and silent video streams. The custom workbook still copies 42 original-only annotations; the 39-row proposed custom workbook has no filled labels or timestamps. Native motion/geometry comparison evaluated all 378 cross-camera candidates and produced 18 uncertain assignments, **zero confirmed pairs**. Creation-time tags are unreliable as capture starts. All custom views remain one conservative filming-session group, and no guessed labels become training or validation targets.
+
+Two fixed small TCNs learn from the original binary recording labels, positive points and normal windows. Architecture, threshold, scaler and PCA fit inside grouped training folds; unmarked positive windows remain unlabeled. The run reuses exact original source-SHA outer folds. These are **recording-group development results, not an independently verified scene-based evaluation**. Colab GPU quota was exhausted, so the small head trained on preserved numeric CLIP state caches using CPU. CV, fitting and fresh-process cached-feature inference completed with zero Python network attempts; cached inference is not full video latency.
+
+Use the [clean temporal notebook](datathon_scene_temporal.ipynb), [measured results](artifacts/scene_temporal_experiment_summary.json), [label audit](artifacts/custom_label_verification.json) and [camera audit](artifacts/custom_pairing_audit.json). **169 regression tests pass locally and in Colab**. The private human review sheet is `open/customVideos_prepared/custom_labels_review.csv`; originals, worksheets, candidate mappings, feature caches and trained heads stay outside Git. After human review, `python tools/verify_custom_labels.py` validates exact source joins and timestamp bounds. Keep the whole custom batch together even when individual pairs are eventually identified.
+
 ## CatBoost and preprocessing follow-up: 18 October 2026
 
 The completed gradient-boosted tree comparison did **not** improve the best model. The policy selecting its feature arm, tree settings and threshold inside training folds scored **55.0% accuracy**, **54.64% balanced accuracy**, 61.90% violation recall and 47.37% specificity. It missed 8/21 violations and raised 10 false alarms among 19 normal recordings. The existing **62.5% temporal model remains the development reference; 87% remains unmet**.

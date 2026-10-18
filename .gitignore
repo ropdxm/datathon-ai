@@ -26,6 +26,9 @@
 !/artifacts/boosted_model_comparison.csv
 !/artifacts/boosted_model_comparison.png
 !/artifacts/preprocessing_audit.json
+!/artifacts/custom_label_verification.json
+!/artifacts/custom_pairing_audit.json
+!/artifacts/scene_temporal_experiment_summary.json
 
 # Recordings, checkpoints, trained heads, feature caches and export bundles.
 *.mov

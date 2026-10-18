@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "audit_utc": "2026-10-18T03:44:36.790271+00:00",
+  "source_count": 39,
+  "source_and_prepared_file_hashes_verified": true,
+  "silent_prepared_recordings_verified": true,
+  "preparation_manifest_sha256": "2bf1ccbbd04a7032ee1117efb63a2f517137e1df9002e28fda8bf04e4a2711b7",
+  "review_csv_sha256": "40512e63a8f283dda637736611f8c39db64ca838460f9dd2defec818090d3542",
+  "original_labels_sha256": "4faf595a2679c2f8b2b41be041de59bb3c11cd6e77d57226f1cbcc14b2cc3e75",
+  "workbooks": [
+    {
+      "filename": "open_labels.xlsx",
+      "sha256": "e37e0423c50362013a339941a625d22c2f92f180208d8716bad5aae286dcea84",
+      "size_bytes": 26767,
+      "provided_rows": 42,
+      "matching_custom_ids": 0,
+      "matching_custom_rows_with_filled_labels": 0,
+      "matching_custom_rows_with_filled_timestamps": 0,
+      "nonblank_label_rows": 42,
+      "nonblank_timestamp_rows": 22,
+      "first_three_columns_equal_original": true,
+      "semantic_verification_from_workbook_content": false,
+      "automatic_label_attachment": false
+    },
+    {
+      "filename": "custom_labels_proposed.xlsx",
+      "sha256": "e8381dd4567d4dfee8ab04a6ed858be10fa2eca026f618b6da8427eaab63189f",
+      "size_bytes": 4808,
+      "provided_rows": 39,
+      "matching_custom_ids": 39,
+      "matching_custom_rows_with_filled_labels": 0,
+      "matching_custom_rows_with_filled_timestamps": 0,
+      "nonblank_label_rows": 0,
+      "nonblank_timestamp_rows": 0,
+      "first_three_columns_equal_original": false,
+      "semantic_verification_from_workbook_content": false,
+      "automatic_label_attachment": false
+    }
+  ],
+  "review": {
+    "review_rows": 39,
+    "review_status_counts": {
+      "unreviewed": 39
+    },
+    "filled_labels_without_human_verification": 0,
+    "verified_labels": 0,
+    "verified_violation_labels": 0,
+    "verified_no_violation_labels": 0,
+    "verified_timestamps": 0,
+    "custom_sources_without_verified_labels": 39,
+    "scene_groups_changed_by_label_ingestion": false
+  },
+  "custom_semantics_verified_by_automation": false,
+  "timestamp_bounds_policy": "0 <= each point < min(source_duration, prepared_duration)",
+  "audio_used": false,
+  "private_pixels_or_descriptions_sent_to_hosted_ai": false,
+  "machine_predictions_accepted_as_ground_truth": false,
+  "scene_grouping_policy": "All custom views retain one user-confirmed shared filming-batch union. This grouping is verified only as a conservative leakage-prevention union; individual scene/camera pairs remain unverified.",
+  "grouping_basis": "user_confirmed_shared_filming_batch_conservative_union",
+  "individual_scene_pairing_verified_by_label_ingestion": false,
+  "needs_human_review": true,
+  "review_instructions": "Open the local silent prepared_path video and review its complete duration. Use label=violation with event_times in elapsed video seconds, for example [12.5, 27], or label=no_violation with event_times=[]. Leave uncertain cases unreviewed. After visual verification, set review_status=human_verified, full_video_reviewed=yes, reviewer to your identifier and reviewed_at_utc to an ISO UTC timestamp such as 2026-10-18T10:00:00Z. Do not copy labels between cameras: visibility and recording start times can differ. Scene pairing is a separate review; labels do not establish pair correspondence."
+}

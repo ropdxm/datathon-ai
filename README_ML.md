@@ -1,5 +1,37 @@
 # Datathon model experiments
 
+## Point-guided temporal model and scene verification: 18 October 2026
+
+The new point-guided TCN completed native Colab CPU evaluation on the exact original 40 source-SHA folds: **45.0% accuracy (18/40)**, **44.61% balanced accuracy**, 52.38% violation recall and 36.84% specificity. The normal/violation confusion matrix is `[[7, 12], [10, 11]]`. The prior 62.5% model remains the reference; neither this comparison nor the previous experiments achieves the requested 87%.
+
+Point recall is **3/22 within 1 second**, **4/22 within 2 seconds**, and **9/22 within 5 seconds**. Eleven points have any predicted event; their conditional median timing error is five seconds. Misses count against point recall. Twenty-two predicted events occur in normal recordings across 751 sampled seconds, approximately **105.46 false-alarm events per observed hour**. This is an exposure-normalized diagnostic on only 12.52 minutes of normal video, not a production-rate estimate. Incomplete point labels cannot establish event precision or interval IoU.
+
+Two fixed candidates use 16/32 hidden channels, dilations `[1,2]`/`[1,2,4]`, and 80/120 epochs. Their receptive fields are three/seven seconds at 0.5-second sampling. Training combines top-three-logit bag BCE, positive-point BCE, dense normal-window BCE and light temporal smoothness. Unmarked positive windows never become negative targets. Each fit learns scaler/PCA/component scaling from at most 64 uniformly sampled rows per training owner; semantic18 score magnitudes are preserved. Inner grouped validation selects architecture and threshold. Padding is masked, and large timestamp gaps split sequences and event merging. The exported small head checks exact ML source and visual-protocol fingerprints.
+
+All custom original/derivative hashes were checked again. `open/customVideos/open_labels.xlsx` still contains original-only rows; the proposed 39-row custom workbook is blank. **Zero custom labels or timestamps are verified**. Video-only matching compares all 378 MOV/MP4 combinations using motion alignment, split stability, ambiguity, geometry diagnostics and clock corroboration. All 18 assigned candidates remain uncertain. Creation tags often overlap implausibly relative to recording durations, so they cannot establish capture chronology. The safe aggregate audits are tracked; private candidate mappings remain local.
+
+All 39 custom views retain one conservative filming-session union group. Pairing guesses do not supply semantic labels, and human labels cannot establish camera correspondences. The current original-only run is **recording-group development evaluation**, not verified independent-scene validation. A future scene-group run must use reviewed targets and explicit groups; the CLI rejects unverified custom labels/points and related source lineage split across groups. A separate new filming session remains necessary for acceptance.
+
+Colab denied another GPU session because its quota was exhausted. The preserved numeric CLIP state caches allowed CPU training without new video decoding. Native guarded CV took **150.99 seconds**, final fitting **33.93 seconds**, and fresh-process feature-cache prediction **2.23 seconds**; each observed zero Python network attempts. These times exclude the visual encoder and are not uncached video latency. Focused temporal tests also ran under a network guard. The full **169-test suite passed locally and in Colab**; the full-suite run itself was not network-instrumented.
+
+Run `datathon_scene_temporal.ipynb` with the private `artifacts/scene_temporal_cache.zip`, or:
+
+```bash
+python tools/run_scene_temporal_colab.py --workspace /content/datathon_ml_workspace
+```
+
+This fixed comparison intentionally accepts exactly the original sources. After completing the private `open/customVideos_prepared/custom_labels_review.csv`, run:
+
+```bash
+python tools/verify_custom_labels.py
+python tools/match_custom_cameras.py
+python scene_temporal_experiment.py cv --manifest /path/to/reviewed_combined_manifest.json --feature-dir /path/to/compatible_features --originals-from reference/clip_baseline_cv.json --groups-json /path/to/verified_groups.json --output-dir runs/reviewed_scene_tcn
+```
+
+The review sheet accepts only simple `violation` plus timestamp(s), or `no_violation`, with a full-video human review attestation and exact SHA/filename join. Verified positives carry verified point status. All reviewed custom targets keep the user-confirmed conservative union group; this does not claim individual scene/camera pair verification. Do not provide the old `--folds-from` map to a combined dataset: generated scene folds must hold the union group together. Model proposals never become evaluation ground truth.
+
+See `artifacts/scene_temporal_experiment_summary.json` for recomputed metrics, exact fold/target/nested-owner checks, source hashes and runtimes. Trained head and matching source are in the private `artifacts/datathon_scene_temporal_results.zip` export.
+
 ## CatBoost, PCA and public data: 18 October 2026
 
 The completed CatBoost experiment scored **55.0% accuracy (22/40)** and **54.64% balanced accuracy** for its primary inner-selected policy. Violation recall is 61.90%, specificity 47.37%, and the confusion matrix is `[[9, 10], [8, 13]]` with true rows/predicted columns ordered normal, violation. This means eight missed violations and ten false alarms. It does not improve the existing **62.5% CLIP semantic temporal model**, and the requested 87% target remains unmet. All results on these repeatedly inspected 40 recordings remain development evidence.

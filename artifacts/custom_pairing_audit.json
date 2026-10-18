@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "protocol": {
+    "schema_version": 1,
+    "sample_fps": 5,
+    "width": 192,
+    "height": 108,
+    "minimum_overlap_seconds": 6.0,
+    "minimum_shorter_overlap_fraction": 0.7,
+    "automatic_minimum_duration_seconds": 8.0,
+    "automatic_motion_score": 0.7,
+    "automatic_split_correlation": 0.5,
+    "automatic_channel_correlation": 0.55,
+    "automatic_assignment_margin": 0.08,
+    "automatic_remote_peak_margin": 0.05,
+    "automatic_maximum_drift_seconds": 0.6,
+    "automatic_clock_residual_seconds": 2.0,
+    "offset_convention": "right_elapsed_seconds = left_elapsed_seconds + offset_seconds",
+    "clock_offset_convention": "right_creation_minus_left_creation_plus_motion_offset",
+    "assignment": "Hungarian partial matching with zero-score dummy abstentions",
+    "audio_policy": "decode prepared video stream only using FFmpeg -an -sn -dn",
+    "label_policy": "no semantic labels or timestamps are inferred",
+    "validation_group_policy": "all custom views retain the same conservative filming-session group"
+  },
+  "implementation_sha256": "68372966ea76b464d643d54425c4c960740c746ffc846a99106eda212b769bf9",
+  "extractor_sha256": "8a34b248bbffcf4f180d390adf4bfbde1a63bb83600b7417481817b52a616448",
+  "opencv_version": "4.14.0",
+  "source_manifest_sha256": "2bf1ccbbd04a7032ee1117efb63a2f517137e1df9002e28fda8bf04e4a2711b7",
+  "source_file_count": 39,
+  "camera_family_counts": {
+    "mov": 21,
+    "mp4": 18
+  },
+  "source_creation_time_available_count": 39,
+  "creation_metadata_reliability": {
+    "mov": {
+      "available_count": 21,
+      "adjacent_pairs": 20,
+      "adjacent_gaps_shorter_than_both_durations": 17,
+      "creation_tag_capture_time_assumption_supported": false
+    },
+    "mp4": {
+      "available_count": 18,
+      "adjacent_pairs": 17,
+      "adjacent_gaps_shorter_than_both_durations": 8,
+      "creation_tag_capture_time_assumption_supported": false
+    }
+  },
+  "creation_time_warning": "Creation tags are not assumed to be capture starts; proximity alone never confirms a pair.",
+  "all_cross_camera_candidates": 378,
+  "hungarian_candidate_count": 18,
+  "automatic_pair_count": 0,
+  "human_verified_pair_count": 0,
+  "assigned_uncertain_pair_count": 18,
+  "unmatched_view_count_after_automatic_abstention": 39,
+  "all_sources_keep_single_validation_group": true,
+  "validation_group_count": 1,
+  "source_pixels_and_audio_shared_with_hosted_services": false,
+  "audio_decoded": false,
+  "labels_or_event_timestamps_inferred": false,
+  "motion_score_summary_assigned": {
+    "min": 0.5112287656086257,
+    "median": 0.6905567082060704,
+    "max": 0.8840681250747623
+  },
+  "assigned_abstention_reason_counts": {
+    "motion_correlation_below_threshold": 11,
+    "split_window_alignment_not_corroborated": 13,
+    "another_camera_candidate_has_similar_score": 18,
+    "device_clock_bias_not_independently_supported": 18,
+    "fewer_than_three_correlated_motion_channels": 3,
+    "ambiguous_motion_offset": 2,
+    "overlap_too_short_for_automatic_pairing": 2,
+    "local_offset_inconsistency": 5
+  },
+  "private_mapping_relative_path": "artifacts\\custom_camera_pairing_private\\camera_pairs_private.json",
+  "elapsed_seconds": 35.24151619999611
+}
