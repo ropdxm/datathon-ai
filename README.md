@@ -2,6 +2,14 @@
 
 Model experiments for detecting possible cashier procedure violations in video. All inference runs in Python with downloaded pretrained weights; no hosted LLM API is used. Work currently focuses on models and evaluation.
 
+## Manually reviewed custom labels: 18 October 2026
+
+The user has now manually reviewed `custom_labels_proposed.xlsx` and explicitly authorized training on its labels. The exact workbook hash is bound to **35 accepted custom recordings: 16 violations, 19 normal**, with 16 valid positive timestamps. All accepted source and silent derivative hashes pass. The four omitted recordings are excluded; private descriptions are unused.
+
+The new experiment freezes **34 training / 12 validation / 12 test recordings** before model fitting. Each held-out partition contains eight original and four custom videos, balanced within each domain. It uses 40 original recordings and 18 reviewed MOV recordings; every opposite-camera MP4 is excluded globally so unresolved simultaneous counterviews cannot cross splits. Native same-camera overlap groups and source lineage remain together. This is **within-filming-batch source development**, not independent-scene or new-session validation. The original recordings were already examined during earlier development.
+
+Fresh pretrained visual features and validation-selected classifiers are being prepared for this fixed protocol; no new accuracy is claimed before the locked test is run. The current requested target is **over 80%**. Labels and media remain private. See the [reviewed-label audit](artifacts/reviewed_workbook_audit.json), [overlap audit](artifacts/reviewed_scene_group_audit.json) and [locked protocol](artifacts/reviewed_protocol_audit.json). Earlier experiment snapshots follow below.
+
 ## Point-guided temporal follow-up: 18 October 2026
 
 The new compact temporal convolution model completed native Colab CPU training and scored **45.0% accuracy**, **44.61% balanced accuracy**, 52.38% violation recall and 36.84% specificity. It matched **9/22 supplied event points within five seconds**, but raised 22 false-alarm events across 751 observed seconds of normal footage. The previous **62.5% model remains the development reference; the 87% target remains unmet**. The new model is not selected for use.

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "workbook_sha256": "c73b6cd50a200c6e64b98ea4581fa769c8996c5ac7e071242aae761592f406e7",
+  "human_user_attestation_accepted": true,
+  "attestation_date": "2026-10-18",
+  "attestation_source": "explicit_human_user_chat_confirmation",
+  "preparation_source_count": 39,
+  "annotation_rows": 35,
+  "accepted_records": 35,
+  "class_counts": {
+    "violation": 16,
+    "no_violation": 19
+  },
+  "verified_point_count": 16,
+  "excluded_rows": 0,
+  "exclusion_reason_counts": {},
+  "preparation_sources_without_accepted_label": 4,
+  "source_and_silent_derivative_hashes_verified": true,
+  "all_accepted_prepared_audio_streams_zero": true,
+  "grouping_basis": "user_confirmed_shared_filming_batch_conservative_union",
+  "accepted_group_count": 1,
+  "individual_scene_pairing_verified": false,
+  "timestamp_policy": "Supplied points only; 0 <= point < min(source duration, silent derivative duration).",
+  "semantic_visual_verification_performed_by_assistant": false,
+  "private_description_columns_used": false,
+  "predictions_used_as_ground_truth": false,
+  "audio_used": false,
+  "preparation_manifest_sha256": "2bf1ccbbd04a7032ee1117efb63a2f517137e1df9002e28fda8bf04e4a2711b7",
+  "created_at_utc": "2026-10-18T04:45:02.533529+00:00"
+}

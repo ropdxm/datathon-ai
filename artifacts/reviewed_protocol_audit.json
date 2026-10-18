@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "protocol": {
+    "type": "camera_exclusive_source_overlap_development",
+    "seed": 42,
+    "selected_camera": ".mov",
+    "opposite_camera_excluded_globally": true,
+    "grouping_basis": "native_duplicate_overlap_prevention_not_human_scene_identity",
+    "grouping_map_sha256": "0f4a72d19064761fa7cf25b9a1f45064e9c3eead7a86d2ef87924501a8f00dd9",
+    "family_selection_basis": "largest_usable_label_coverage_before_model_scores",
+    "allocation": "exact_nearest_20_percent_per_domain_class_with_whole_native_overlap_groups",
+    "full_session_grouping_enforced": false,
+    "human_verified_scene_groups": false,
+    "independent_new_scene_test": false,
+    "test_locked_before_candidate_fitting": true,
+    "test_metrics_viewed": false,
+    "selection_policy": "Fit candidates on train, select and freeze winner using validation only, evaluate test once after winner freeze.",
+    "limitations": [
+      "All custom MOV views come from one filming batch. Same-session evaluation does not establish new-session or unseen-scene generalization.",
+      "Native source-overlap groups prevent known duplicate/overlap leakage; they do not certify distinct physical scenes.",
+      "Original recordings and their earlier model results were already repeatedly examined as development data.",
+      "Opposite-camera custom MP4 recordings are excluded from training, validation, test and model selection."
+    ]
+  },
+  "seed": 42,
+  "total_records": 58,
+  "domain_counts": {
+    "original": 40,
+    "custom": 18
+  },
+  "source_family_reviewed_counts_before_selection": {
+    ".mp4": 17,
+    ".mov": 18
+  },
+  "custom_opposite_camera_records_excluded_globally": 17,
+  "split_summary": {
+    "train": {
+      "records": 34,
+      "groups": 34,
+      "domain_class_counts": {
+        "original": {
+          "violation": 13,
+          "no_violation": 11
+        },
+        "custom": {
+          "no_violation": 6,
+          "violation": 4
+        }
+      }
+    },
+    "validation": {
+      "records": 12,
+      "groups": 12,
+      "domain_class_counts": {
+        "original": {
+          "no_violation": 4,
+          "violation": 4
+        },
+        "custom": {
+          "no_violation": 2,
+          "violation": 2
+        }
+      }
+    },
+    "test": {
+      "records": 12,
+      "groups": 10,
+      "domain_class_counts": {
+        "original": {
+          "no_violation": 4,
+          "violation": 4
+        },
+        "custom": {
+          "violation": 2,
+          "no_violation": 2
+        }
+      }
+    }
+  },
+  "assignment_sha256": "9622d9e976bed0a233449e322fdc74ebef62357820a286a31235c00313f2c615",
+  "manifest_sha256": "de63ec1167433e3317c720402ce3188b84dd2e90bfe9df5bb1a5c46b7a92d55f",
+  "split_file_sha256": "96bb658ab69b234edb5f3e70105f44f2330c22a861f587f921efb146a84c1bf2",
+  "reviewed_manifest_sha256": "7022f991b3cf5605814177e8d7407910872a9eea97daf4c0d39405b39de6920b",
+  "source_overlap_groups_disjoint": true,
+  "source_lineage_disjoint": true,
+  "features_or_model_scores_used_to_assign_splits": false,
+  "audio_used": false,
+  "original_source_hashes_and_labels_match_frozen_40": true,
+  "actual_source_paths_freshly_rebuilt": true
+}

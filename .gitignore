@@ -29,6 +29,10 @@
 !/artifacts/custom_label_verification.json
 !/artifacts/custom_pairing_audit.json
 !/artifacts/scene_temporal_experiment_summary.json
+!/artifacts/reviewed_workbook_audit.json
+!/artifacts/reviewed_scene_group_audit.json
+!/artifacts/reviewed_protocol_audit.json
+!/artifacts/reviewed_experiment_summary.json
 
 # Recordings, checkpoints, trained heads, feature caches and export bundles.
 *.mov
