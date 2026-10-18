@@ -66,6 +66,7 @@ videos/
 !artifacts/temporal_video_experiment_summary.json
 !artifacts/direct_vlm_experiment_summary.json
 !artifacts/detail_framepack_audit.json
+!artifacts/webapp_integration_audit.json
 
 # Local Python/Jupyter state and credentials.
 __pycache__/
